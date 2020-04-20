@@ -1,2 +1,0 @@
-
--DCATKIN_DEVEL_PREFIX=/home/ros/prog/laboratorioros/devel -DCMAKE_INSTALL_PREFIX=/home/ros/prog/laboratorioros/install -G Unix Makefiles
