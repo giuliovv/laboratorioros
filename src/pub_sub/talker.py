@@ -11,7 +11,7 @@ from std_msgs.msg import Float32
 def calcolaR(a, b, t):
     """ La funzione chiesta
     """
-    return a*(t**2) + b*t,
+    return a*(t**2) + b*t
 
 def talker():
     # Salva il primo istante di avvio
@@ -28,7 +28,7 @@ def talker():
         # Calcola da quanto tempo sta andando
         tempo = time.time() - start_time
         # Chiama la funzione sopra coi parametri a, b e tempo
-        tempo_float = calcolaR(a, b, tempo)[0] #Non capisco perche restituisce un array
+        tempo_float = calcolaR(a, b, tempo)
         # Mostra i log a terminale
         rospy.loginfo(tempo_float)
         # Pubblica tempo_float nel canale
