@@ -10,10 +10,14 @@ from std_msgs.msg import Float32
 
 def calcolaR(a, b, t):
     """ La funzione chiesta
+        parametri a, b, t Float
+        return Float
     """
     return a*(t**2) + b*t
 
 def talker():
+    """ Ciao sono la descrizione di una funzione
+    """
     # Salva il primo istante di avvio
     start_time = time.time()
     # Prepara il topic con nome risultato e che pubblica cose di tipo Float32
