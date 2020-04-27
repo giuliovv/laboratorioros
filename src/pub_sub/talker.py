@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # Software License Agreement (BSD License)
 #
 # Copyright (c) 2008, Willow Garage, Inc.
@@ -36,17 +37,26 @@
 ## Simple talker demo that published std_msgs/Strings messages
 ## to the 'chatter' topic
 
+import time
+
 import rospy
-from std_msgs.msg import String
+from std_msgs.msg import Float32
+
+def calcolaR(a, b, t):
+    return a*(t**2) + b*t,
 
 def talker():
-    pub = rospy.Publisher('chatter', String, queue_size=10)
+    start_time = time.time()
+    pub = rospy.Publisher('risultato', Float32, queue_size=10)
     rospy.init_node('talker', anonymous=True)
-    rate = rospy.Rate(10) # 10hz
+    rate = rospy.Rate(1) # 1hz
+    a = input("Valore di a:")
+    b = input("Valore di b:")
     while not rospy.is_shutdown():
-        hello_str = "hello world %s" % rospy.get_time()
-        rospy.loginfo(hello_str)
-        pub.publish(hello_str)
+        tempo = time.time() - start_time
+        tempo_float = calcolaR(a, b, tempo)[0] #Non capisco perche restituisce un array
+        rospy.loginfo(tempo_float)
+        pub.publish(tempo_float)
         rate.sleep()
 
 if __name__ == '__main__':
