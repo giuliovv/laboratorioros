@@ -2,10 +2,11 @@ clear all
 close all
 
 % Create robot object
-robot_2link = rigidBodyTree('DataFormat','column','MaxNumBodies',3);
+robot_2link = rigidBodyTree('DataFormat','column','MaxNumBodies',4);
 
 L1 = 1;
 L2 = 1;
+L3 = 1;
 
 body = rigidBody('arm_link');
 joint = rigidBodyJoint('arm_joint', 'revolute');
@@ -26,6 +27,16 @@ body.Mass = 1;
 body.CenterOfMass = [L2/2 0 0];
 body.Inertia = [0 0.335 0.335 0 0 0]; % [Ixx Iyy Izz Iyz Ixz Ixy]
 addBody(robot_2link, body, 'arm_link');
+
+body = rigidBody('ultimoarm_link');
+joint = rigidBodyJoint('ultimoarm_joint','revolute');
+setFixedTransform(joint, trvec2tform([L2,0,0]));
+joint.JointAxis = [0 0 1];
+body.Joint = joint;
+body.Mass = 1;
+body.CenterOfMass = [L3/2 0 0];
+body.Inertia = [0 0.1675 0.1675 0 0 0]; % [Ixx Iyy Izz Iyz Ixz Ixy]
+addBody(robot_2link, body, 'forearm_link');
 
 showdetails(robot_2link)
 
