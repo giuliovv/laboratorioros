@@ -79,6 +79,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        ultimoarm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -96,6 +101,8 @@ Visualization Manager:
           Value: true
         forearm_link:
           Value: true
+        ultimoarm_link:
+          Value: true
       Marker Scale: 0.5
       Name: TF
       Show Arrows: true
@@ -105,7 +112,8 @@ Visualization Manager:
         base_link:
           arm_link:
             forearm_link:
-              {}
+              ultimoarm_link:
+                {}
       Update Interval: 0
       Value: true
   Enabled: true

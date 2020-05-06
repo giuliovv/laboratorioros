@@ -25,6 +25,9 @@ extern SimulinkParameterGetter<real64_T, double> ParamGet_kinsim_2link_planar_61
 // For Block kinsim_2link_planar/Subsystem/Get Parameter1
 extern SimulinkParameterGetter<real64_T, double> ParamGet_kinsim_2link_planar_65;
 
+// For Block kinsim_2link_planar/Subsystem/Get Parameter2
+extern SimulinkParameterGetter<real64_T, double> ParamGet_kinsim_2link_planar_81;
+
 void slros_node_init(int argc, char** argv);
 
 #endif
