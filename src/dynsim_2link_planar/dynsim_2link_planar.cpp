@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'dynsim_2link_planar'.
 //
-// Model version                  : 1.118
+// Model version                  : 1.122
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Mon May  4 19:00:24 2020
+// C/C++ source code generated on : Wed May  6 12:57:38 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -71,44 +71,47 @@ static void dynsim_2link_pla_emxFree_real_T(emxArray_real_T_dynsim_2link__T
   **pEmxArray);
 static void dynsim_2lin_emxFree_f_cell_wrap(emxArray_f_cell_wrap_dynsim_2_T
   **pEmxArray);
-static void RigidBodyTreeDynamics_massMatri(o_robotics_manip_internal_Rig_T
-  *robot, const real_T q[2], emxArray_real_T_dynsim_2link__T *H,
+static void RigidBodyTreeDynamics_massMatri(p_robotics_manip_internal_Rig_T
+  *robot, const real_T q[3], emxArray_real_T_dynsim_2link__T *H,
   emxArray_real_T_dynsim_2link__T *lambda);
-static void RigidBodyTreeDynamics_inverseDy(o_robotics_manip_internal_Rig_T
-  *robot, const real_T q[2], const real_T qdot[2], const real_T fext[12], real_T
-  tau[2]);
-static void matlabCodegenHandle_mat_awtnueq(ros_slros_internal_block_Subs_T *obj);
+static void RigidBodyTreeDynamics_inverseDy(p_robotics_manip_internal_Rig_T
+  *robot, const real_T q[3], const real_T qdot[3], const real_T fext[18], real_T
+  tau[3]);
+static void matlabCodegenHandle_m_awtnueqcp(ros_slros_internal_block_Subs_T *obj);
 static void matlabCodegenHandle_matlabCodeg(ros_slros_internal_block_GetP_T *obj);
 static void emxFreeStruct_c_rigidBodyJoint(c_rigidBodyJoint_dynsim_2link_T
   *pStruct);
-static void emxFreeStruct_n_robotics_manip_(n_robotics_manip_internal_Rig_T
-  *pStruct);
 static void emxFreeStruct_o_robotics_manip_(o_robotics_manip_internal_Rig_T
+  *pStruct);
+static void emxFreeStruct_p_robotics_manip_(p_robotics_manip_internal_Rig_T
   *pStruct);
 static void emxFreeStruct_robotics_slmanip_(robotics_slmanip_internal_blo_T
   *pStruct);
-static void emxFreeStruct_m_robotics_manip_(m_robotics_manip_internal_Rig_T
+static void emxFreeStruct_n_robotics_manip_(n_robotics_manip_internal_Rig_T
   *pStruct);
-static void matlabCodegenHandle_matlab_awtn(ros_slros_internal_block_Publ_T *obj);
+static void matlabCodegenHandle_matl_awtnue(ros_slros_internal_block_Publ_T *obj);
 static void emxInitStruct_c_rigidBodyJoint(c_rigidBodyJoint_dynsim_2link_T
-  *pStruct);
-static void emxInitStruct_n_robotics_manip_(n_robotics_manip_internal_Rig_T
   *pStruct);
 static void emxInitStruct_o_robotics_manip_(o_robotics_manip_internal_Rig_T
   *pStruct);
+static void emxInitStruct_p_robotics_manip_(p_robotics_manip_internal_Rig_T
+  *pStruct);
 static void emxInitStruct_robotics_slmanip_(robotics_slmanip_internal_blo_T
   *pStruct);
-static void emxInitStruct_m_robotics_manip_(m_robotics_manip_internal_Rig_T
+static void emxInitStruct_n_robotics_manip_(n_robotics_manip_internal_Rig_T
   *pStruct);
-static m_robotics_manip_internal_Rig_T *dynsim_2lin_RigidBody_RigidBody
-  (m_robotics_manip_internal_Rig_T *obj);
-static m_robotics_manip_internal_Rig_T *dynsim_2l_RigidBody_RigidBody_a
-  (m_robotics_manip_internal_Rig_T *obj);
+static n_robotics_manip_internal_Rig_T *dynsim_2lin_RigidBody_RigidBody
+  (n_robotics_manip_internal_Rig_T *obj);
+static n_robotics_manip_internal_Rig_T *dynsim_2l_RigidBody_RigidBody_a
+  (n_robotics_manip_internal_Rig_T *obj);
 static n_robotics_manip_internal_Rig_T *dynsim_2_RigidBody_RigidBody_aw
   (n_robotics_manip_internal_Rig_T *obj);
-static o_robotics_manip_internal_Rig_T *dyn_RigidBodyTree_RigidBodyTree
-  (o_robotics_manip_internal_Rig_T *obj, m_robotics_manip_internal_Rig_T *iobj_0,
-   m_robotics_manip_internal_Rig_T *iobj_1);
+static o_robotics_manip_internal_Rig_T *dynsim__RigidBody_RigidBody_awt
+  (o_robotics_manip_internal_Rig_T *obj);
+static p_robotics_manip_internal_Rig_T *dyn_RigidBodyTree_RigidBodyTree
+  (p_robotics_manip_internal_Rig_T *obj, n_robotics_manip_internal_Rig_T *iobj_0,
+   n_robotics_manip_internal_Rig_T *iobj_1, n_robotics_manip_internal_Rig_T
+   *iobj_2);
 
 //
 // This function updates continuous states using the ODE3 fixed-step
@@ -140,7 +143,7 @@ static void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si )
   real_T *f2 = id->f[2];
   real_T hB[3];
   int_T i;
-  int_T nXc = 4;
+  int_T nXc = 6;
   rtsiSetSimTimeStep(si,MINOR_TIME_STEP);
 
   // Save the state values at time t in y, we'll use x as ynew.
@@ -740,36 +743,36 @@ static void rigidBodyJoint_transformBodyToP(const
     break;
 
    case 1:
-    dy_rigidBodyJoint_get_JointAxis(obj, dynsim_2link_planar_B.v_p);
-    dynsim_2link_planar_B.axang_idx_0 = dynsim_2link_planar_B.v_p[0];
-    dynsim_2link_planar_B.axang_idx_1 = dynsim_2link_planar_B.v_p[1];
-    dynsim_2link_planar_B.axang_idx_2 = dynsim_2link_planar_B.v_p[2];
+    dy_rigidBodyJoint_get_JointAxis(obj, dynsim_2link_planar_B.v_l);
+    dynsim_2link_planar_B.axang_idx_0 = dynsim_2link_planar_B.v_l[0];
+    dynsim_2link_planar_B.axang_idx_1 = dynsim_2link_planar_B.v_l[1];
+    dynsim_2link_planar_B.axang_idx_2 = dynsim_2link_planar_B.v_l[2];
     dynsim_2link_planar_B.b_h = 1.0 / sqrt((dynsim_2link_planar_B.axang_idx_0 *
       dynsim_2link_planar_B.axang_idx_0 + dynsim_2link_planar_B.axang_idx_1 *
       dynsim_2link_planar_B.axang_idx_1) + dynsim_2link_planar_B.axang_idx_2 *
       dynsim_2link_planar_B.axang_idx_2);
-    dynsim_2link_planar_B.v_p[0] = dynsim_2link_planar_B.axang_idx_0 *
+    dynsim_2link_planar_B.v_l[0] = dynsim_2link_planar_B.axang_idx_0 *
       dynsim_2link_planar_B.b_h;
-    dynsim_2link_planar_B.v_p[1] = dynsim_2link_planar_B.axang_idx_1 *
+    dynsim_2link_planar_B.v_l[1] = dynsim_2link_planar_B.axang_idx_1 *
       dynsim_2link_planar_B.b_h;
-    dynsim_2link_planar_B.v_p[2] = dynsim_2link_planar_B.axang_idx_2 *
+    dynsim_2link_planar_B.v_l[2] = dynsim_2link_planar_B.axang_idx_2 *
       dynsim_2link_planar_B.b_h;
-    dynsim_2link_planar_B.axang_idx_0 = dynsim_2link_planar_B.v_p[1] *
-      dynsim_2link_planar_B.v_p[0] * 0.0;
-    dynsim_2link_planar_B.axang_idx_1 = dynsim_2link_planar_B.v_p[2] *
-      dynsim_2link_planar_B.v_p[0] * 0.0;
-    dynsim_2link_planar_B.axang_idx_2 = dynsim_2link_planar_B.v_p[2] *
-      dynsim_2link_planar_B.v_p[1] * 0.0;
-    dynsim_2link_planar_cat(dynsim_2link_planar_B.v_p[0] *
-      dynsim_2link_planar_B.v_p[0] * 0.0 + 1.0,
-      dynsim_2link_planar_B.axang_idx_0 - dynsim_2link_planar_B.v_p[2] * 0.0,
-      dynsim_2link_planar_B.axang_idx_1 + dynsim_2link_planar_B.v_p[1] * 0.0,
-      dynsim_2link_planar_B.axang_idx_0 + dynsim_2link_planar_B.v_p[2] * 0.0,
-      dynsim_2link_planar_B.v_p[1] * dynsim_2link_planar_B.v_p[1] * 0.0 + 1.0,
-      dynsim_2link_planar_B.axang_idx_2 - dynsim_2link_planar_B.v_p[0] * 0.0,
-      dynsim_2link_planar_B.axang_idx_1 - dynsim_2link_planar_B.v_p[1] * 0.0,
-      dynsim_2link_planar_B.axang_idx_2 + dynsim_2link_planar_B.v_p[0] * 0.0,
-      dynsim_2link_planar_B.v_p[2] * dynsim_2link_planar_B.v_p[2] * 0.0 + 1.0,
+    dynsim_2link_planar_B.axang_idx_0 = dynsim_2link_planar_B.v_l[1] *
+      dynsim_2link_planar_B.v_l[0] * 0.0;
+    dynsim_2link_planar_B.axang_idx_1 = dynsim_2link_planar_B.v_l[2] *
+      dynsim_2link_planar_B.v_l[0] * 0.0;
+    dynsim_2link_planar_B.axang_idx_2 = dynsim_2link_planar_B.v_l[2] *
+      dynsim_2link_planar_B.v_l[1] * 0.0;
+    dynsim_2link_planar_cat(dynsim_2link_planar_B.v_l[0] *
+      dynsim_2link_planar_B.v_l[0] * 0.0 + 1.0,
+      dynsim_2link_planar_B.axang_idx_0 - dynsim_2link_planar_B.v_l[2] * 0.0,
+      dynsim_2link_planar_B.axang_idx_1 + dynsim_2link_planar_B.v_l[1] * 0.0,
+      dynsim_2link_planar_B.axang_idx_0 + dynsim_2link_planar_B.v_l[2] * 0.0,
+      dynsim_2link_planar_B.v_l[1] * dynsim_2link_planar_B.v_l[1] * 0.0 + 1.0,
+      dynsim_2link_planar_B.axang_idx_2 - dynsim_2link_planar_B.v_l[0] * 0.0,
+      dynsim_2link_planar_B.axang_idx_1 - dynsim_2link_planar_B.v_l[1] * 0.0,
+      dynsim_2link_planar_B.axang_idx_2 + dynsim_2link_planar_B.v_l[0] * 0.0,
+      dynsim_2link_planar_B.v_l[2] * dynsim_2link_planar_B.v_l[2] * 0.0 + 1.0,
       dynsim_2link_planar_B.tempR_f);
     for (dynsim_2link_planar_B.b_kstr_n = 0; dynsim_2link_planar_B.b_kstr_n < 3;
          dynsim_2link_planar_B.b_kstr_n++) {
@@ -800,7 +803,7 @@ static void rigidBodyJoint_transformBodyToP(const
     break;
 
    default:
-    dy_rigidBodyJoint_get_JointAxis(obj, dynsim_2link_planar_B.v_p);
+    dy_rigidBodyJoint_get_JointAxis(obj, dynsim_2link_planar_B.v_l);
     memset(&dynsim_2link_planar_B.tempR_f[0], 0, 9U * sizeof(real_T));
     dynsim_2link_planar_B.tempR_f[0] = 1.0;
     dynsim_2link_planar_B.tempR_f[4] = 1.0;
@@ -815,7 +818,7 @@ static void rigidBodyJoint_transformBodyToP(const
       dynsim_2link_planar_B.TJ_c[dynsim_2link_planar_B.kstr_o + 2] =
         dynsim_2link_planar_B.tempR_f[3 * dynsim_2link_planar_B.b_kstr_n + 2];
       dynsim_2link_planar_B.TJ_c[dynsim_2link_planar_B.b_kstr_n + 12] =
-        dynsim_2link_planar_B.v_p[dynsim_2link_planar_B.b_kstr_n] * 0.0;
+        dynsim_2link_planar_B.v_l[dynsim_2link_planar_B.b_kstr_n] * 0.0;
     }
 
     dynsim_2link_planar_B.TJ_c[3] = 0.0;
@@ -1063,8 +1066,8 @@ static void dynsim_2lin_emxFree_f_cell_wrap(emxArray_f_cell_wrap_dynsim_2_T
   }
 }
 
-static void RigidBodyTreeDynamics_massMatri(o_robotics_manip_internal_Rig_T
-  *robot, const real_T q[2], emxArray_real_T_dynsim_2link__T *H,
+static void RigidBodyTreeDynamics_massMatri(p_robotics_manip_internal_Rig_T
+  *robot, const real_T q[3], emxArray_real_T_dynsim_2link__T *H,
   emxArray_real_T_dynsim_2link__T *lambda)
 {
   emxArray_f_cell_wrap_dynsim_2_T *Ic;
@@ -1074,7 +1077,7 @@ static void RigidBodyTreeDynamics_massMatri(o_robotics_manip_internal_Rig_T
   emxArray_real_T_dynsim_2link__T *Fi;
   emxArray_real_T_dynsim_2link__T *Hji;
   emxArray_real_T_dynsim_2link__T *s;
-  m_robotics_manip_internal_Rig_T *obj;
+  n_robotics_manip_internal_Rig_T *obj;
   emxArray_char_T_dynsim_2link__T *a;
   static const char_T tmp[5] = { 'f', 'i', 'x', 'e', 'd' };
 
@@ -1138,7 +1141,7 @@ static void RigidBodyTreeDynamics_massMatri(o_robotics_manip_internal_Rig_T
     dynsim_2link_planar_B.vNum_n = robot->
       PositionDoFMap[dynsim_2link_planar_B.b_i];
     dynsim_2link_planar_B.p_idx_1 = robot->
-      PositionDoFMap[dynsim_2link_planar_B.b_i + 2];
+      PositionDoFMap[dynsim_2link_planar_B.b_i + 3];
     if (dynsim_2link_planar_B.p_idx_1 < dynsim_2link_planar_B.vNum_n) {
       obj = robot->Bodies[dynsim_2link_planar_B.b_i];
       rigidBodyJoint_transformBodyToP(&obj->JointInternal,
@@ -1160,12 +1163,12 @@ static void RigidBodyTreeDynamics_massMatri(o_robotics_manip_internal_Rig_T
       dynsim_2link_planar_B.q_size_i = dynsim_2link_planar_B.loop_ub + 1;
       for (dynsim_2link_planar_B.f = 0; dynsim_2link_planar_B.f <=
            dynsim_2link_planar_B.loop_ub; dynsim_2link_planar_B.f++) {
-        dynsim_2link_planar_B.q_data_l[dynsim_2link_planar_B.f] =
+        dynsim_2link_planar_B.q_data_p[dynsim_2link_planar_B.f] =
           q[dynsim_2link_planar_B.nm1d2 + dynsim_2link_planar_B.f];
       }
 
       rigidBodyJoint_transformBodyT_a(&obj->JointInternal,
-        dynsim_2link_planar_B.q_data_l, &dynsim_2link_planar_B.q_size_i,
+        dynsim_2link_planar_B.q_data_p, &dynsim_2link_planar_B.q_size_i,
         dynsim_2link_planar_B.T_m);
     }
 
@@ -1191,7 +1194,7 @@ static void RigidBodyTreeDynamics_massMatri(o_robotics_manip_internal_Rig_T
     dynsim_2link_planar_B.vNum_n = robot->
       VelocityDoFMap[dynsim_2link_planar_B.n_j - 1];
     dynsim_2link_planar_B.p_idx_1 = robot->
-      VelocityDoFMap[dynsim_2link_planar_B.n_j + 1];
+      VelocityDoFMap[dynsim_2link_planar_B.n_j + 2];
     if (dynsim_2link_planar_B.pid > 0.0) {
       for (dynsim_2link_planar_B.f = 0; dynsim_2link_planar_B.f < 6;
            dynsim_2link_planar_B.f++) {
@@ -1289,7 +1292,7 @@ static void RigidBodyTreeDynamics_massMatri(o_robotics_manip_internal_Rig_T
     dynsim_2link_planar_B.b_idx_0_b = robot->
       VelocityDoFMap[dynsim_2link_planar_B.n_j - 1];
     dynsim_2link_planar_B.b_idx_1_l = robot->
-      VelocityDoFMap[dynsim_2link_planar_B.n_j + 1];
+      VelocityDoFMap[dynsim_2link_planar_B.n_j + 2];
     if (dynsim_2link_planar_B.b_idx_0_b <= dynsim_2link_planar_B.b_idx_1_l) {
       obj = robot->Bodies[dynsim_2link_planar_B.pid_tmp];
       dynsim_2link_planar_B.f = Si->size[0] * Si->size[1];
@@ -1335,8 +1338,7 @@ static void RigidBodyTreeDynamics_massMatri(o_robotics_manip_internal_Rig_T
       } else {
         dynsim_2link_planar_B.coffset_tmp = static_cast<int32_T>
           (dynsim_2link_planar_B.vNum_n) - 1;
-        dynsim_2link_planar_B.cb = static_cast<int32_T>
-          (dynsim_2link_planar_B.vNum_n) - 1;
+        dynsim_2link_planar_B.cb = dynsim_2link_planar_B.coffset_tmp;
       }
 
       dynsim_2link_planar_B.m_o = Si->size[1];
@@ -1437,7 +1439,7 @@ static void RigidBodyTreeDynamics_massMatri(o_robotics_manip_internal_Rig_T
         dynsim_2link_planar_B.b_idx_0_b = robot->
           VelocityDoFMap[dynsim_2link_planar_B.b_i - 1];
         dynsim_2link_planar_B.b_idx_1_l = robot->
-          VelocityDoFMap[dynsim_2link_planar_B.b_i + 1];
+          VelocityDoFMap[dynsim_2link_planar_B.b_i + 2];
         if (dynsim_2link_planar_B.b_idx_0_b <= dynsim_2link_planar_B.b_idx_1_l)
         {
           dynsim_2link_planar_B.m_o = Si->size[1];
@@ -1580,18 +1582,20 @@ static void RigidBodyTreeDynamics_massMatri(o_robotics_manip_internal_Rig_T
   dynsim_2lin_emxFree_f_cell_wrap(&X);
   dynsim_2lin_emxFree_f_cell_wrap(&Ic);
   dynsim_2link_planar_B.mask[0] = (robot->VelocityDoFMap[0] <=
-    robot->VelocityDoFMap[2]);
-  dynsim_2link_planar_B.mask[1] = (robot->VelocityDoFMap[1] <=
     robot->VelocityDoFMap[3]);
+  dynsim_2link_planar_B.mask[1] = (robot->VelocityDoFMap[1] <=
+    robot->VelocityDoFMap[4]);
+  dynsim_2link_planar_B.mask[2] = (robot->VelocityDoFMap[2] <=
+    robot->VelocityDoFMap[5]);
   dynsim_2link_planar_B.idx = 0;
   dynsim_2link_planar_B.f = 1;
   exitg1 = false;
-  while ((!exitg1) && (dynsim_2link_planar_B.f - 1 < 2)) {
+  while ((!exitg1) && (dynsim_2link_planar_B.f - 1 < 3)) {
     if (dynsim_2link_planar_B.mask[dynsim_2link_planar_B.f - 1]) {
       dynsim_2link_planar_B.idx++;
       dynsim_2link_planar_B.ii_data[dynsim_2link_planar_B.idx - 1] =
         dynsim_2link_planar_B.f;
-      if (dynsim_2link_planar_B.idx >= 2) {
+      if (dynsim_2link_planar_B.idx >= 3) {
         exitg1 = true;
       } else {
         dynsim_2link_planar_B.f++;
@@ -1620,7 +1624,7 @@ static void RigidBodyTreeDynamics_massMatri(o_robotics_manip_internal_Rig_T
       - 1];
     dynsim_2link_planar_B.p_idx_1 = robot->
       VelocityDoFMap[dynsim_2link_planar_B.nonFixedIndices_data[dynsim_2link_planar_B.idx]
-      + 1];
+      + 2];
     if (rtIsNaN(dynsim_2link_planar_B.vNum_n) || rtIsNaN
         (dynsim_2link_planar_B.p_idx_1)) {
       dynsim_2link_planar_B.f = s->size[0] * s->size[1];
@@ -1743,7 +1747,7 @@ static void RigidBodyTreeDynamics_massMatri(o_robotics_manip_internal_Rig_T
         data[dynsim_2link_planar_B.nonFixedIndices_data[dynsim_2link_planar_B.idx]
         - 1]);
       dynsim_2link_planar_B.b_idx_1_l = robot->
-        VelocityDoFMap[dynsim_2link_planar_B.f + 1];
+        VelocityDoFMap[dynsim_2link_planar_B.f + 2];
       lambda->data[static_cast<int32_T>(dynsim_2link_planar_B.vNum_n) - 1] =
         dynsim_2link_planar_B.b_idx_1_l;
     }
@@ -1753,9 +1757,9 @@ static void RigidBodyTreeDynamics_massMatri(o_robotics_manip_internal_Rig_T
   dynsim_2link_pla_emxFree_real_T(&lambda_);
 }
 
-static void RigidBodyTreeDynamics_inverseDy(o_robotics_manip_internal_Rig_T
-  *robot, const real_T q[2], const real_T qdot[2], const real_T fext[12], real_T
-  tau[2])
+static void RigidBodyTreeDynamics_inverseDy(p_robotics_manip_internal_Rig_T
+  *robot, const real_T q[3], const real_T qdot[3], const real_T fext[18], real_T
+  tau[3])
 {
   emxArray_f_cell_wrap_dynsim_2_T *X;
   emxArray_f_cell_wrap_dynsim_2_T *Xtree;
@@ -1765,7 +1769,7 @@ static void RigidBodyTreeDynamics_inverseDy(o_robotics_manip_internal_Rig_T
   emxArray_real_T_dynsim_2link__T *f;
   emxArray_real_T_dynsim_2link__T *S;
   emxArray_real_T_dynsim_2link__T *taui;
-  m_robotics_manip_internal_Rig_T *obj;
+  n_robotics_manip_internal_Rig_T *obj;
   emxArray_char_T_dynsim_2link__T *a;
   static const char_T tmp[5] = { 'f', 'i', 'x', 'e', 'd' };
 
@@ -1813,6 +1817,7 @@ static void RigidBodyTreeDynamics_inverseDy(o_robotics_manip_internal_Rig_T
 
   tau[0] = 0.0;
   tau[1] = 0.0;
+  tau[2] = 0.0;
   dynsim_2lin_emxInit_f_cell_wrap(&X, 2);
   dynsim_2lin_emxInit_f_cell_wrap(&Xtree, 2);
   dynsim_2link_planar_B.loop_ub_tmp = dynsim_2link_planar_B.unnamed_idx_1 - 1;
@@ -1881,11 +1886,11 @@ static void RigidBodyTreeDynamics_inverseDy(o_robotics_manip_internal_Rig_T
     dynsim_2link_planar_B.a_idx_0 = robot->
       PositionDoFMap[dynsim_2link_planar_B.unnamed_idx_1];
     dynsim_2link_planar_B.a_idx_1 = robot->
-      PositionDoFMap[dynsim_2link_planar_B.unnamed_idx_1 + 2];
+      PositionDoFMap[dynsim_2link_planar_B.unnamed_idx_1 + 3];
     dynsim_2link_planar_B.b_idx_0 = robot->
       VelocityDoFMap[dynsim_2link_planar_B.unnamed_idx_1];
     dynsim_2link_planar_B.b_idx_1 = robot->
-      VelocityDoFMap[dynsim_2link_planar_B.unnamed_idx_1 + 2];
+      VelocityDoFMap[dynsim_2link_planar_B.unnamed_idx_1 + 3];
     if (dynsim_2link_planar_B.a_idx_1 < dynsim_2link_planar_B.a_idx_0) {
       obj = robot->Bodies[dynsim_2link_planar_B.unnamed_idx_1];
       rigidBodyJoint_transformBodyToP(&obj->JointInternal,
@@ -2556,7 +2561,7 @@ static void RigidBodyTreeDynamics_inverseDy(o_robotics_manip_internal_Rig_T
       dynsim_2link_planar_B.b_idx_0 = robot->
         VelocityDoFMap[dynsim_2link_planar_B.p - 1];
       dynsim_2link_planar_B.b_idx_1 = robot->
-        VelocityDoFMap[dynsim_2link_planar_B.p + 1];
+        VelocityDoFMap[dynsim_2link_planar_B.p + 2];
       if (dynsim_2link_planar_B.b_idx_0 > dynsim_2link_planar_B.b_idx_1) {
         dynsim_2link_planar_B.b_k = 0;
         dynsim_2link_planar_B.b_k_f = 0;
@@ -2612,7 +2617,7 @@ static void RigidBodyTreeDynamics_inverseDy(o_robotics_manip_internal_Rig_T
   dynsim_2lin_emxFree_f_cell_wrap(&X);
 }
 
-static void matlabCodegenHandle_mat_awtnueq(ros_slros_internal_block_Subs_T *obj)
+static void matlabCodegenHandle_m_awtnueqcp(ros_slros_internal_block_Subs_T *obj)
 {
   if (!obj->matlabCodegenIsDeleted) {
     obj->matlabCodegenIsDeleted = true;
@@ -2633,31 +2638,31 @@ static void emxFreeStruct_c_rigidBodyJoint(c_rigidBodyJoint_dynsim_2link_T
   dynsim_2link_pla_emxFree_real_T(&pStruct->MotionSubspace);
 }
 
+static void emxFreeStruct_o_robotics_manip_(o_robotics_manip_internal_Rig_T
+  *pStruct)
+{
+  emxFreeStruct_c_rigidBodyJoint(&pStruct->JointInternal);
+}
+
+static void emxFreeStruct_p_robotics_manip_(p_robotics_manip_internal_Rig_T
+  *pStruct)
+{
+  emxFreeStruct_o_robotics_manip_(&pStruct->Base);
+}
+
+static void emxFreeStruct_robotics_slmanip_(robotics_slmanip_internal_blo_T
+  *pStruct)
+{
+  emxFreeStruct_p_robotics_manip_(&pStruct->TreeInternal);
+}
+
 static void emxFreeStruct_n_robotics_manip_(n_robotics_manip_internal_Rig_T
   *pStruct)
 {
   emxFreeStruct_c_rigidBodyJoint(&pStruct->JointInternal);
 }
 
-static void emxFreeStruct_o_robotics_manip_(o_robotics_manip_internal_Rig_T
-  *pStruct)
-{
-  emxFreeStruct_n_robotics_manip_(&pStruct->Base);
-}
-
-static void emxFreeStruct_robotics_slmanip_(robotics_slmanip_internal_blo_T
-  *pStruct)
-{
-  emxFreeStruct_o_robotics_manip_(&pStruct->TreeInternal);
-}
-
-static void emxFreeStruct_m_robotics_manip_(m_robotics_manip_internal_Rig_T
-  *pStruct)
-{
-  emxFreeStruct_c_rigidBodyJoint(&pStruct->JointInternal);
-}
-
-static void matlabCodegenHandle_matlab_awtn(ros_slros_internal_block_Publ_T *obj)
+static void matlabCodegenHandle_matl_awtnue(ros_slros_internal_block_Publ_T *obj)
 {
   if (!obj->matlabCodegenIsDeleted) {
     obj->matlabCodegenIsDeleted = true;
@@ -2671,34 +2676,34 @@ static void emxInitStruct_c_rigidBodyJoint(c_rigidBodyJoint_dynsim_2link_T
   dynsim_2link_pla_emxInit_real_T(&pStruct->MotionSubspace, 2);
 }
 
+static void emxInitStruct_o_robotics_manip_(o_robotics_manip_internal_Rig_T
+  *pStruct)
+{
+  emxInitStruct_c_rigidBodyJoint(&pStruct->JointInternal);
+}
+
+static void emxInitStruct_p_robotics_manip_(p_robotics_manip_internal_Rig_T
+  *pStruct)
+{
+  emxInitStruct_o_robotics_manip_(&pStruct->Base);
+}
+
+static void emxInitStruct_robotics_slmanip_(robotics_slmanip_internal_blo_T
+  *pStruct)
+{
+  emxInitStruct_p_robotics_manip_(&pStruct->TreeInternal);
+}
+
 static void emxInitStruct_n_robotics_manip_(n_robotics_manip_internal_Rig_T
   *pStruct)
 {
   emxInitStruct_c_rigidBodyJoint(&pStruct->JointInternal);
 }
 
-static void emxInitStruct_o_robotics_manip_(o_robotics_manip_internal_Rig_T
-  *pStruct)
+static n_robotics_manip_internal_Rig_T *dynsim_2lin_RigidBody_RigidBody
+  (n_robotics_manip_internal_Rig_T *obj)
 {
-  emxInitStruct_n_robotics_manip_(&pStruct->Base);
-}
-
-static void emxInitStruct_robotics_slmanip_(robotics_slmanip_internal_blo_T
-  *pStruct)
-{
-  emxInitStruct_o_robotics_manip_(&pStruct->TreeInternal);
-}
-
-static void emxInitStruct_m_robotics_manip_(m_robotics_manip_internal_Rig_T
-  *pStruct)
-{
-  emxInitStruct_c_rigidBodyJoint(&pStruct->JointInternal);
-}
-
-static m_robotics_manip_internal_Rig_T *dynsim_2lin_RigidBody_RigidBody
-  (m_robotics_manip_internal_Rig_T *obj)
-{
-  m_robotics_manip_internal_Rig_T *b_obj;
+  n_robotics_manip_internal_Rig_T *b_obj;
   int8_T msubspace_data[36];
   emxArray_char_T_dynsim_2link__T *switch_expression;
   boolean_T b_bool;
@@ -2884,10 +2889,10 @@ static m_robotics_manip_internal_Rig_T *dynsim_2lin_RigidBody_RigidBody
   return b_obj;
 }
 
-static m_robotics_manip_internal_Rig_T *dynsim_2l_RigidBody_RigidBody_a
-  (m_robotics_manip_internal_Rig_T *obj)
+static n_robotics_manip_internal_Rig_T *dynsim_2l_RigidBody_RigidBody_a
+  (n_robotics_manip_internal_Rig_T *obj)
 {
-  m_robotics_manip_internal_Rig_T *b_obj;
+  n_robotics_manip_internal_Rig_T *b_obj;
   int8_T msubspace_data[36];
   emxArray_char_T_dynsim_2link__T *switch_expression;
   boolean_T b_bool;
@@ -3077,6 +3082,195 @@ static n_robotics_manip_internal_Rig_T *dynsim_2_RigidBody_RigidBody_aw
   (n_robotics_manip_internal_Rig_T *obj)
 {
   n_robotics_manip_internal_Rig_T *b_obj;
+  int8_T msubspace_data[36];
+  emxArray_char_T_dynsim_2link__T *switch_expression;
+  boolean_T b_bool;
+  int32_T b_kstr;
+  char_T b[8];
+  char_T b_0[9];
+  int32_T loop_ub;
+  int8_T tmp[6];
+  static const real_T tmp_0[36] = { 0.0, 0.0, 0.0, 0.0, -0.0, 0.0, 0.0, 0.335,
+    0.0, 0.0, 0.0, -0.5, 0.0, 0.0, 0.2925, -0.0, 0.5, 0.0, 0.0, 0.0, -0.0, 1.0,
+    0.0, 0.0, -0.0, 0.0, 0.5, 0.0, 1.0, 0.0, 0.0, -0.5, 0.0, 0.0, 0.0, 1.0 };
+
+  static const char_T tmp_1[8] = { 'r', 'e', 'v', 'o', 'l', 'u', 't', 'e' };
+
+  static const char_T tmp_2[9] = { 'p', 'r', 'i', 's', 'm', 'a', 't', 'i', 'c' };
+
+  static const real_T tmp_3[16] = { 1.0, 0.0, -0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+    0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0 };
+
+  static const real_T tmp_4[16] = { 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+    0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 };
+
+  static const real_T tmp_5[36] = { 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+
+  int32_T exitg1;
+  b_obj = obj;
+  obj->ParentIndex = 2.0;
+  for (b_kstr = 0; b_kstr < 36; b_kstr++) {
+    obj->SpatialInertia[b_kstr] = tmp_0[b_kstr];
+  }
+
+  b_kstr = obj->JointInternal.Type->size[0] * obj->JointInternal.Type->size[1];
+  obj->JointInternal.Type->size[0] = 1;
+  obj->JointInternal.Type->size[1] = 8;
+  dynsim_emxEnsureCapacity_char_T(obj->JointInternal.Type, b_kstr);
+  for (b_kstr = 0; b_kstr < 8; b_kstr++) {
+    obj->JointInternal.Type->data[b_kstr] = tmp_1[b_kstr];
+  }
+
+  dynsim_2link_pla_emxInit_char_T(&switch_expression, 2);
+  b_kstr = switch_expression->size[0] * switch_expression->size[1];
+  switch_expression->size[0] = 1;
+  switch_expression->size[1] = obj->JointInternal.Type->size[1];
+  dynsim_emxEnsureCapacity_char_T(switch_expression, b_kstr);
+  loop_ub = obj->JointInternal.Type->size[0] * obj->JointInternal.Type->size[1]
+    - 1;
+  for (b_kstr = 0; b_kstr <= loop_ub; b_kstr++) {
+    switch_expression->data[b_kstr] = obj->JointInternal.Type->data[b_kstr];
+  }
+
+  for (b_kstr = 0; b_kstr < 8; b_kstr++) {
+    b[b_kstr] = tmp_1[b_kstr];
+  }
+
+  b_bool = false;
+  if (switch_expression->size[1] == 8) {
+    b_kstr = 1;
+    do {
+      exitg1 = 0;
+      if (b_kstr - 1 < 8) {
+        loop_ub = b_kstr - 1;
+        if (switch_expression->data[loop_ub] != b[loop_ub]) {
+          exitg1 = 1;
+        } else {
+          b_kstr++;
+        }
+      } else {
+        b_bool = true;
+        exitg1 = 1;
+      }
+    } while (exitg1 == 0);
+  }
+
+  if (b_bool) {
+    b_kstr = 0;
+  } else {
+    for (b_kstr = 0; b_kstr < 9; b_kstr++) {
+      b_0[b_kstr] = tmp_2[b_kstr];
+    }
+
+    b_bool = false;
+    if (switch_expression->size[1] == 9) {
+      b_kstr = 1;
+      do {
+        exitg1 = 0;
+        if (b_kstr - 1 < 9) {
+          loop_ub = b_kstr - 1;
+          if (switch_expression->data[loop_ub] != b_0[loop_ub]) {
+            exitg1 = 1;
+          } else {
+            b_kstr++;
+          }
+        } else {
+          b_bool = true;
+          exitg1 = 1;
+        }
+      } while (exitg1 == 0);
+    }
+
+    if (b_bool) {
+      b_kstr = 1;
+    } else {
+      b_kstr = -1;
+    }
+  }
+
+  dynsim_2link_pla_emxFree_char_T(&switch_expression);
+  switch (b_kstr) {
+   case 0:
+    tmp[0] = 0;
+    tmp[1] = 0;
+    tmp[2] = 1;
+    tmp[3] = 0;
+    tmp[4] = 0;
+    tmp[5] = 0;
+    for (b_kstr = 0; b_kstr < 6; b_kstr++) {
+      msubspace_data[b_kstr] = tmp[b_kstr];
+    }
+
+    obj->JointInternal.JointAxisInternal[0] = 0.0;
+    obj->JointInternal.JointAxisInternal[1] = 0.0;
+    obj->JointInternal.JointAxisInternal[2] = 1.0;
+    break;
+
+   case 1:
+    tmp[0] = 0;
+    tmp[1] = 0;
+    tmp[2] = 0;
+    tmp[3] = 0;
+    tmp[4] = 0;
+    tmp[5] = 1;
+    for (b_kstr = 0; b_kstr < 6; b_kstr++) {
+      msubspace_data[b_kstr] = tmp[b_kstr];
+    }
+
+    obj->JointInternal.JointAxisInternal[0] = 0.0;
+    obj->JointInternal.JointAxisInternal[1] = 0.0;
+    obj->JointInternal.JointAxisInternal[2] = 1.0;
+    break;
+
+   default:
+    for (b_kstr = 0; b_kstr < 6; b_kstr++) {
+      msubspace_data[b_kstr] = 0;
+    }
+
+    obj->JointInternal.JointAxisInternal[0] = 0.0;
+    obj->JointInternal.JointAxisInternal[1] = 0.0;
+    obj->JointInternal.JointAxisInternal[2] = 0.0;
+    break;
+  }
+
+  b_kstr = obj->JointInternal.MotionSubspace->size[0] *
+    obj->JointInternal.MotionSubspace->size[1];
+  obj->JointInternal.MotionSubspace->size[0] = 6;
+  obj->JointInternal.MotionSubspace->size[1] = 1;
+  dynsim_emxEnsureCapacity_real_T(obj->JointInternal.MotionSubspace, b_kstr);
+  for (b_kstr = 0; b_kstr < 6; b_kstr++) {
+    obj->JointInternal.MotionSubspace->data[b_kstr] = msubspace_data[b_kstr];
+  }
+
+  for (b_kstr = 0; b_kstr < 16; b_kstr++) {
+    obj->JointInternal.JointToParentTransform[b_kstr] = tmp_3[b_kstr];
+  }
+
+  for (b_kstr = 0; b_kstr < 16; b_kstr++) {
+    obj->JointInternal.ChildToJointTransform[b_kstr] = tmp_4[b_kstr];
+  }
+
+  b_kstr = obj->JointInternal.MotionSubspace->size[0] *
+    obj->JointInternal.MotionSubspace->size[1];
+  obj->JointInternal.MotionSubspace->size[0] = 6;
+  obj->JointInternal.MotionSubspace->size[1] = 1;
+  dynsim_emxEnsureCapacity_real_T(obj->JointInternal.MotionSubspace, b_kstr);
+  for (b_kstr = 0; b_kstr < 6; b_kstr++) {
+    obj->JointInternal.MotionSubspace->data[b_kstr] = tmp_5[b_kstr];
+  }
+
+  obj->JointInternal.JointAxisInternal[0] = 0.0;
+  obj->JointInternal.JointAxisInternal[1] = 0.0;
+  obj->JointInternal.JointAxisInternal[2] = 1.0;
+  return b_obj;
+}
+
+static o_robotics_manip_internal_Rig_T *dynsim__RigidBody_RigidBody_awt
+  (o_robotics_manip_internal_Rig_T *obj)
+{
+  o_robotics_manip_internal_Rig_T *b_obj;
   emxArray_char_T_dynsim_2link__T *switch_expression;
   boolean_T b_bool;
   int32_T b_kstr;
@@ -3225,30 +3419,36 @@ static n_robotics_manip_internal_Rig_T *dynsim_2_RigidBody_RigidBody_aw
   return b_obj;
 }
 
-static o_robotics_manip_internal_Rig_T *dyn_RigidBodyTree_RigidBodyTree
-  (o_robotics_manip_internal_Rig_T *obj, m_robotics_manip_internal_Rig_T *iobj_0,
-   m_robotics_manip_internal_Rig_T *iobj_1)
+static p_robotics_manip_internal_Rig_T *dyn_RigidBodyTree_RigidBodyTree
+  (p_robotics_manip_internal_Rig_T *obj, n_robotics_manip_internal_Rig_T *iobj_0,
+   n_robotics_manip_internal_Rig_T *iobj_1, n_robotics_manip_internal_Rig_T
+   *iobj_2)
 {
-  o_robotics_manip_internal_Rig_T *b_obj;
+  p_robotics_manip_internal_Rig_T *b_obj;
+  int32_T i;
+  static const int8_T tmp[6] = { 1, 2, 3, 1, 2, 3 };
+
   b_obj = obj;
   obj->Bodies[0] = dynsim_2lin_RigidBody_RigidBody(iobj_0);
   obj->Bodies[0]->Index = 1.0;
-  obj->Bodies[1] = dynsim_2l_RigidBody_RigidBody_a(iobj_1);
+  obj->Bodies[1] = dynsim_2l_RigidBody_RigidBody_a(iobj_2);
   obj->Bodies[1]->Index = 2.0;
-  obj->NumBodies = 2.0;
+  obj->Bodies[2] = dynsim_2_RigidBody_RigidBody_aw(iobj_1);
+  obj->Bodies[2]->Index = 3.0;
+  obj->NumBodies = 3.0;
   obj->Gravity[0] = 0.0;
   obj->Gravity[1] = 0.0;
   obj->Gravity[2] = 0.0;
-  obj->VelocityNumber = 2.0;
-  obj->PositionDoFMap[0] = 1.0;
-  obj->PositionDoFMap[1] = 2.0;
-  obj->PositionDoFMap[2] = 1.0;
-  obj->PositionDoFMap[3] = 2.0;
-  obj->VelocityDoFMap[0] = 1.0;
-  obj->VelocityDoFMap[1] = 2.0;
-  obj->VelocityDoFMap[2] = 1.0;
-  obj->VelocityDoFMap[3] = 2.0;
-  dynsim_2_RigidBody_RigidBody_aw(&obj->Base);
+  obj->VelocityNumber = 3.0;
+  for (i = 0; i < 6; i++) {
+    obj->PositionDoFMap[i] = tmp[i];
+  }
+
+  for (i = 0; i < 6; i++) {
+    obj->VelocityDoFMap[i] = tmp[i];
+  }
+
+  dynsim__RigidBody_RigidBody_awt(&obj->Base);
   return b_obj;
 }
 
@@ -3264,6 +3464,9 @@ void dynsim_2link_planar_step(void)
 
   static const char_T c[13] = { 'f', 'o', 'r', 'e', 'a', 'r', 'm', '_', 'j', 'o',
     'i', 'n', 't' };
+
+  static const char_T d[15] = { 'u', 'l', 't', 'i', 'm', 'o', 'a', 'r', 'm', '_',
+    'j', 'o', 'i', 'n', 't' };
 
   if (rtmIsMajorTimeStep(dynsim_2link_planar_M)) {
     // set solver stop time
@@ -3324,13 +3527,18 @@ void dynsim_2link_planar_step(void)
   // MATLABSystem: '<S13>/Get Parameter1'
   ParamGet_dynsim_2link_planar_113.get_parameter(&dynsim_2link_planar_B.k);
 
+  // MATLABSystem: '<S13>/Get Parameter4'
+  ParamGet_dynsim_2link_planar_129.get_parameter(&dynsim_2link_planar_B.j);
+
   // Integrator: '<S1>/Position' incorporates:
   //   MATLABSystem: '<S13>/Get Parameter'
   //   MATLABSystem: '<S13>/Get Parameter1'
+  //   MATLABSystem: '<S13>/Get Parameter4'
 
   if (dynsim_2link_planar_DW.Position_IWORK != 0) {
     dynsim_2link_planar_X.Position_CSTATE[0] = dynsim_2link_planar_B.vNum;
     dynsim_2link_planar_X.Position_CSTATE[1] = dynsim_2link_planar_B.k;
+    dynsim_2link_planar_X.Position_CSTATE[2] = dynsim_2link_planar_B.j;
   }
 
   // MATLABSystem: '<S13>/Get Parameter2'
@@ -3339,17 +3547,23 @@ void dynsim_2link_planar_step(void)
   // MATLABSystem: '<S13>/Get Parameter3'
   ParamGet_dynsim_2link_planar_118.get_parameter(&dynsim_2link_planar_B.k);
 
+  // MATLABSystem: '<S13>/Get Parameter5'
+  ParamGet_dynsim_2link_planar_130.get_parameter(&dynsim_2link_planar_B.j);
+
   // Integrator: '<S1>/Velocity' incorporates:
   //   MATLABSystem: '<S13>/Get Parameter2'
   //   MATLABSystem: '<S13>/Get Parameter3'
+  //   MATLABSystem: '<S13>/Get Parameter5'
 
   if (dynsim_2link_planar_DW.Velocity_IWORK != 0) {
     dynsim_2link_planar_X.Velocity_CSTATE[0] = dynsim_2link_planar_B.vNum;
     dynsim_2link_planar_X.Velocity_CSTATE[1] = dynsim_2link_planar_B.k;
+    dynsim_2link_planar_X.Velocity_CSTATE[2] = dynsim_2link_planar_B.j;
   }
 
   dynsim_2link_planar_B.Velocity[0] = dynsim_2link_planar_X.Velocity_CSTATE[0];
   dynsim_2link_planar_B.Velocity[1] = dynsim_2link_planar_X.Velocity_CSTATE[1];
+  dynsim_2link_planar_B.Velocity[2] = dynsim_2link_planar_X.Velocity_CSTATE[2];
 
   // End of Integrator: '<S1>/Velocity'
   dynsim_2link_pla_emxInit_real_T(&L, 2);
@@ -3384,6 +3598,8 @@ void dynsim_2link_planar_step(void)
     dynsim_2link_planar_B.MATLABSystem[0];
   dynsim_2link_planar_B.MATLABSystem[1] = dynsim_2link_planar_B.In1.Data[2] -
     dynsim_2link_planar_B.MATLABSystem[1];
+  dynsim_2link_planar_B.MATLABSystem[2] = dynsim_2link_planar_B.In1.Data[3] -
+    dynsim_2link_planar_B.MATLABSystem[2];
   if ((L->size[0] == 0) || (L->size[1] == 0)) {
     dynsim_2link_planar_B.iend = 0;
   } else {
@@ -3632,9 +3848,9 @@ void dynsim_2link_planar_step(void)
   dynsim_2link_planar_B.msg_g = dynsim_2link_planar_P.Constant_Value;
   dynsim_2link_planar_B.msg_g.Header.Stamp.Sec = dynsim_2link_planar_B.k;
   dynsim_2link_planar_B.msg_g.Header.Stamp.Nsec = dynsim_2link_planar_B.j;
-  dynsim_2link_planar_B.msg_g.Name_SL_Info.CurrentLength = 2U;
-  dynsim_2link_planar_B.msg_g.Position_SL_Info.CurrentLength = 2U;
-  dynsim_2link_planar_B.msg_g.Velocity_SL_Info.CurrentLength = 2U;
+  dynsim_2link_planar_B.msg_g.Name_SL_Info.CurrentLength = 3U;
+  dynsim_2link_planar_B.msg_g.Position_SL_Info.CurrentLength = 3U;
+  dynsim_2link_planar_B.msg_g.Velocity_SL_Info.CurrentLength = 3U;
   for (dynsim_2link_planar_B.j_j = 0; dynsim_2link_planar_B.j_j < 9;
        dynsim_2link_planar_B.j_j++) {
     dynsim_2link_planar_B.msg_g.Name[0].Data[dynsim_2link_planar_B.j_j] =
@@ -3655,6 +3871,16 @@ void dynsim_2link_planar_step(void)
   dynsim_2link_planar_B.msg_g.Position[1] =
     dynsim_2link_planar_X.Position_CSTATE[1];
   dynsim_2link_planar_B.msg_g.Velocity[1] = dynsim_2link_planar_B.Velocity[1];
+  for (dynsim_2link_planar_B.j_j = 0; dynsim_2link_planar_B.j_j < 15;
+       dynsim_2link_planar_B.j_j++) {
+    dynsim_2link_planar_B.msg_g.Name[2].Data[dynsim_2link_planar_B.j_j] =
+      static_cast<uint8_T>(d[dynsim_2link_planar_B.j_j]);
+  }
+
+  dynsim_2link_planar_B.msg_g.Name[2].Data_SL_Info.CurrentLength = 15U;
+  dynsim_2link_planar_B.msg_g.Position[2] =
+    dynsim_2link_planar_X.Position_CSTATE[2];
+  dynsim_2link_planar_B.msg_g.Velocity[2] = dynsim_2link_planar_B.Velocity[2];
 
   // Outputs for Atomic SubSystem: '<Root>/Publish'
   // MATLABSystem: '<S8>/SinkBlock'
@@ -3735,6 +3961,12 @@ void dynsim_2link_planar_derivatives(void)
 
   // Derivatives for Integrator: '<S1>/Velocity'
   _rtXdot->Velocity_CSTATE[1] = dynsim_2link_planar_B.MATLABSystem[1];
+
+  // Derivatives for Integrator: '<S1>/Position'
+  _rtXdot->Position_CSTATE[2] = dynsim_2link_planar_B.Velocity[2];
+
+  // Derivatives for Integrator: '<S1>/Velocity'
+  _rtXdot->Velocity_CSTATE[2] = dynsim_2link_planar_B.MATLABSystem[2];
 }
 
 // Model initialize function
@@ -3806,13 +4038,21 @@ void dynsim_2link_planar_initialize(void)
       '2', 'l', 'i', 'n', 'k', '_', 'p', 'l', 'a', 'n', 'a', 'r', '/', 'q', '2',
       '_', 'i', 'n', 'i', 't', 'i', 'a', 'l' };
 
-    static const char_T tmp_6[32] = { '/', 'd', 'y', 'n', 's', 'i', 'm', '_',
+    static const char_T tmp_6[31] = { '/', 'd', 'y', 'n', 's', 'i', 'm', '_',
+      '2', 'l', 'i', 'n', 'k', '_', 'p', 'l', 'a', 'n', 'a', 'r', '/', 'q', '3',
+      '_', 'i', 'n', 'i', 't', 'i', 'a', 'l' };
+
+    static const char_T tmp_7[32] = { '/', 'd', 'y', 'n', 's', 'i', 'm', '_',
       '2', 'l', 'i', 'n', 'k', '_', 'p', 'l', 'a', 'n', 'a', 'r', '/', 'q', 'v',
       '1', '_', 'i', 'n', 'i', 't', 'i', 'a', 'l' };
 
-    static const char_T tmp_7[33] = { '/', 'd', 'y', 'n', 'n', 's', 'i', 'm',
+    static const char_T tmp_8[33] = { '/', 'd', 'y', 'n', 'n', 's', 'i', 'm',
       '_', '2', 'l', 'i', 'n', 'k', '_', 'p', 'l', 'a', 'n', 'a', 'r', '/', 'q',
       'v', '2', '_', 'i', 'n', 'i', 't', 'i', 'a', 'l' };
+
+    static const char_T tmp_9[32] = { '/', 'd', 'y', 'n', 's', 'i', 'm', '_',
+      '2', 'l', 'i', 'n', 'k', '_', 'p', 'l', 'a', 'n', 'a', 'r', '/', 'q', 'v',
+      '3', '_', 'i', 'n', 'i', 't', 'i', 'a', 'l' };
 
     // InitializeConditions for Integrator: '<S1>/Position' incorporates:
     //   Integrator: '<S1>/Velocity'
@@ -3820,8 +4060,10 @@ void dynsim_2link_planar_initialize(void)
     if (rtmIsFirstInitCond(dynsim_2link_planar_M)) {
       dynsim_2link_planar_X.Position_CSTATE[0] = 0.0;
       dynsim_2link_planar_X.Position_CSTATE[1] = 0.0;
+      dynsim_2link_planar_X.Position_CSTATE[2] = 0.0;
       dynsim_2link_planar_X.Velocity_CSTATE[0] = 0.0;
       dynsim_2link_planar_X.Velocity_CSTATE[1] = 0.0;
+      dynsim_2link_planar_X.Velocity_CSTATE[2] = 0.0;
     }
 
     dynsim_2link_planar_DW.Position_IWORK = 1;
@@ -3927,11 +4169,26 @@ void dynsim_2link_planar_initialize(void)
 
     // End of Start for MATLABSystem: '<S13>/Get Parameter1'
 
+    // Start for MATLABSystem: '<S13>/Get Parameter4'
+    dynsim_2link_planar_DW.obj_d.matlabCodegenIsDeleted = false;
+    dynsim_2link_planar_DW.obj_d.isInitialized = 1;
+    for (i = 0; i < 31; i++) {
+      dynsim_2link_planar_B.cv2[i] = tmp_6[i];
+    }
+
+    dynsim_2link_planar_B.cv2[31] = '\x00';
+    ParamGet_dynsim_2link_planar_129.initialize(dynsim_2link_planar_B.cv2);
+    ParamGet_dynsim_2link_planar_129.initialize_error_codes(0, 1, 2, 3);
+    ParamGet_dynsim_2link_planar_129.set_initial_value(-1.5707963267948966);
+    dynsim_2link_planar_DW.obj_d.isSetupComplete = true;
+
+    // End of Start for MATLABSystem: '<S13>/Get Parameter4'
+
     // Start for MATLABSystem: '<S13>/Get Parameter2'
     dynsim_2link_planar_DW.obj_h.matlabCodegenIsDeleted = false;
     dynsim_2link_planar_DW.obj_h.isInitialized = 1;
     for (i = 0; i < 32; i++) {
-      dynsim_2link_planar_B.cv1[i] = tmp_6[i];
+      dynsim_2link_planar_B.cv1[i] = tmp_7[i];
     }
 
     dynsim_2link_planar_B.cv1[32] = '\x00';
@@ -3946,7 +4203,7 @@ void dynsim_2link_planar_initialize(void)
     dynsim_2link_planar_DW.obj_b.matlabCodegenIsDeleted = false;
     dynsim_2link_planar_DW.obj_b.isInitialized = 1;
     for (i = 0; i < 33; i++) {
-      dynsim_2link_planar_B.cv[i] = tmp_7[i];
+      dynsim_2link_planar_B.cv[i] = tmp_8[i];
     }
 
     dynsim_2link_planar_B.cv[33] = '\x00';
@@ -3956,17 +4213,35 @@ void dynsim_2link_planar_initialize(void)
     dynsim_2link_planar_DW.obj_b.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<S13>/Get Parameter3'
+
+    // Start for MATLABSystem: '<S13>/Get Parameter5'
+    dynsim_2link_planar_DW.obj_o.matlabCodegenIsDeleted = false;
+    dynsim_2link_planar_DW.obj_o.isInitialized = 1;
+    for (i = 0; i < 32; i++) {
+      dynsim_2link_planar_B.cv1[i] = tmp_9[i];
+    }
+
+    dynsim_2link_planar_B.cv1[32] = '\x00';
+    ParamGet_dynsim_2link_planar_130.initialize(dynsim_2link_planar_B.cv1);
+    ParamGet_dynsim_2link_planar_130.initialize_error_codes(0, 1, 2, 3);
+    ParamGet_dynsim_2link_planar_130.set_initial_value(0.0);
+    dynsim_2link_planar_DW.obj_o.isSetupComplete = true;
+
+    // End of Start for MATLABSystem: '<S13>/Get Parameter5'
     emxInitStruct_robotics_slmanip_(&dynsim_2link_planar_DW.obj);
-    emxInitStruct_m_robotics_manip_(&dynsim_2link_planar_DW.gobj_1);
-    emxInitStruct_m_robotics_manip_(&dynsim_2link_planar_DW.gobj_4);
-    emxInitStruct_m_robotics_manip_(&dynsim_2link_planar_DW.gobj_3);
-    emxInitStruct_m_robotics_manip_(&dynsim_2link_planar_DW.gobj_2);
+    emxInitStruct_n_robotics_manip_(&dynsim_2link_planar_DW.gobj_1);
+    emxInitStruct_n_robotics_manip_(&dynsim_2link_planar_DW.gobj_6);
+    emxInitStruct_n_robotics_manip_(&dynsim_2link_planar_DW.gobj_5);
+    emxInitStruct_n_robotics_manip_(&dynsim_2link_planar_DW.gobj_4);
+    emxInitStruct_n_robotics_manip_(&dynsim_2link_planar_DW.gobj_3);
+    emxInitStruct_n_robotics_manip_(&dynsim_2link_planar_DW.gobj_2);
 
     // Start for MATLABSystem: '<S12>/MATLAB System'
     dynsim_2link_planar_DW.obj.isInitialized = 0;
     dynsim_2link_planar_DW.obj.isInitialized = 1;
     dyn_RigidBodyTree_RigidBodyTree(&dynsim_2link_planar_DW.obj.TreeInternal,
-      &dynsim_2link_planar_DW.gobj_2, &dynsim_2link_planar_DW.gobj_3);
+      &dynsim_2link_planar_DW.gobj_2, &dynsim_2link_planar_DW.gobj_4,
+      &dynsim_2link_planar_DW.gobj_3);
   }
 
   // set "at time zero" to false
@@ -3980,7 +4255,7 @@ void dynsim_2link_planar_terminate(void)
 {
   // Terminate for Atomic SubSystem: '<Root>/Subscribe'
   // Terminate for MATLABSystem: '<S11>/SourceBlock'
-  matlabCodegenHandle_mat_awtnueq(&dynsim_2link_planar_DW.obj_pp);
+  matlabCodegenHandle_m_awtnueqcp(&dynsim_2link_planar_DW.obj_pp);
 
   // End of Terminate for SubSystem: '<Root>/Subscribe'
 
@@ -3990,32 +4265,40 @@ void dynsim_2link_planar_terminate(void)
   // Terminate for MATLABSystem: '<S13>/Get Parameter1'
   matlabCodegenHandle_matlabCodeg(&dynsim_2link_planar_DW.obj_n);
 
+  // Terminate for MATLABSystem: '<S13>/Get Parameter4'
+  matlabCodegenHandle_matlabCodeg(&dynsim_2link_planar_DW.obj_d);
+
   // Terminate for MATLABSystem: '<S13>/Get Parameter2'
   matlabCodegenHandle_matlabCodeg(&dynsim_2link_planar_DW.obj_h);
 
   // Terminate for MATLABSystem: '<S13>/Get Parameter3'
   matlabCodegenHandle_matlabCodeg(&dynsim_2link_planar_DW.obj_b);
+
+  // Terminate for MATLABSystem: '<S13>/Get Parameter5'
+  matlabCodegenHandle_matlabCodeg(&dynsim_2link_planar_DW.obj_o);
   emxFreeStruct_robotics_slmanip_(&dynsim_2link_planar_DW.obj);
-  emxFreeStruct_m_robotics_manip_(&dynsim_2link_planar_DW.gobj_1);
-  emxFreeStruct_m_robotics_manip_(&dynsim_2link_planar_DW.gobj_4);
-  emxFreeStruct_m_robotics_manip_(&dynsim_2link_planar_DW.gobj_3);
-  emxFreeStruct_m_robotics_manip_(&dynsim_2link_planar_DW.gobj_2);
+  emxFreeStruct_n_robotics_manip_(&dynsim_2link_planar_DW.gobj_1);
+  emxFreeStruct_n_robotics_manip_(&dynsim_2link_planar_DW.gobj_6);
+  emxFreeStruct_n_robotics_manip_(&dynsim_2link_planar_DW.gobj_5);
+  emxFreeStruct_n_robotics_manip_(&dynsim_2link_planar_DW.gobj_4);
+  emxFreeStruct_n_robotics_manip_(&dynsim_2link_planar_DW.gobj_3);
+  emxFreeStruct_n_robotics_manip_(&dynsim_2link_planar_DW.gobj_2);
 
   // Terminate for Atomic SubSystem: '<Root>/Publish2'
   // Terminate for MATLABSystem: '<S10>/SinkBlock'
-  matlabCodegenHandle_matlab_awtn(&dynsim_2link_planar_DW.obj_a);
+  matlabCodegenHandle_matl_awtnue(&dynsim_2link_planar_DW.obj_a);
 
   // End of Terminate for SubSystem: '<Root>/Publish2'
 
   // Terminate for Atomic SubSystem: '<Root>/Publish'
   // Terminate for MATLABSystem: '<S8>/SinkBlock'
-  matlabCodegenHandle_matlab_awtn(&dynsim_2link_planar_DW.obj_nr);
+  matlabCodegenHandle_matl_awtnue(&dynsim_2link_planar_DW.obj_nr);
 
   // End of Terminate for SubSystem: '<Root>/Publish'
 
   // Terminate for Atomic SubSystem: '<Root>/Publish1'
   // Terminate for MATLABSystem: '<S9>/SinkBlock'
-  matlabCodegenHandle_matlab_awtn(&dynsim_2link_planar_DW.obj_f);
+  matlabCodegenHandle_matl_awtnue(&dynsim_2link_planar_DW.obj_f);
 
   // End of Terminate for SubSystem: '<Root>/Publish1'
 }

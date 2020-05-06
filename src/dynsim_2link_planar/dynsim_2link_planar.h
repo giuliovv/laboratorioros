@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'dynsim_2link_planar'.
 //
-// Model version                  : 1.118
+// Model version                  : 1.122
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Mon May  4 19:00:24 2020
+// C/C++ source code generated on : Wed May  6 12:57:38 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -185,23 +185,23 @@ typedef struct {
   int8_T msubspace_data[36];
   char_T cv[34];
   char_T cv1[33];
-  char_T cv2[32];
   real_T result_data[4];
+  char_T cv2[32];
+  real_T Velocity[3];                  // '<S1>/Velocity'
+  real_T MATLABSystem[3];              // '<S12>/MATLAB System'
+  real_T q_data[3];
   real_T v[3];
-  real_T v_p[3];
+  real_T q_data_p[3];
+  real_T v_l[3];
   char_T cv3[18];
   SL_Bus_dynsim_2link_planar_rosgraph_msgs_Clock msg_l;// '<Root>/Assign to Time msg' 
-  real_T Velocity[2];                  // '<S1>/Velocity'
-  real_T MATLABSystem[2];              // '<S12>/MATLAB System'
-  real_T q_data[2];
-  real_T q_data_l[2];
   char_T cv4[14];
+  int32_T nonFixedIndices_data[3];
+  int32_T ii_data[3];
   char_T b[9];
   char_T b_j[9];
   char_T b_d[8];
   char_T b_g[8];
-  int32_T nonFixedIndices_data[2];
-  int32_T ii_data[2];
   char_T b_l[8];
   real_T vNum;
   real_T k;
@@ -300,7 +300,7 @@ typedef struct {
   uint32_T b_varargout_2_Layout_DataOffset;
   uint32_T b_varargout_2_Layout_Dim_SL_Inf;
   uint32_T b_varargout_2_Layout_Dim_SL_I_l;
-  boolean_T mask[2];
+  boolean_T mask[3];
   boolean_T b_varargout_1;
   boolean_T b_bool;
   boolean_T b_bool_o;
@@ -311,15 +311,19 @@ typedef struct {
 
 // Block states (default storage) for system '<Root>'
 typedef struct {
-  m_robotics_manip_internal_Rig_T gobj_1;// '<S12>/MATLAB System'
-  m_robotics_manip_internal_Rig_T gobj_2;// '<S12>/MATLAB System'
-  m_robotics_manip_internal_Rig_T gobj_3;// '<S12>/MATLAB System'
-  m_robotics_manip_internal_Rig_T gobj_4;// '<S12>/MATLAB System'
+  n_robotics_manip_internal_Rig_T gobj_1;// '<S12>/MATLAB System'
+  n_robotics_manip_internal_Rig_T gobj_2;// '<S12>/MATLAB System'
+  n_robotics_manip_internal_Rig_T gobj_3;// '<S12>/MATLAB System'
+  n_robotics_manip_internal_Rig_T gobj_4;// '<S12>/MATLAB System'
+  n_robotics_manip_internal_Rig_T gobj_5;// '<S12>/MATLAB System'
+  n_robotics_manip_internal_Rig_T gobj_6;// '<S12>/MATLAB System'
   robotics_slmanip_internal_blo_T obj; // '<S12>/MATLAB System'
   ros_slros_internal_block_GetP_T obj_p;// '<S13>/Get Parameter'
   ros_slros_internal_block_GetP_T obj_n;// '<S13>/Get Parameter1'
+  ros_slros_internal_block_GetP_T obj_d;// '<S13>/Get Parameter4'
   ros_slros_internal_block_GetP_T obj_h;// '<S13>/Get Parameter2'
   ros_slros_internal_block_GetP_T obj_b;// '<S13>/Get Parameter3'
+  ros_slros_internal_block_GetP_T obj_o;// '<S13>/Get Parameter5'
   ros_slros_internal_block_Publ_T obj_a;// '<S10>/SinkBlock'
   ros_slros_internal_block_Publ_T obj_f;// '<S9>/SinkBlock'
   ros_slros_internal_block_Publ_T obj_nr;// '<S8>/SinkBlock'
@@ -330,20 +334,20 @@ typedef struct {
 
 // Continuous states (default storage)
 typedef struct {
-  real_T Position_CSTATE[2];           // '<S1>/Position'
-  real_T Velocity_CSTATE[2];           // '<S1>/Velocity'
+  real_T Position_CSTATE[3];           // '<S1>/Position'
+  real_T Velocity_CSTATE[3];           // '<S1>/Velocity'
 } X_dynsim_2link_planar_T;
 
 // State derivatives (default storage)
 typedef struct {
-  real_T Position_CSTATE[2];           // '<S1>/Position'
-  real_T Velocity_CSTATE[2];           // '<S1>/Velocity'
+  real_T Position_CSTATE[3];           // '<S1>/Position'
+  real_T Velocity_CSTATE[3];           // '<S1>/Velocity'
 } XDot_dynsim_2link_planar_T;
 
 // State disabled
 typedef struct {
-  boolean_T Position_CSTATE[2];        // '<S1>/Position'
-  boolean_T Velocity_CSTATE[2];        // '<S1>/Velocity'
+  boolean_T Position_CSTATE[3];        // '<S1>/Position'
+  boolean_T Velocity_CSTATE[3];        // '<S1>/Velocity'
 } XDis_dynsim_2link_planar_T;
 
 #ifndef ODE3_INTG
@@ -371,10 +375,10 @@ struct P_dynsim_2link_planar_T_ {
   SL_Bus_dynsim_2link_planar_rosgraph_msgs_Clock Constant_Value_o;// Computed Parameter: Constant_Value_o
                                                                      //  Referenced by: '<S6>/Constant'
 
-  real_T Constant_Value_f[12];         // Expression: zeros(6,2)
+  real_T Constant_Value_f[18];         // Expression: zeros(6,3)
                                           //  Referenced by: '<S1>/Constant'
 
-  real_T Constant_Value_oa[2];         // Expression: [L1,L2]
+  real_T Constant_Value_oa[3];         // Expression: [L1,L2,L3]
                                           //  Referenced by: '<Root>/Constant'
 
 };
@@ -391,8 +395,8 @@ struct tag_RTM_dynsim_2link_planar_T {
   boolean_T zCCacheNeedsReset;
   boolean_T derivCacheNeedsReset;
   boolean_T CTOutputIncnstWithState;
-  real_T odeY[4];
-  real_T odeF[3][4];
+  real_T odeY[6];
+  real_T odeF[3][6];
   ODE3_IntgData intgData;
 
   //

@@ -147,6 +147,10 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["dynsim_2link_planar:117"] = {rtwname: "<S13>/Get Parameter2"};
 	this.rtwnameHashMap["<S13>/Get Parameter3"] = {sid: "dynsim_2link_planar:118"};
 	this.sidHashMap["dynsim_2link_planar:118"] = {rtwname: "<S13>/Get Parameter3"};
+	this.rtwnameHashMap["<S13>/Get Parameter4"] = {sid: "dynsim_2link_planar:129"};
+	this.sidHashMap["dynsim_2link_planar:129"] = {rtwname: "<S13>/Get Parameter4"};
+	this.rtwnameHashMap["<S13>/Get Parameter5"] = {sid: "dynsim_2link_planar:130"};
+	this.sidHashMap["dynsim_2link_planar:130"] = {rtwname: "<S13>/Get Parameter5"};
 	this.rtwnameHashMap["<S13>/Mux"] = {sid: "dynsim_2link_planar:114"};
 	this.sidHashMap["dynsim_2link_planar:114"] = {rtwname: "<S13>/Mux"};
 	this.rtwnameHashMap["<S13>/Mux1"] = {sid: "dynsim_2link_planar:119"};

@@ -31,6 +31,12 @@ extern SimulinkParameterGetter<real64_T, double> ParamGet_dynsim_2link_planar_11
 // For Block dynsim_2link_planar/2link_planar robot dynamic model/Subsystem/Get Parameter3
 extern SimulinkParameterGetter<real64_T, double> ParamGet_dynsim_2link_planar_118;
 
+// For Block dynsim_2link_planar/2link_planar robot dynamic model/Subsystem/Get Parameter4
+extern SimulinkParameterGetter<real64_T, double> ParamGet_dynsim_2link_planar_129;
+
+// For Block dynsim_2link_planar/2link_planar robot dynamic model/Subsystem/Get Parameter5
+extern SimulinkParameterGetter<real64_T, double> ParamGet_dynsim_2link_planar_130;
+
 void slros_node_init(int argc, char** argv);
 
 #endif
