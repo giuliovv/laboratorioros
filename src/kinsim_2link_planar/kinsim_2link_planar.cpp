@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'kinsim_2link_planar'.
 //
-// Model version                  : 1.118
+// Model version                  : 1.122
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Wed May  6 12:18:09 2020
+// C/C++ source code generated on : Mon May 11 22:49:45 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -78,7 +78,7 @@ static void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si )
   real_T *f2 = id->f[2];
   real_T hB[3];
   int_T i;
-  int_T nXc = 3;
+  int_T nXc = 6;
   rtsiSetSimTimeStep(si,MINOR_TIME_STEP);
 
   // Save the state values at time t in y, we'll use x as ynew.
@@ -197,6 +197,9 @@ static void matlabCodegenHandle_matlabCodeg(ros_slros_internal_block_Publ_T *obj
 // Model step function
 void kinsim_2link_planar_step(void)
 {
+  cell_wrap_0_kinsim_2link_plan_T e;
+  cell_wrap_0_kinsim_2link_plan_T f;
+  cell_wrap_0_kinsim_2link_plan_T g;
   uint32_T b_varargout_2_Positions_SL_Info;
   uint32_T b_varargout_2_Positions_SL_In_0;
   uint32_T b_varargout_2_Velocities_SL_Inf;
@@ -207,16 +210,17 @@ void kinsim_2link_planar_step(void)
   uint32_T b_varargout_2_Effort_SL_Info_Re;
   boolean_T b_varargout_1;
   int32_T i;
-  real_T tmp;
-  real_T tmp_0;
-  real_T tmp_1;
-  static const char_T b[9] = { 'a', 'r', 'm', '_', 'j', 'o', 'i', 'n', 't' };
+  static const char_T h[7] = { 'j', 'o', 'i', 'n', 't', '_', '1' };
 
-  static const char_T c[13] = { 'f', 'o', 'r', 'e', 'a', 'r', 'm', '_', 'j', 'o',
-    'i', 'n', 't' };
+  static const char_T i_0[7] = { 'j', 'o', 'i', 'n', 't', '_', '2' };
 
-  static const char_T d[15] = { 'u', 'l', 't', 'i', 'm', 'o', 'a', 'r', 'm', '_',
-    'j', 'o', 'i', 'n', 't' };
+  static const char_T j[7] = { 'j', 'o', 'i', 'n', 't', '_', '3' };
+
+  static const char_T k[7] = { 'j', 'o', 'i', 'n', 't', '_', '4' };
+
+  static const char_T l[7] = { 'j', 'o', 'i', 'n', 't', '_', '5' };
+
+  static const char_T m[7] = { 'j', 'o', 'i', 'n', 't', '_', '6' };
 
   if (rtmIsMajorTimeStep(kinsim_2link_planar_M)) {
     // set solver stop time
@@ -240,15 +244,30 @@ void kinsim_2link_planar_step(void)
   // MATLABSystem: '<S11>/Get Parameter2'
   ParamGet_kinsim_2link_planar_81.get_parameter(&kinsim_2link_planar_B.value_c);
 
+  // MATLABSystem: '<S11>/Get Parameter3'
+  ParamGet_kinsim_2link_planar_82.get_parameter(&kinsim_2link_planar_B.value_k);
+
+  // MATLABSystem: '<S11>/Get Parameter4'
+  ParamGet_kinsim_2link_planar_83.get_parameter(&kinsim_2link_planar_B.value_cx);
+
+  // MATLABSystem: '<S11>/Get Parameter5'
+  ParamGet_kinsim_2link_planar_84.get_parameter(&kinsim_2link_planar_B.value_b);
+
   // Integrator: '<Root>/Integrator' incorporates:
   //   MATLABSystem: '<S11>/Get Parameter'
   //   MATLABSystem: '<S11>/Get Parameter1'
   //   MATLABSystem: '<S11>/Get Parameter2'
+  //   MATLABSystem: '<S11>/Get Parameter3'
+  //   MATLABSystem: '<S11>/Get Parameter4'
+  //   MATLABSystem: '<S11>/Get Parameter5'
 
   if (kinsim_2link_planar_DW.Integrator_IWORK != 0) {
     kinsim_2link_planar_X.Integrator_CSTATE[0] = kinsim_2link_planar_B.value;
     kinsim_2link_planar_X.Integrator_CSTATE[1] = kinsim_2link_planar_B.value_m;
     kinsim_2link_planar_X.Integrator_CSTATE[2] = kinsim_2link_planar_B.value_c;
+    kinsim_2link_planar_X.Integrator_CSTATE[3] = kinsim_2link_planar_B.value_k;
+    kinsim_2link_planar_X.Integrator_CSTATE[4] = kinsim_2link_planar_B.value_cx;
+    kinsim_2link_planar_X.Integrator_CSTATE[5] = kinsim_2link_planar_B.value_b;
   }
 
   if (rtmIsMajorTimeStep(kinsim_2link_planar_M)) {
@@ -342,65 +361,105 @@ void kinsim_2link_planar_step(void)
   kinsim_2link_planar_B.msg_d.Name_SL_Info.CurrentLength = 2U;
   kinsim_2link_planar_B.msg_d.Position_SL_Info.CurrentLength = 2U;
   kinsim_2link_planar_B.msg_d.Velocity_SL_Info.CurrentLength = 2U;
-  for (i = 0; i < 9; i++) {
-    kinsim_2link_planar_B.msg_d.Name[0].Data[i] = static_cast<uint8_T>(b[i]);
-  }
-
-  kinsim_2link_planar_B.msg_d.Name[0].Data_SL_Info.CurrentLength = 9U;
+  kinsim_2link_planar_B.msg_d.Name[0].Data_SL_Info.CurrentLength = 7U;
 
   // MATLAB Function: '<Root>/MATLAB Function' incorporates:
   //   Integrator: '<Root>/Integrator'
 
-  kinsim_2link_planar_B.d1 = cos(kinsim_2link_planar_X.Integrator_CSTATE[0]);
-  kinsim_2link_planar_B.d4 = kinsim_2link_planar_X.Integrator_CSTATE[0] +
+  kinsim_2link_planar_B.value_k = cos(kinsim_2link_planar_X.Integrator_CSTATE[0]);
+  kinsim_2link_planar_B.value_cx = kinsim_2link_planar_X.Integrator_CSTATE[0] +
     kinsim_2link_planar_X.Integrator_CSTATE[1];
-  kinsim_2link_planar_B.d2 = cos(kinsim_2link_planar_B.d4);
-  tmp = kinsim_2link_planar_B.d4 + kinsim_2link_planar_X.Integrator_CSTATE[2];
-  kinsim_2link_planar_B.d3 = cos(tmp);
+  kinsim_2link_planar_B.value_b = cos(kinsim_2link_planar_B.value_cx);
+  kinsim_2link_planar_B.d5 = kinsim_2link_planar_B.value_cx +
+    kinsim_2link_planar_X.Integrator_CSTATE[2];
+  kinsim_2link_planar_B.d1 = cos(kinsim_2link_planar_B.d5);
+  kinsim_2link_planar_B.d6 = kinsim_2link_planar_B.d5 +
+    kinsim_2link_planar_X.Integrator_CSTATE[3];
+  kinsim_2link_planar_B.d2 = cos(kinsim_2link_planar_B.d6);
+  kinsim_2link_planar_B.d7 = kinsim_2link_planar_B.d6 +
+    kinsim_2link_planar_X.Integrator_CSTATE[4];
+  kinsim_2link_planar_B.d3 = cos(kinsim_2link_planar_B.d7);
+  kinsim_2link_planar_B.d8 = kinsim_2link_planar_B.d7 +
+    kinsim_2link_planar_X.Integrator_CSTATE[5];
+  kinsim_2link_planar_B.d4 = cos(kinsim_2link_planar_B.d8);
 
   // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
   //   Constant: '<Root>/Constant'
   //   MATLAB Function: '<Root>/MATLAB Function'
 
   kinsim_2link_planar_B.msg_d.Position[0] =
-    (kinsim_2link_planar_P.Constant_Value_m[0] * kinsim_2link_planar_B.d1 +
-     kinsim_2link_planar_P.Constant_Value_m[1] * kinsim_2link_planar_B.d2) +
-    kinsim_2link_planar_P.Constant_Value_m[2] * kinsim_2link_planar_B.d3;
+    ((((kinsim_2link_planar_P.Constant_Value_m[0] *
+        kinsim_2link_planar_B.value_k + kinsim_2link_planar_P.Constant_Value_m[1]
+        * kinsim_2link_planar_B.value_b) +
+       kinsim_2link_planar_P.Constant_Value_m[2] * kinsim_2link_planar_B.d1) +
+      kinsim_2link_planar_P.Constant_Value_m[3] * kinsim_2link_planar_B.d2) +
+     kinsim_2link_planar_P.Constant_Value_m[4] * kinsim_2link_planar_B.d3) +
+    kinsim_2link_planar_P.Constant_Value_m[5] * kinsim_2link_planar_B.d4;
 
   // MATLAB Function: '<Root>/MATLAB Function' incorporates:
   //   Constant: '<Root>/Constant'
   //   Integrator: '<Root>/Integrator'
 
   kinsim_2link_planar_B.d = sin(kinsim_2link_planar_X.Integrator_CSTATE[0]);
-  kinsim_2link_planar_B.d4 = sin(kinsim_2link_planar_B.d4);
-  tmp = sin(tmp);
-  tmp_0 = kinsim_2link_planar_B.In1.Velocities[0] +
-    kinsim_2link_planar_B.In1.Velocities[1];
-  tmp_1 = tmp_0 * kinsim_2link_planar_P.Constant_Value_m[1];
-  tmp_0 = (tmp_0 + kinsim_2link_planar_B.In1.Velocities[2]) *
-    kinsim_2link_planar_P.Constant_Value_m[2];
+  kinsim_2link_planar_B.value_cx = sin(kinsim_2link_planar_B.value_cx);
+  kinsim_2link_planar_B.d5 = sin(kinsim_2link_planar_B.d5);
+  kinsim_2link_planar_B.d6 = sin(kinsim_2link_planar_B.d6);
+  kinsim_2link_planar_B.d7 = sin(kinsim_2link_planar_B.d7);
+  kinsim_2link_planar_B.d8 = sin(kinsim_2link_planar_B.d8);
+  kinsim_2link_planar_B.d9 = kinsim_2link_planar_B.In1.Velocities[1] +
+    kinsim_2link_planar_B.In1.Velocities[2];
+  kinsim_2link_planar_B.d10 = kinsim_2link_planar_B.d9 +
+    kinsim_2link_planar_B.In1.Velocities[3];
+  kinsim_2link_planar_B.d11 = kinsim_2link_planar_B.d10 +
+    kinsim_2link_planar_B.In1.Velocities[4];
+  kinsim_2link_planar_B.d12 = kinsim_2link_planar_B.d11 +
+    kinsim_2link_planar_B.In1.Velocities[5];
+  kinsim_2link_planar_B.d9 *= kinsim_2link_planar_P.Constant_Value_m[1];
+  kinsim_2link_planar_B.d10 *= kinsim_2link_planar_P.Constant_Value_m[2];
+  kinsim_2link_planar_B.d11 *= kinsim_2link_planar_P.Constant_Value_m[3];
+  kinsim_2link_planar_B.d13 = kinsim_2link_planar_B.d12 *
+    kinsim_2link_planar_P.Constant_Value_m[4];
+  kinsim_2link_planar_B.d12 = (kinsim_2link_planar_B.d12 +
+    kinsim_2link_planar_B.In1.Velocities[6]) *
+    kinsim_2link_planar_P.Constant_Value_m[5];
 
   // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
   //   Constant: '<Root>/Constant'
   //   MATLAB Function: '<Root>/MATLAB Function'
 
   kinsim_2link_planar_B.msg_d.Velocity[0] =
-    (-kinsim_2link_planar_P.Constant_Value_m[0] *
-     kinsim_2link_planar_B.In1.Velocities[0] * kinsim_2link_planar_B.d - tmp_1 *
-     kinsim_2link_planar_B.d4) - tmp_0 * tmp;
-  for (i = 0; i < 13; i++) {
-    kinsim_2link_planar_B.msg_d.Name[1].Data[i] = static_cast<uint8_T>(c[i]);
+    ((((-kinsim_2link_planar_P.Constant_Value_m[0] *
+        kinsim_2link_planar_B.In1.Velocities[1] * kinsim_2link_planar_B.d -
+        kinsim_2link_planar_B.d9 * kinsim_2link_planar_B.value_cx) -
+       kinsim_2link_planar_B.d10 * kinsim_2link_planar_B.d5) -
+      kinsim_2link_planar_B.d11 * kinsim_2link_planar_B.d6) -
+     kinsim_2link_planar_B.d13 * kinsim_2link_planar_B.d7) -
+    kinsim_2link_planar_B.d12 * kinsim_2link_planar_B.d8;
+  for (i = 0; i < 7; i++) {
+    kinsim_2link_planar_B.b.f1[i] = h[i];
+    kinsim_2link_planar_B.c.f1[i] = i_0[i];
+    kinsim_2link_planar_B.msg_d.Name[0].Data[i] = static_cast<uint8_T>
+      (kinsim_2link_planar_B.b.f1[i]);
+    kinsim_2link_planar_B.msg_d.Name[1].Data[i] = static_cast<uint8_T>
+      (kinsim_2link_planar_B.c.f1[i]);
   }
 
-  kinsim_2link_planar_B.msg_d.Name[1].Data_SL_Info.CurrentLength = 13U;
+  kinsim_2link_planar_B.msg_d.Name[1].Data_SL_Info.CurrentLength = 7U;
   kinsim_2link_planar_B.msg_d.Position[1] =
-    (kinsim_2link_planar_P.Constant_Value_m[0] * kinsim_2link_planar_B.d +
-     kinsim_2link_planar_P.Constant_Value_m[1] * kinsim_2link_planar_B.d4) +
-    kinsim_2link_planar_P.Constant_Value_m[2] * tmp;
-  kinsim_2link_planar_B.msg_d.Velocity[1] = (tmp_1 * kinsim_2link_planar_B.d2 +
-    kinsim_2link_planar_P.Constant_Value_m[0] *
-    kinsim_2link_planar_B.In1.Velocities[0] * kinsim_2link_planar_B.d1) + tmp_0 *
-    kinsim_2link_planar_B.d3;
+    ((((kinsim_2link_planar_P.Constant_Value_m[0] * kinsim_2link_planar_B.d +
+        kinsim_2link_planar_P.Constant_Value_m[1] *
+        kinsim_2link_planar_B.value_cx) +
+       kinsim_2link_planar_P.Constant_Value_m[2] * kinsim_2link_planar_B.d5) +
+      kinsim_2link_planar_P.Constant_Value_m[3] * kinsim_2link_planar_B.d6) +
+     kinsim_2link_planar_P.Constant_Value_m[4] * kinsim_2link_planar_B.d7) +
+    kinsim_2link_planar_P.Constant_Value_m[5] * kinsim_2link_planar_B.d8;
+  kinsim_2link_planar_B.msg_d.Velocity[1] = ((((kinsim_2link_planar_B.d9 *
+    kinsim_2link_planar_B.value_b + kinsim_2link_planar_P.Constant_Value_m[0] *
+    kinsim_2link_planar_B.In1.Velocities[1] * kinsim_2link_planar_B.value_k) +
+    kinsim_2link_planar_B.d10 * kinsim_2link_planar_B.d1) +
+    kinsim_2link_planar_B.d11 * kinsim_2link_planar_B.d2) +
+    kinsim_2link_planar_B.d13 * kinsim_2link_planar_B.d3) +
+    kinsim_2link_planar_B.d12 * kinsim_2link_planar_B.d4;
 
   // Outputs for Atomic SubSystem: '<Root>/Publish2'
   // MATLABSystem: '<S9>/SinkBlock'
@@ -415,36 +474,57 @@ void kinsim_2link_planar_step(void)
   kinsim_2link_planar_B.msg_d = kinsim_2link_planar_P.Constant_Value;
   kinsim_2link_planar_B.msg_d.Header.Stamp.Sec = kinsim_2link_planar_B.value_m;
   kinsim_2link_planar_B.msg_d.Header.Stamp.Nsec = kinsim_2link_planar_B.value_c;
-  kinsim_2link_planar_B.msg_d.Name_SL_Info.CurrentLength = 3U;
-  kinsim_2link_planar_B.msg_d.Position_SL_Info.CurrentLength = 3U;
-  kinsim_2link_planar_B.msg_d.Velocity_SL_Info.CurrentLength = 3U;
-  for (i = 0; i < 9; i++) {
-    kinsim_2link_planar_B.msg_d.Name[0].Data[i] = static_cast<uint8_T>(b[i]);
-  }
-
-  kinsim_2link_planar_B.msg_d.Name[0].Data_SL_Info.CurrentLength = 9U;
+  kinsim_2link_planar_B.msg_d.Name_SL_Info.CurrentLength = 6U;
+  kinsim_2link_planar_B.msg_d.Position_SL_Info.CurrentLength = 6U;
+  kinsim_2link_planar_B.msg_d.Velocity_SL_Info.CurrentLength = 6U;
+  kinsim_2link_planar_B.msg_d.Name[0].Data_SL_Info.CurrentLength = 7U;
   kinsim_2link_planar_B.msg_d.Position[0] =
     kinsim_2link_planar_X.Integrator_CSTATE[0];
   kinsim_2link_planar_B.msg_d.Velocity[0] =
-    kinsim_2link_planar_B.In1.Velocities[0];
-  for (i = 0; i < 13; i++) {
-    kinsim_2link_planar_B.msg_d.Name[1].Data[i] = static_cast<uint8_T>(c[i]);
-  }
-
-  kinsim_2link_planar_B.msg_d.Name[1].Data_SL_Info.CurrentLength = 13U;
+    kinsim_2link_planar_B.In1.Velocities[1];
+  kinsim_2link_planar_B.msg_d.Name[1].Data_SL_Info.CurrentLength = 7U;
   kinsim_2link_planar_B.msg_d.Position[1] =
     kinsim_2link_planar_X.Integrator_CSTATE[1];
   kinsim_2link_planar_B.msg_d.Velocity[1] =
-    kinsim_2link_planar_B.In1.Velocities[1];
-  for (i = 0; i < 15; i++) {
-    kinsim_2link_planar_B.msg_d.Name[2].Data[i] = static_cast<uint8_T>(d[i]);
-  }
-
-  kinsim_2link_planar_B.msg_d.Name[2].Data_SL_Info.CurrentLength = 15U;
+    kinsim_2link_planar_B.In1.Velocities[2];
+  kinsim_2link_planar_B.msg_d.Name[2].Data_SL_Info.CurrentLength = 7U;
   kinsim_2link_planar_B.msg_d.Position[2] =
     kinsim_2link_planar_X.Integrator_CSTATE[2];
   kinsim_2link_planar_B.msg_d.Velocity[2] =
-    kinsim_2link_planar_B.In1.Velocities[2];
+    kinsim_2link_planar_B.In1.Velocities[3];
+  kinsim_2link_planar_B.msg_d.Name[3].Data_SL_Info.CurrentLength = 7U;
+  kinsim_2link_planar_B.msg_d.Position[3] =
+    kinsim_2link_planar_X.Integrator_CSTATE[3];
+  kinsim_2link_planar_B.msg_d.Velocity[3] =
+    kinsim_2link_planar_B.In1.Velocities[4];
+  kinsim_2link_planar_B.msg_d.Name[4].Data_SL_Info.CurrentLength = 7U;
+  kinsim_2link_planar_B.msg_d.Position[4] =
+    kinsim_2link_planar_X.Integrator_CSTATE[4];
+  kinsim_2link_planar_B.msg_d.Velocity[4] =
+    kinsim_2link_planar_B.In1.Velocities[5];
+  for (i = 0; i < 7; i++) {
+    kinsim_2link_planar_B.b.f1[i] = h[i];
+    kinsim_2link_planar_B.c.f1[i] = i_0[i];
+    kinsim_2link_planar_B.d_p.f1[i] = j[i];
+    e.f1[i] = k[i];
+    f.f1[i] = l[i];
+    g.f1[i] = m[i];
+    kinsim_2link_planar_B.msg_d.Name[0].Data[i] = static_cast<uint8_T>
+      (kinsim_2link_planar_B.b.f1[i]);
+    kinsim_2link_planar_B.msg_d.Name[1].Data[i] = static_cast<uint8_T>
+      (kinsim_2link_planar_B.c.f1[i]);
+    kinsim_2link_planar_B.msg_d.Name[2].Data[i] = static_cast<uint8_T>
+      (kinsim_2link_planar_B.d_p.f1[i]);
+    kinsim_2link_planar_B.msg_d.Name[3].Data[i] = static_cast<uint8_T>(e.f1[i]);
+    kinsim_2link_planar_B.msg_d.Name[4].Data[i] = static_cast<uint8_T>(f.f1[i]);
+    kinsim_2link_planar_B.msg_d.Name[5].Data[i] = static_cast<uint8_T>(g.f1[i]);
+  }
+
+  kinsim_2link_planar_B.msg_d.Name[5].Data_SL_Info.CurrentLength = 7U;
+  kinsim_2link_planar_B.msg_d.Position[5] =
+    kinsim_2link_planar_X.Integrator_CSTATE[5];
+  kinsim_2link_planar_B.msg_d.Velocity[5] =
+    kinsim_2link_planar_B.In1.Velocities[6];
 
   // Outputs for Atomic SubSystem: '<Root>/Publish'
   // MATLABSystem: '<S7>/SinkBlock'
@@ -509,13 +589,16 @@ void kinsim_2link_planar_step(void)
 // Derivatives for root system: '<Root>'
 void kinsim_2link_planar_derivatives(void)
 {
+  int32_T i;
   XDot_kinsim_2link_planar_T *_rtXdot;
   _rtXdot = ((XDot_kinsim_2link_planar_T *) kinsim_2link_planar_M->derivs);
 
   // Derivatives for Integrator: '<Root>/Integrator'
-  _rtXdot->Integrator_CSTATE[0] = kinsim_2link_planar_B.In1.Velocities[0];
-  _rtXdot->Integrator_CSTATE[1] = kinsim_2link_planar_B.In1.Velocities[1];
-  _rtXdot->Integrator_CSTATE[2] = kinsim_2link_planar_B.In1.Velocities[2];
+  for (i = 0; i < 6; i++) {
+    _rtXdot->Integrator_CSTATE[i] = kinsim_2link_planar_B.In1.Velocities[i + 1];
+  }
+
+  // End of Derivatives for Integrator: '<Root>/Integrator'
 }
 
 // Model initialize function
@@ -589,11 +672,26 @@ void kinsim_2link_planar_initialize(void)
       '2', 'l', 'i', 'n', 'k', '_', 'p', 'l', 'a', 'n', 'a', 'r', '/', 'q', '3',
       '_', 'i', 'n', 'i', 't', 'i', 'a', 'l' };
 
+    static const char_T tmp_9[31] = { '/', 'k', 'i', 'n', 's', 'i', 'm', '_',
+      '2', 'l', 'i', 'n', 'k', '_', 'p', 'l', 'a', 'n', 'a', 'r', '/', 'q', '4',
+      '_', 'i', 'n', 'i', 't', 'i', 'a', 'l' };
+
+    static const char_T tmp_a[31] = { '/', 'k', 'i', 'n', 's', 'i', 'm', '_',
+      '2', 'l', 'i', 'n', 'k', '_', 'p', 'l', 'a', 'n', 'a', 'r', '/', 'q', '5',
+      '_', 'i', 'n', 'i', 't', 'i', 'a', 'l' };
+
+    static const char_T tmp_b[31] = { '/', 'k', 'i', 'n', 's', 'i', 'm', '_',
+      '2', 'l', 'i', 'n', 'k', '_', 'p', 'l', 'a', 'n', 'a', 'r', '/', 'q', '6',
+      '_', 'i', 'n', 'i', 't', 'i', 'a', 'l' };
+
     // InitializeConditions for Integrator: '<Root>/Integrator'
     if (rtmIsFirstInitCond(kinsim_2link_planar_M)) {
       kinsim_2link_planar_X.Integrator_CSTATE[0] = 0.0;
       kinsim_2link_planar_X.Integrator_CSTATE[1] = 0.0;
       kinsim_2link_planar_X.Integrator_CSTATE[2] = 0.0;
+      kinsim_2link_planar_X.Integrator_CSTATE[3] = 0.0;
+      kinsim_2link_planar_X.Integrator_CSTATE[4] = 0.0;
+      kinsim_2link_planar_X.Integrator_CSTATE[5] = 0.0;
     }
 
     kinsim_2link_planar_DW.Integrator_IWORK = 1;
@@ -676,7 +774,7 @@ void kinsim_2link_planar_initialize(void)
     kinsim_2link_planar_B.cv[31] = '\x00';
     ParamGet_kinsim_2link_planar_61.initialize(kinsim_2link_planar_B.cv);
     ParamGet_kinsim_2link_planar_61.initialize_error_codes(0, 1, 2, 3);
-    ParamGet_kinsim_2link_planar_61.set_initial_value(0.78539816339744828);
+    ParamGet_kinsim_2link_planar_61.set_initial_value(0.0);
     kinsim_2link_planar_DW.obj.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<S11>/Get Parameter'
@@ -691,7 +789,7 @@ void kinsim_2link_planar_initialize(void)
     kinsim_2link_planar_B.cv[31] = '\x00';
     ParamGet_kinsim_2link_planar_65.initialize(kinsim_2link_planar_B.cv);
     ParamGet_kinsim_2link_planar_65.initialize_error_codes(0, 1, 2, 3);
-    ParamGet_kinsim_2link_planar_65.set_initial_value(-0.78539816339744828);
+    ParamGet_kinsim_2link_planar_65.set_initial_value(0.0);
     kinsim_2link_planar_DW.obj_n.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<S11>/Get Parameter1'
@@ -706,10 +804,55 @@ void kinsim_2link_planar_initialize(void)
     kinsim_2link_planar_B.cv[31] = '\x00';
     ParamGet_kinsim_2link_planar_81.initialize(kinsim_2link_planar_B.cv);
     ParamGet_kinsim_2link_planar_81.initialize_error_codes(0, 1, 2, 3);
-    ParamGet_kinsim_2link_planar_81.set_initial_value(-0.78539816339744828);
+    ParamGet_kinsim_2link_planar_81.set_initial_value(0.0);
     kinsim_2link_planar_DW.obj_i.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<S11>/Get Parameter2'
+
+    // Start for MATLABSystem: '<S11>/Get Parameter3'
+    kinsim_2link_planar_DW.obj_d.matlabCodegenIsDeleted = false;
+    kinsim_2link_planar_DW.obj_d.isInitialized = 1;
+    for (i = 0; i < 31; i++) {
+      kinsim_2link_planar_B.cv[i] = tmp_9[i];
+    }
+
+    kinsim_2link_planar_B.cv[31] = '\x00';
+    ParamGet_kinsim_2link_planar_82.initialize(kinsim_2link_planar_B.cv);
+    ParamGet_kinsim_2link_planar_82.initialize_error_codes(0, 1, 2, 3);
+    ParamGet_kinsim_2link_planar_82.set_initial_value(0.0);
+    kinsim_2link_planar_DW.obj_d.isSetupComplete = true;
+
+    // End of Start for MATLABSystem: '<S11>/Get Parameter3'
+
+    // Start for MATLABSystem: '<S11>/Get Parameter4'
+    kinsim_2link_planar_DW.obj_b.matlabCodegenIsDeleted = false;
+    kinsim_2link_planar_DW.obj_b.isInitialized = 1;
+    for (i = 0; i < 31; i++) {
+      kinsim_2link_planar_B.cv[i] = tmp_a[i];
+    }
+
+    kinsim_2link_planar_B.cv[31] = '\x00';
+    ParamGet_kinsim_2link_planar_83.initialize(kinsim_2link_planar_B.cv);
+    ParamGet_kinsim_2link_planar_83.initialize_error_codes(0, 1, 2, 3);
+    ParamGet_kinsim_2link_planar_83.set_initial_value(0.0);
+    kinsim_2link_planar_DW.obj_b.isSetupComplete = true;
+
+    // End of Start for MATLABSystem: '<S11>/Get Parameter4'
+
+    // Start for MATLABSystem: '<S11>/Get Parameter5'
+    kinsim_2link_planar_DW.obj_o.matlabCodegenIsDeleted = false;
+    kinsim_2link_planar_DW.obj_o.isInitialized = 1;
+    for (i = 0; i < 31; i++) {
+      kinsim_2link_planar_B.cv[i] = tmp_b[i];
+    }
+
+    kinsim_2link_planar_B.cv[31] = '\x00';
+    ParamGet_kinsim_2link_planar_84.initialize(kinsim_2link_planar_B.cv);
+    ParamGet_kinsim_2link_planar_84.initialize_error_codes(0, 1, 2, 3);
+    ParamGet_kinsim_2link_planar_84.set_initial_value(0.0);
+    kinsim_2link_planar_DW.obj_o.isSetupComplete = true;
+
+    // End of Start for MATLABSystem: '<S11>/Get Parameter5'
   }
 
   // set "at time zero" to false
@@ -729,6 +872,15 @@ void kinsim_2link_planar_terminate(void)
 
   // Terminate for MATLABSystem: '<S11>/Get Parameter2'
   matlabCodegenHandle_matlab_li5a(&kinsim_2link_planar_DW.obj_i);
+
+  // Terminate for MATLABSystem: '<S11>/Get Parameter3'
+  matlabCodegenHandle_matlab_li5a(&kinsim_2link_planar_DW.obj_d);
+
+  // Terminate for MATLABSystem: '<S11>/Get Parameter4'
+  matlabCodegenHandle_matlab_li5a(&kinsim_2link_planar_DW.obj_b);
+
+  // Terminate for MATLABSystem: '<S11>/Get Parameter5'
+  matlabCodegenHandle_matlab_li5a(&kinsim_2link_planar_DW.obj_o);
 
   // Terminate for Atomic SubSystem: '<Root>/Subscribe'
   // Terminate for MATLABSystem: '<S10>/SourceBlock'

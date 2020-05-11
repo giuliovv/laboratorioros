@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'kinsim_2link_planar'.
 //
-// Model version                  : 1.118
+// Model version                  : 1.122
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Wed May  6 12:18:09 2020
+// C/C++ source code generated on : Mon May 11 22:49:45 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -241,6 +241,24 @@ struct tag_PzhaB0v2Sx4ikuHWZx5WUB
 typedef struct tag_PzhaB0v2Sx4ikuHWZx5WUB ros_slros_internal_block_GetP_T;
 
 #endif                                 //typedef_ros_slros_internal_block_GetP_T
+
+// Custom Type definition for MATLAB Function: '<Root>/Assign to JointState msg' 
+#ifndef struct_tag_rGJxeAeFOtyQ9icBnCewuB
+#define struct_tag_rGJxeAeFOtyQ9icBnCewuB
+
+struct tag_rGJxeAeFOtyQ9icBnCewuB
+{
+  char_T f1[7];
+};
+
+#endif                                 //struct_tag_rGJxeAeFOtyQ9icBnCewuB
+
+#ifndef typedef_cell_wrap_0_kinsim_2link_plan_T
+#define typedef_cell_wrap_0_kinsim_2link_plan_T
+
+typedef struct tag_rGJxeAeFOtyQ9icBnCewuB cell_wrap_0_kinsim_2link_plan_T;
+
+#endif                                 //typedef_cell_wrap_0_kinsim_2link_plan_T
 
 // Parameters (default storage)
 typedef struct P_kinsim_2link_planar_T_ P_kinsim_2link_planar_T;
