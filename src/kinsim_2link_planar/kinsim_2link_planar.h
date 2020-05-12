@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'kinsim_2link_planar'.
 //
-// Model version                  : 1.122
+// Model version                  : 1.126
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Mon May 11 22:49:45 2020
+// C/C++ source code generated on : Tue May 12 16:23:02 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -153,15 +153,20 @@ typedef struct {
   real_T b_varargout_2_Velocities[128];
   real_T b_varargout_2_Accelerations[128];
   real_T b_varargout_2_Effort[128];
-  char_T cv[32];
   SL_Bus_kinsim_2link_planar_rosgraph_msgs_Clock msg_l;// '<Root>/Assign to Time msg' 
+  cell_wrap_0_kinsim_2link_plan_T b;
+  cell_wrap_0_kinsim_2link_plan_T c;
+  cell_wrap_0_kinsim_2link_plan_T d;
+  cell_wrap_0_kinsim_2link_plan_T e;
+  cell_wrap_0_kinsim_2link_plan_T f;
+  cell_wrap_0_kinsim_2link_plan_T g;
   real_T value;
   real_T value_m;
   real_T value_c;
   real_T value_k;
   real_T value_cx;
   real_T value_b;
-  real_T d;
+  real_T d_p;
   real_T d1;
   real_T d2;
   real_T d3;
@@ -172,12 +177,6 @@ typedef struct {
   real_T d8;
   real_T d9;
   real_T d10;
-  real_T d11;
-  real_T d12;
-  real_T d13;
-  cell_wrap_0_kinsim_2link_plan_T b;
-  cell_wrap_0_kinsim_2link_plan_T c;
-  cell_wrap_0_kinsim_2link_plan_T d_p;
 } B_kinsim_2link_planar_T;
 
 // Block states (default storage) for system '<Root>'

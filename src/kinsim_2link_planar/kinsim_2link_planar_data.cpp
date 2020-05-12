@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'kinsim_2link_planar'.
 //
-// Model version                  : 1.122
+// Model version                  : 1.126
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Mon May 11 22:49:45 2020
+// C/C++ source code generated on : Tue May 12 16:23:02 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -536,7 +536,7 @@ P_kinsim_2link_planar_T kinsim_2link_planar_P = {
   // Expression: [L1,L2,L3,L4,L5,L6]
   //  Referenced by: '<Root>/Constant'
 
-  { 0.337, 0.21, 0.268, 0.0, 0.175, 0.0 }
+  { 0.337, 0.21, 0.268, 0.0, 0.174, 0.0 }
 };
 
 //
