@@ -17,13 +17,13 @@
   </group>
 
   <remap from="/joint_states" to="/edo/joint_states"/>
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+  <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
     <param name="joint_state_publisher_gui" value="true"/>
-  </node>
+  </node> -->
 
-  <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="jnt_st_pub" />
+  <!-- <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="jnt_st_pub" /> -->
 
-  <arg name="gui" default="true" />
+  <!-- <arg name="joint_state_publisher_gui" default="true" /> -->
   <arg name="rvizconfig" default="$(find edo)/rviz/urdf.rviz" />
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
 
