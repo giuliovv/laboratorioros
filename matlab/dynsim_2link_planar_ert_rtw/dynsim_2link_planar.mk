@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'dynsim_2link_planar'. 
 ## 
 ## Makefile     : dynsim_2link_planar.mk
-## Generated on : Wed May 06 12:57:59 2020
+## Generated on : Wed May 13 11:58:01 2020
 ## MATLAB Coder version: 5.0 (R2020a)
 ## 
 ## Build Info:
@@ -23,11 +23,11 @@
 
 PRODUCT_NAME              = dynsim_2link_planar
 MAKEFILE                  = dynsim_2link_planar.mk
-MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2020a
-MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2020a/bin
-MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
+MATLAB_ROOT               = /usr/local/MATLAB/R2020a
+MATLAB_BIN                = /usr/local/MATLAB/R2020a/bin
+MATLAB_ARCH_BIN           = $(MATLAB_BIN)/glnxa64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = C:/Users/giuli/DOWNLO~1/Quarto Laboratorio/ROS/robot_models/simulator_2link_planar/matlab
+START_DIR                 = /home/giulio/prog/laboratorioros/matlab
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
@@ -51,7 +51,6 @@ CPP_STANDARD_OPTS         =
 # MACROS
 #-----------
 
-SHELL        = %SystemRoot%/system32/cmd.exe
 CCOUTPUTFLAG = --output_file=
 LDOUTPUTFLAG = --output_file=
 
@@ -112,9 +111,9 @@ OUTPUT_FLAG         = -o
 ARDEBUG             =
 STATICLIB_OUTPUT_FLAG =
 MEX_DEBUG           = -g
-RM                  = @del /F
+RM                  = @rm -f
 ECHO                = @echo
-MV                  = @move
+MV                  = @mv
 RUN                 =
 
 #----------------------------------------
@@ -478,8 +477,8 @@ info :
 
 clean : 
 	$(ECHO) "### Deleting all derived files..."
-	$(RM) $(subst /,\,$(PRODUCT))
-	$(RM) $(subst /,\,$(ALL_OBJS))
+	$(RM) $(PRODUCT)
+	$(RM) $(ALL_OBJS)
 	$(RM) *Object
 	$(ECHO) "### Deleted all derived files."
 

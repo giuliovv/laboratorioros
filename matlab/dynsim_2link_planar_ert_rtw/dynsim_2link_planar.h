@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'dynsim_2link_planar'.
 //
-// Model version                  : 1.122
+// Model version                  : 1.125
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Wed May  6 12:57:38 2020
+// C/C++ source code generated on : Wed May 13 11:57:51 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -187,6 +187,8 @@ typedef struct {
   char_T cv1[33];
   real_T result_data[4];
   char_T cv2[32];
+  int32_T nonFixedIndices_data[6];
+  int32_T ii_data[6];
   real_T Velocity[3];                  // '<S1>/Velocity'
   real_T MATLABSystem[3];              // '<S12>/MATLAB System'
   real_T q_data[3];
@@ -196,8 +198,6 @@ typedef struct {
   char_T cv3[18];
   SL_Bus_dynsim_2link_planar_rosgraph_msgs_Clock msg_l;// '<Root>/Assign to Time msg' 
   char_T cv4[14];
-  int32_T nonFixedIndices_data[3];
-  int32_T ii_data[3];
   char_T b[9];
   char_T b_j[9];
   char_T b_d[8];
@@ -211,6 +211,9 @@ typedef struct {
   real_T d2;
   real_T d3;
   real_T d4;
+  real_T d5;
+  real_T d6;
+  real_T d7;
   real_T nb;
   real_T a_idx_1;
   real_T a_idx_0;
@@ -234,6 +237,7 @@ typedef struct {
   real_T axang_idx_0;
   real_T axang_idx_1;
   real_T axang_idx_2;
+  boolean_T mask[6];
   char_T b_b[5];
   char_T b_da[5];
   char_T b_e[5];
@@ -300,7 +304,6 @@ typedef struct {
   uint32_T b_varargout_2_Layout_DataOffset;
   uint32_T b_varargout_2_Layout_Dim_SL_Inf;
   uint32_T b_varargout_2_Layout_Dim_SL_I_l;
-  boolean_T mask[3];
   boolean_T b_varargout_1;
   boolean_T b_bool;
   boolean_T b_bool_o;
@@ -311,12 +314,18 @@ typedef struct {
 
 // Block states (default storage) for system '<Root>'
 typedef struct {
-  n_robotics_manip_internal_Rig_T gobj_1;// '<S12>/MATLAB System'
-  n_robotics_manip_internal_Rig_T gobj_2;// '<S12>/MATLAB System'
-  n_robotics_manip_internal_Rig_T gobj_3;// '<S12>/MATLAB System'
-  n_robotics_manip_internal_Rig_T gobj_4;// '<S12>/MATLAB System'
-  n_robotics_manip_internal_Rig_T gobj_5;// '<S12>/MATLAB System'
-  n_robotics_manip_internal_Rig_T gobj_6;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_1;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_2;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_3;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_4;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_5;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_6;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_7;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_8;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_9;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_10;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_11;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_12;// '<S12>/MATLAB System'
   robotics_slmanip_internal_blo_T obj; // '<S12>/MATLAB System'
   ros_slros_internal_block_GetP_T obj_p;// '<S13>/Get Parameter'
   ros_slros_internal_block_GetP_T obj_n;// '<S13>/Get Parameter1'
@@ -375,7 +384,7 @@ struct P_dynsim_2link_planar_T_ {
   SL_Bus_dynsim_2link_planar_rosgraph_msgs_Clock Constant_Value_o;// Computed Parameter: Constant_Value_o
                                                                      //  Referenced by: '<S6>/Constant'
 
-  real_T Constant_Value_f[18];         // Expression: zeros(6,3)
+  real_T Constant_Value_f[36];         // Expression: zeros(6,6)
                                           //  Referenced by: '<S1>/Constant'
 
   real_T Constant_Value_oa[3];         // Expression: [L1,L2,L3]

@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'dynsim_2link_planar'.
 //
-// Model version                  : 1.122
+// Model version                  : 1.125
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Wed May  6 12:57:38 2020
+// C/C++ source code generated on : Wed May 13 11:57:51 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -170,30 +170,30 @@ typedef struct {
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_ss0I4LXXrnLn2HALqkeJf_
-#define DEFINED_TYPEDEF_FOR_struct_ss0I4LXXrnLn2HALqkeJf_
+#ifndef DEFINED_TYPEDEF_FOR_struct_n2RFWdI5YobuyCi5g1HNsC_
+#define DEFINED_TYPEDEF_FOR_struct_n2RFWdI5YobuyCi5g1HNsC_
 
 typedef struct {
   real_T NameLength;
-  uint8_T Name[14];
+  uint8_T Name[9];
   real_T ParentIndex;
   real_T NumChildren;
-  real_T ChildrenIndices[3];
+  real_T ChildrenIndices[6];
   real_T Mass;
   real_T CenterOfMass[3];
   real_T Inertia[9];
   real_T SpatialInertia[36];
-} struct_ss0I4LXXrnLn2HALqkeJf;
+} struct_n2RFWdI5YobuyCi5g1HNsC;
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_00NLo0To7Ffzi993Vbz1mG_
-#define DEFINED_TYPEDEF_FOR_struct_00NLo0To7Ffzi993Vbz1mG_
+#ifndef DEFINED_TYPEDEF_FOR_struct_o0IUHl9fQTmfwOrlxOCIeH_
+#define DEFINED_TYPEDEF_FOR_struct_o0IUHl9fQTmfwOrlxOCIeH_
 
 typedef struct {
   uint8_T Type;
   real_T NameLength;
-  uint8_T Name[15];
+  uint8_T Name[7];
   real_T VelocityNumber;
   real_T PositionNumber;
   real_T MotionSubspace[36];
@@ -202,12 +202,12 @@ typedef struct {
   real_T HomePosition[7];
   real_T JointToParentTransform[16];
   real_T ChildToJointTransform[16];
-} struct_00NLo0To7Ffzi993Vbz1mG;
+} struct_o0IUHl9fQTmfwOrlxOCIeH;
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_XxBeLBo8Nt9FqspDMguPFE_
-#define DEFINED_TYPEDEF_FOR_struct_XxBeLBo8Nt9FqspDMguPFE_
+#ifndef DEFINED_TYPEDEF_FOR_struct_TwWxrax8fot9L3lU84pxFG_
+#define DEFINED_TYPEDEF_FOR_struct_TwWxrax8fot9L3lU84pxFG_
 
 typedef struct {
   real_T NumBodies;
@@ -215,15 +215,15 @@ typedef struct {
   real_T NumNonFixedBodies;
   real_T PositionNumber;
   real_T VelocityNumber;
-  real_T PositionDoFMap[6];
-  real_T VelocityDoFMap[6];
+  real_T PositionDoFMap[12];
+  real_T VelocityDoFMap[12];
   real_T MaxNameLength;
   real_T MaxJointPositionNumber;
   uint8_T DataFormat;
   real_T JointPositionLimits[6];
-  struct_ss0I4LXXrnLn2HALqkeJf Bodies[4];
-  struct_00NLo0To7Ffzi993Vbz1mG Joints[4];
-} struct_XxBeLBo8Nt9FqspDMguPFE;
+  struct_n2RFWdI5YobuyCi5g1HNsC Bodies[7];
+  struct_o0IUHl9fQTmfwOrlxOCIeH Joints[7];
+} struct_TwWxrax8fot9L3lU84pxFG;
 
 #endif
 
@@ -344,39 +344,39 @@ typedef struct emxArray_real_T emxArray_real_T_dynsim_2link__T;
 
 #endif                                 //typedef_emxArray_real_T_dynsim_2link__T
 
-#ifndef struct_tag_s7U1lK3esK8hJbZWHMhhFoD
-#define struct_tag_s7U1lK3esK8hJbZWHMhhFoD
+#ifndef struct_tag_scvWJBGWVLTwiVc22ZFYQDD
+#define struct_tag_scvWJBGWVLTwiVc22ZFYQDD
 
-struct tag_s7U1lK3esK8hJbZWHMhhFoD
+struct tag_scvWJBGWVLTwiVc22ZFYQDD
 {
   real_T NameLength;
-  uint8_T Name[14];
+  uint8_T Name[9];
   real_T ParentIndex;
   real_T NumChildren;
-  real_T ChildrenIndices[3];
+  real_T ChildrenIndices[6];
   real_T Mass;
   real_T CenterOfMass[3];
   real_T Inertia[9];
   real_T SpatialInertia[36];
 };
 
-#endif                                 //struct_tag_s7U1lK3esK8hJbZWHMhhFoD
+#endif                                 //struct_tag_scvWJBGWVLTwiVc22ZFYQDD
 
-#ifndef typedef_s7U1lK3esK8hJbZWHMhhFoD_dynsi_T
-#define typedef_s7U1lK3esK8hJbZWHMhhFoD_dynsi_T
+#ifndef typedef_scvWJBGWVLTwiVc22ZFYQDD_dynsi_T
+#define typedef_scvWJBGWVLTwiVc22ZFYQDD_dynsi_T
 
-typedef struct tag_s7U1lK3esK8hJbZWHMhhFoD s7U1lK3esK8hJbZWHMhhFoD_dynsi_T;
+typedef struct tag_scvWJBGWVLTwiVc22ZFYQDD scvWJBGWVLTwiVc22ZFYQDD_dynsi_T;
 
-#endif                                 //typedef_s7U1lK3esK8hJbZWHMhhFoD_dynsi_T
+#endif                                 //typedef_scvWJBGWVLTwiVc22ZFYQDD_dynsi_T
 
-#ifndef struct_tag_sg9AtqjjkXglWcXWTAtiJmG
-#define struct_tag_sg9AtqjjkXglWcXWTAtiJmG
+#ifndef struct_tag_sGoOVDSFGVYEhLxENxeJvlE
+#define struct_tag_sGoOVDSFGVYEhLxENxeJvlE
 
-struct tag_sg9AtqjjkXglWcXWTAtiJmG
+struct tag_sGoOVDSFGVYEhLxENxeJvlE
 {
   uint8_T Type;
   real_T NameLength;
-  uint8_T Name[15];
+  uint8_T Name[7];
   real_T VelocityNumber;
   real_T PositionNumber;
   real_T MotionSubspace[36];
@@ -387,14 +387,14 @@ struct tag_sg9AtqjjkXglWcXWTAtiJmG
   real_T ChildToJointTransform[16];
 };
 
-#endif                                 //struct_tag_sg9AtqjjkXglWcXWTAtiJmG
+#endif                                 //struct_tag_sGoOVDSFGVYEhLxENxeJvlE
 
-#ifndef typedef_sg9AtqjjkXglWcXWTAtiJmG_dynsi_T
-#define typedef_sg9AtqjjkXglWcXWTAtiJmG_dynsi_T
+#ifndef typedef_sGoOVDSFGVYEhLxENxeJvlE_dynsi_T
+#define typedef_sGoOVDSFGVYEhLxENxeJvlE_dynsi_T
 
-typedef struct tag_sg9AtqjjkXglWcXWTAtiJmG sg9AtqjjkXglWcXWTAtiJmG_dynsi_T;
+typedef struct tag_sGoOVDSFGVYEhLxENxeJvlE sGoOVDSFGVYEhLxENxeJvlE_dynsi_T;
 
-#endif                                 //typedef_sg9AtqjjkXglWcXWTAtiJmG_dynsi_T
+#endif                                 //typedef_sGoOVDSFGVYEhLxENxeJvlE_dynsi_T
 
 #ifndef struct_tag_pGgszObO16I6TGXaEMnuXB
 #define struct_tag_pGgszObO16I6TGXaEMnuXB
@@ -447,12 +447,12 @@ struct tag_IYTryndM9hCl2aQvRVOEpC
 
 #endif                                 //struct_tag_IYTryndM9hCl2aQvRVOEpC
 
-#ifndef typedef_n_robotics_manip_internal_Rig_T
-#define typedef_n_robotics_manip_internal_Rig_T
+#ifndef typedef_l_robotics_manip_internal_Rig_T
+#define typedef_l_robotics_manip_internal_Rig_T
 
-typedef struct tag_IYTryndM9hCl2aQvRVOEpC n_robotics_manip_internal_Rig_T;
+typedef struct tag_IYTryndM9hCl2aQvRVOEpC l_robotics_manip_internal_Rig_T;
 
-#endif                                 //typedef_n_robotics_manip_internal_Rig_T
+#endif                                 //typedef_l_robotics_manip_internal_Rig_T
 
 #ifndef struct_tag_Y04n94zUMq8rhLX3OxwtfD
 #define struct_tag_Y04n94zUMq8rhLX3OxwtfD
@@ -464,51 +464,51 @@ struct tag_Y04n94zUMq8rhLX3OxwtfD
 
 #endif                                 //struct_tag_Y04n94zUMq8rhLX3OxwtfD
 
-#ifndef typedef_o_robotics_manip_internal_Rig_T
-#define typedef_o_robotics_manip_internal_Rig_T
+#ifndef typedef_m_robotics_manip_internal_Rig_T
+#define typedef_m_robotics_manip_internal_Rig_T
 
-typedef struct tag_Y04n94zUMq8rhLX3OxwtfD o_robotics_manip_internal_Rig_T;
+typedef struct tag_Y04n94zUMq8rhLX3OxwtfD m_robotics_manip_internal_Rig_T;
 
-#endif                                 //typedef_o_robotics_manip_internal_Rig_T
+#endif                                 //typedef_m_robotics_manip_internal_Rig_T
 
-#ifndef struct_tag_dcOwaIw5scRYPCPlMVVDiF
-#define struct_tag_dcOwaIw5scRYPCPlMVVDiF
+#ifndef struct_tag_mYgZv8X39cdHbKQNQhG0oD
+#define struct_tag_mYgZv8X39cdHbKQNQhG0oD
 
-struct tag_dcOwaIw5scRYPCPlMVVDiF
+struct tag_mYgZv8X39cdHbKQNQhG0oD
 {
   real_T NumBodies;
-  o_robotics_manip_internal_Rig_T Base;
+  m_robotics_manip_internal_Rig_T Base;
   real_T Gravity[3];
-  n_robotics_manip_internal_Rig_T *Bodies[3];
+  l_robotics_manip_internal_Rig_T *Bodies[6];
   real_T VelocityNumber;
-  real_T PositionDoFMap[6];
-  real_T VelocityDoFMap[6];
+  real_T PositionDoFMap[12];
+  real_T VelocityDoFMap[12];
 };
 
-#endif                                 //struct_tag_dcOwaIw5scRYPCPlMVVDiF
+#endif                                 //struct_tag_mYgZv8X39cdHbKQNQhG0oD
 
-#ifndef typedef_p_robotics_manip_internal_Rig_T
-#define typedef_p_robotics_manip_internal_Rig_T
+#ifndef typedef_n_robotics_manip_internal_Rig_T
+#define typedef_n_robotics_manip_internal_Rig_T
 
-typedef struct tag_dcOwaIw5scRYPCPlMVVDiF p_robotics_manip_internal_Rig_T;
+typedef struct tag_mYgZv8X39cdHbKQNQhG0oD n_robotics_manip_internal_Rig_T;
 
-#endif                                 //typedef_p_robotics_manip_internal_Rig_T
+#endif                                 //typedef_n_robotics_manip_internal_Rig_T
 
-#ifndef struct_tag_2xCNoiC3ymIvCs3oXr0EMB
-#define struct_tag_2xCNoiC3ymIvCs3oXr0EMB
+#ifndef struct_tag_uU4fM87gRHLNKfBsLIBxeE
+#define struct_tag_uU4fM87gRHLNKfBsLIBxeE
 
-struct tag_2xCNoiC3ymIvCs3oXr0EMB
+struct tag_uU4fM87gRHLNKfBsLIBxeE
 {
   int32_T isInitialized;
-  p_robotics_manip_internal_Rig_T TreeInternal;
+  n_robotics_manip_internal_Rig_T TreeInternal;
 };
 
-#endif                                 //struct_tag_2xCNoiC3ymIvCs3oXr0EMB
+#endif                                 //struct_tag_uU4fM87gRHLNKfBsLIBxeE
 
 #ifndef typedef_robotics_slmanip_internal_blo_T
 #define typedef_robotics_slmanip_internal_blo_T
 
-typedef struct tag_2xCNoiC3ymIvCs3oXr0EMB robotics_slmanip_internal_blo_T;
+typedef struct tag_uU4fM87gRHLNKfBsLIBxeE robotics_slmanip_internal_blo_T;
 
 #endif                                 //typedef_robotics_slmanip_internal_blo_T
 

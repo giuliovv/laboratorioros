@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'dynsim_2link_planar'.
 //
-// Model version                  : 1.122
+// Model version                  : 1.125
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Wed May  6 12:57:38 2020
+// C/C++ source code generated on : Wed May 13 11:57:51 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -1023,16 +1023,17 @@ P_dynsim_2link_planar_T dynsim_2link_planar_P = {
     }                                  // Clock_
   },
 
-  // Expression: zeros(6,3)
+  // Expression: zeros(6,6)
   //  Referenced by: '<S1>/Constant'
 
   { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.0 },
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0 },
 
   // Expression: [L1,L2,L3]
   //  Referenced by: '<Root>/Constant'
 
-  { 1.0, 1.0, 1.0 }
+  { 0.337, 0.21, 0.268 }
 };
 
 //
