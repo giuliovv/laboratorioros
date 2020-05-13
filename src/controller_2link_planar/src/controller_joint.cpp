@@ -70,7 +70,7 @@ void controller_joint::Prepare(void)
  jointTorque_publisher = Handle.advertise<std_msgs::Float64MultiArray>("/joint_torque", 1);
 
  plannedTrajectory_subscriber = Handle.subscribe("/joint_trajectory", 1, &controller_joint::plannedTrajectory_MessageCallback, this);
- jointStates_subscriber = Handle.subscribe("/joint_states", 1, &controller_joint::jointStates_MessageCallback, this);
+ jointStates_subscriber = Handle.subscribe("/edo/joint_states", 1, &controller_joint::jointStates_MessageCallback, this);
 
  /* Initialize node state */
  for (int i=0; i<num_joint; i++){

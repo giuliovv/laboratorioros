@@ -42,7 +42,7 @@ for topic, msg, t in bag.read_messages():
         torque_arm = np.append(torque_arm, msg.data[1])
         torque_forearm = np.append(torque_forearm, msg.data[2])
 
-    if topic == "/joint_states":
+    if topic == "/edo/joint_states":
         jointstate_t = np.append(jointstate_t, float(msg.header.stamp.secs+msg.header.stamp.nsecs*1.0e-9))
         jointstate_pos_arm = np.append(jointstate_pos_arm, msg.position[0])
         jointstate_pos_forearm = np.append(jointstate_pos_forearm, msg.position[1])
