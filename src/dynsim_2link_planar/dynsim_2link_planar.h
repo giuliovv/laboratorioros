@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'dynsim_2link_planar'.
 //
-// Model version                  : 1.122
+// Model version                  : 1.128
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Wed May  6 12:57:38 2020
+// C/C++ source code generated on : Wed May 13 13:33:05 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -178,35 +178,43 @@ typedef struct {
   real_T dv3[9];
   real_T R_g[9];
   real_T R_g1[9];
+  real_T Velocity[6];                  // '<S1>/Velocity'
+  real_T MATLABSystem[6];              // '<S12>/MATLAB System'
   real_T a0[6];
-  real_T y[6];
+  real_T q_data[6];
   real_T X_m[6];
   real_T b_I_n[6];
+  real_T q_data_p[6];
   int8_T msubspace_data[36];
   char_T cv[34];
   char_T cv1[33];
   real_T result_data[4];
   char_T cv2[32];
-  real_T Velocity[3];                  // '<S1>/Velocity'
-  real_T MATLABSystem[3];              // '<S12>/MATLAB System'
-  real_T q_data[3];
+  int32_T nonFixedIndices_data[6];
+  int32_T ii_data[6];
   real_T v[3];
-  real_T q_data_p[3];
   real_T v_l[3];
   char_T cv3[18];
   SL_Bus_dynsim_2link_planar_rosgraph_msgs_Clock msg_l;// '<Root>/Assign to Time msg' 
   char_T cv4[14];
-  int32_T nonFixedIndices_data[3];
-  int32_T ii_data[3];
-  char_T b[9];
+  cell_wrap_0_dynsim_2link_plan_T b;
+  cell_wrap_0_dynsim_2link_plan_T c;
+  cell_wrap_0_dynsim_2link_plan_T d;
+  cell_wrap_0_dynsim_2link_plan_T e;
+  cell_wrap_0_dynsim_2link_plan_T f;
+  cell_wrap_0_dynsim_2link_plan_T g;
   char_T b_j[9];
-  char_T b_d[8];
+  char_T b_d[9];
   char_T b_g[8];
   char_T b_l[8];
+  char_T b_dh[8];
+  real_T value;
+  real_T value_d;
+  real_T value_l;
   real_T vNum;
   real_T k;
   real_T j;
-  real_T d;
+  real_T d_o;
   real_T d1;
   real_T d2;
   real_T d3;
@@ -219,38 +227,39 @@ typedef struct {
   real_T cth;
   real_T sth;
   real_T tempR_tmp;
-  real_T tempR_tmp_d;
-  real_T tempR_tmp_dy;
+  real_T tempR_tmp_b;
+  real_T tempR_tmp_n;
+  real_T tempR_tmp_bs;
   real_T tempR_tmp_l;
-  real_T tempR_tmp_o;
-  real_T nb_b;
-  real_T vNum_n;
+  real_T nb_h;
+  real_T vNum_b;
   real_T pid;
   real_T s;
   real_T p_idx_1;
-  real_T b_idx_0_b;
-  real_T b_idx_1_l;
-  real_T b_h;
+  real_T b_idx_0_d;
+  real_T b_idx_1_e;
+  real_T b_b;
   real_T axang_idx_0;
   real_T axang_idx_1;
   real_T axang_idx_2;
-  char_T b_b[5];
-  char_T b_da[5];
-  char_T b_e[5];
-  char_T b_bj[5];
+  boolean_T mask[6];
+  char_T b_jz[5];
+  char_T b_f[5];
+  char_T b_a[5];
+  char_T b_ju[5];
   int32_T n;
   int32_T iend;
   int32_T j_j;
-  int32_T u0;
   int32_T i;
+  int32_T i_o;
   int32_T vNum_idx_0_tmp;
   int32_T MATLABSystem_tmp;
   int32_T b_k;
   int32_T p;
-  int32_T b_k_f;
   int32_T m;
   int32_T inner;
   int32_T aoffset;
+  int32_T i_n;
   int32_T q_size;
   int32_T unnamed_idx_1;
   int32_T loop_ub_tmp;
@@ -259,71 +268,82 @@ typedef struct {
   int32_T b_kstr;
   int32_T obj_tmp;
   int32_T obj_tmp_tmp;
-  int32_T kstr_a;
-  int32_T b_kstr_j;
+  int32_T kstr_i;
+  int32_T b_kstr_o;
   int32_T b_i;
-  int32_T f;
+  int32_T f_n;
   int32_T cb;
   int32_T idx;
-  int32_T n_j;
+  int32_T n_m;
   int32_T nm1d2;
-  int32_T m_o;
+  int32_T m_c;
   int32_T coffset;
   int32_T boffset;
-  int32_T aoffset_n;
+  int32_T aoffset_m;
   int32_T loop_ub;
-  int32_T q_size_i;
+  int32_T q_size_m;
   int32_T pid_tmp;
   int32_T X_tmp;
   int32_T coffset_tmp;
-  int32_T kstr_o;
-  int32_T b_kstr_n;
-  int32_T obj_tmp_m;
+  int32_T kstr_j;
+  int32_T b_kstr_h;
+  int32_T obj_tmp_c;
   int32_T obj_tmp_tmp_c;
   int32_T i1;
   int32_T i2;
-  int32_T X_tmp_m;
-  int32_T X_tmp_m3;
+  int32_T X_tmp_p;
+  int32_T X_tmp_p5;
   int32_T i3;
   int32_T Tinv_tmp;
   int32_T newNumel;
-  int32_T i_j;
-  int32_T newNumel_h;
-  int32_T i_c;
-  int32_T newNumel_c;
-  int32_T i_p;
-  int32_T i_p5;
   int32_T i_a;
-  int32_T i_e;
+  int32_T newNumel_e;
+  int32_T i_ax;
+  int32_T newNumel_a;
+  int32_T i_i;
+  int32_T i_l;
+  int32_T i_oj;
+  int32_T i_o2;
   uint32_T b_varargout_2_Data_SL_Info_Curr;
   uint32_T b_varargout_2_Data_SL_Info_Rece;
   uint32_T b_varargout_2_Layout_DataOffset;
   uint32_T b_varargout_2_Layout_Dim_SL_Inf;
-  uint32_T b_varargout_2_Layout_Dim_SL_I_l;
-  boolean_T mask[3];
+  uint32_T b_varargout_2_Layout_Dim_SL_I_f;
   boolean_T b_varargout_1;
   boolean_T b_bool;
+  boolean_T b_bool_g;
+  boolean_T b_bool_c;
   boolean_T b_bool_o;
-  boolean_T b_bool_o2;
-  boolean_T b_bool_i;
-  boolean_T b_bool_f;
+  boolean_T b_bool_l;
 } B_dynsim_2link_planar_T;
 
 // Block states (default storage) for system '<Root>'
 typedef struct {
-  n_robotics_manip_internal_Rig_T gobj_1;// '<S12>/MATLAB System'
-  n_robotics_manip_internal_Rig_T gobj_2;// '<S12>/MATLAB System'
-  n_robotics_manip_internal_Rig_T gobj_3;// '<S12>/MATLAB System'
-  n_robotics_manip_internal_Rig_T gobj_4;// '<S12>/MATLAB System'
-  n_robotics_manip_internal_Rig_T gobj_5;// '<S12>/MATLAB System'
-  n_robotics_manip_internal_Rig_T gobj_6;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_1;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_2;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_3;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_4;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_5;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_6;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_7;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_8;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_9;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_10;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_11;// '<S12>/MATLAB System'
+  l_robotics_manip_internal_Rig_T gobj_12;// '<S12>/MATLAB System'
   robotics_slmanip_internal_blo_T obj; // '<S12>/MATLAB System'
   ros_slros_internal_block_GetP_T obj_p;// '<S13>/Get Parameter'
   ros_slros_internal_block_GetP_T obj_n;// '<S13>/Get Parameter1'
   ros_slros_internal_block_GetP_T obj_d;// '<S13>/Get Parameter4'
+  ros_slros_internal_block_GetP_T obj_d5;// '<S13>/Get Parameter6'
+  ros_slros_internal_block_GetP_T obj_l;// '<S13>/Get Parameter7'
+  ros_slros_internal_block_GetP_T obj_nb;// '<S13>/Get Parameter8'
   ros_slros_internal_block_GetP_T obj_h;// '<S13>/Get Parameter2'
   ros_slros_internal_block_GetP_T obj_b;// '<S13>/Get Parameter3'
   ros_slros_internal_block_GetP_T obj_o;// '<S13>/Get Parameter5'
+  ros_slros_internal_block_GetP_T obj_pd;// '<S13>/Get Parameter9'
+  ros_slros_internal_block_GetP_T obj_e;// '<S13>/Get Parameter10'
+  ros_slros_internal_block_GetP_T obj_ez;// '<S13>/Get Parameter11'
   ros_slros_internal_block_Publ_T obj_a;// '<S10>/SinkBlock'
   ros_slros_internal_block_Publ_T obj_f;// '<S9>/SinkBlock'
   ros_slros_internal_block_Publ_T obj_nr;// '<S8>/SinkBlock'
@@ -334,20 +354,20 @@ typedef struct {
 
 // Continuous states (default storage)
 typedef struct {
-  real_T Position_CSTATE[3];           // '<S1>/Position'
-  real_T Velocity_CSTATE[3];           // '<S1>/Velocity'
+  real_T Position_CSTATE[6];           // '<S1>/Position'
+  real_T Velocity_CSTATE[6];           // '<S1>/Velocity'
 } X_dynsim_2link_planar_T;
 
 // State derivatives (default storage)
 typedef struct {
-  real_T Position_CSTATE[3];           // '<S1>/Position'
-  real_T Velocity_CSTATE[3];           // '<S1>/Velocity'
+  real_T Position_CSTATE[6];           // '<S1>/Position'
+  real_T Velocity_CSTATE[6];           // '<S1>/Velocity'
 } XDot_dynsim_2link_planar_T;
 
 // State disabled
 typedef struct {
-  boolean_T Position_CSTATE[3];        // '<S1>/Position'
-  boolean_T Velocity_CSTATE[3];        // '<S1>/Velocity'
+  boolean_T Position_CSTATE[6];        // '<S1>/Position'
+  boolean_T Velocity_CSTATE[6];        // '<S1>/Velocity'
 } XDis_dynsim_2link_planar_T;
 
 #ifndef ODE3_INTG
@@ -375,10 +395,10 @@ struct P_dynsim_2link_planar_T_ {
   SL_Bus_dynsim_2link_planar_rosgraph_msgs_Clock Constant_Value_o;// Computed Parameter: Constant_Value_o
                                                                      //  Referenced by: '<S6>/Constant'
 
-  real_T Constant_Value_f[18];         // Expression: zeros(6,3)
+  real_T Constant_Value_f[36];         // Expression: zeros(6,6)
                                           //  Referenced by: '<S1>/Constant'
 
-  real_T Constant_Value_oa[3];         // Expression: [L1,L2,L3]
+  real_T Constant_Value_oa[6];         // Expression: [L1,L2,L3,L4,L5,L6]
                                           //  Referenced by: '<Root>/Constant'
 
 };
@@ -395,8 +415,8 @@ struct tag_RTM_dynsim_2link_planar_T {
   boolean_T zCCacheNeedsReset;
   boolean_T derivCacheNeedsReset;
   boolean_T CTOutputIncnstWithState;
-  real_T odeY[6];
-  real_T odeF[3][6];
+  real_T odeY[12];
+  real_T odeF[3][12];
   ODE3_IntgData intgData;
 
   //
