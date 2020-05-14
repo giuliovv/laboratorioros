@@ -10,5 +10,4 @@
 
   /planner_cartesian/elbow_high: false          # Inverse kinematic solution (elbow high/elbow low)
   
-  /planner_cartesian/link_length: [1.0, 1.0]    # Link length [m]
-
+  /planner_cartesian/link_length: [1, 1] # [0.337, 0.210, 0.268, 0, 0.174, 0]    # Link length [m]
