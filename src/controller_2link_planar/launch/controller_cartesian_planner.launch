@@ -29,12 +29,18 @@
 
   <!-- Run the dynamic simulator -->
   <node pkg="dynsim_2link_planar" type="dynsim_2link_planar_node" name="dynsim_2link_planar">
-    <rosparam param="q1_initial"> 0.7840</rosparam>
-    <rosparam param="q2_initial">-1.5708</rosparam>
-    <rosparam param="q3_initial">1.5708</rosparam>
+    <rosparam param="q1_initial">0</rosparam>
+    <rosparam param="q2_initial">0</rosparam>
+    <rosparam param="q3_initial">0</rosparam>
+    <rosparam param="q4_initial">0</rosparam>
+    <rosparam param="q5_initial">0</rosparam>
+    <rosparam param="q6_initial">0</rosparam>
     <rosparam param="qv1_initial">0.0</rosparam>
     <rosparam param="qv2_initial">0.0</rosparam>
     <rosparam param="qv3_initial">0.0</rosparam>
+    <rosparam param="qv4_initial">0.0</rosparam>
+    <rosparam param="qv5_initial">0.0</rosparam>
+    <rosparam param="qv6_initial">0.0</rosparam>
   </node>
 
   <!--- Run planner_cartesian node -->
