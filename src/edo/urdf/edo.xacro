@@ -172,7 +172,7 @@
 
         </link>
 
-        <joint name="${robot_prefix}_joint_4" type="fixed">
+        <joint name="${robot_prefix}_joint_4" type="revolute">
             <parent link="${robot_prefix}_link_3"/>
             <child link="${robot_prefix}_link_4"/>
             <origin xyz="0 -0.268 0" rpy="${PI / 2} 0 0"/>
@@ -212,7 +212,7 @@
             </collision>
         </link>
 
-        <joint name="${robot_prefix}_joint_5" type="fixed">
+        <joint name="${robot_prefix}_joint_5" type="revolute">
             <parent link="${robot_prefix}_link_4"/>
             <child link="${robot_prefix}_link_5"/>
             <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -252,7 +252,7 @@
             </collision>
         </link>
 
-        <joint name="${robot_prefix}_joint_6" type="fixed">
+        <joint name="${robot_prefix}_joint_6" type="revolute">
             <parent link="${robot_prefix}_link_5"/>
             <child link="${robot_prefix}_link_6"/>
             <origin xyz="0 0 0.1745" rpy="0 0 0"/>
