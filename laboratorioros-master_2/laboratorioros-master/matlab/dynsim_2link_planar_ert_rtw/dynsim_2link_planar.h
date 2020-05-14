@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'dynsim_2link_planar'.
 //
-// Model version                  : 1.128
+// Model version                  : 1.129
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Wed May 13 22:32:24 2020
+// C/C++ source code generated on : Thu May 14 21:05:46 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -219,6 +219,15 @@ typedef struct {
   real_T d2;
   real_T d3;
   real_T d4;
+  real_T d5;
+  real_T d6;
+  real_T d7;
+  real_T d8;
+  real_T d9;
+  real_T d10;
+  real_T d11;
+  real_T d12;
+  real_T d13;
   real_T nb;
   real_T a_idx_1;
   real_T a_idx_0;

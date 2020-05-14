@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'dynsim_2link_planar'.
 //
-// Model version                  : 1.128
+// Model version                  : 1.129
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Wed May 13 22:32:24 2020
+// C/C++ source code generated on : Thu May 14 21:05:46 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -4474,18 +4474,32 @@ void dynsim_2link_planar_step(void)
   dynsim_2link_planar_B.value_d = dynsim_2link_planar_X.Position_CSTATE[0] +
     dynsim_2link_planar_X.Position_CSTATE[1];
   dynsim_2link_planar_B.value_l = cos(dynsim_2link_planar_B.value_d);
-  dynsim_2link_planar_B.d2 = dynsim_2link_planar_B.value_d +
+  dynsim_2link_planar_B.d5 = dynsim_2link_planar_B.value_d +
     dynsim_2link_planar_X.Position_CSTATE[2];
-  dynsim_2link_planar_B.d1 = cos(dynsim_2link_planar_B.d2);
+  dynsim_2link_planar_B.d2 = cos(dynsim_2link_planar_B.d5);
+  dynsim_2link_planar_B.d6 = dynsim_2link_planar_B.d5 +
+    dynsim_2link_planar_X.Position_CSTATE[3];
+  dynsim_2link_planar_B.d3 = cos(dynsim_2link_planar_B.d6);
+  dynsim_2link_planar_B.d7 = dynsim_2link_planar_B.d6 +
+    dynsim_2link_planar_X.Position_CSTATE[4];
+  dynsim_2link_planar_B.d8 = dynsim_2link_planar_B.d7 +
+    dynsim_2link_planar_X.Position_CSTATE[5];
+  dynsim_2link_planar_B.d4 = cos(dynsim_2link_planar_B.d8);
 
   // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
   //   Constant: '<Root>/Constant'
+  //   Integrator: '<S1>/Position'
   //   MATLAB Function: '<Root>/MATLAB Function'
 
-  dynsim_2link_planar_B.msg_g.Position[0] =
-    (dynsim_2link_planar_P.Constant_Value_oa[0] * dynsim_2link_planar_B.value +
-     dynsim_2link_planar_P.Constant_Value_oa[1] * dynsim_2link_planar_B.value_l)
-    + dynsim_2link_planar_P.Constant_Value_oa[2] * dynsim_2link_planar_B.d1;
+  dynsim_2link_planar_B.msg_g.Position[0] = (cos(dynsim_2link_planar_B.d6 +
+    dynsim_2link_planar_X.Position_CSTATE[0]) *
+    dynsim_2link_planar_P.Constant_Value_oa[4] +
+    (((dynsim_2link_planar_P.Constant_Value_oa[0] * dynsim_2link_planar_B.value
+       + dynsim_2link_planar_P.Constant_Value_oa[1] *
+       dynsim_2link_planar_B.value_l) + dynsim_2link_planar_P.Constant_Value_oa
+      [2] * dynsim_2link_planar_B.d2) + dynsim_2link_planar_P.Constant_Value_oa
+     [3] * dynsim_2link_planar_B.d3)) + dynsim_2link_planar_P.Constant_Value_oa
+    [5] * dynsim_2link_planar_B.d4;
 
   // MATLAB Function: '<Root>/MATLAB Function' incorporates:
   //   Constant: '<Root>/Constant'
@@ -4493,24 +4507,39 @@ void dynsim_2link_planar_step(void)
 
   dynsim_2link_planar_B.d_o = sin(dynsim_2link_planar_X.Position_CSTATE[0]);
   dynsim_2link_planar_B.value_d = sin(dynsim_2link_planar_B.value_d);
-  dynsim_2link_planar_B.d2 = sin(dynsim_2link_planar_B.d2);
-  dynsim_2link_planar_B.d3 = dynsim_2link_planar_B.Velocity[0] +
+  dynsim_2link_planar_B.d5 = sin(dynsim_2link_planar_B.d5);
+  dynsim_2link_planar_B.d6 = sin(dynsim_2link_planar_B.d6);
+  dynsim_2link_planar_B.d1 = sin(dynsim_2link_planar_B.d7);
+  dynsim_2link_planar_B.d8 = sin(dynsim_2link_planar_B.d8);
+  dynsim_2link_planar_B.d9 = dynsim_2link_planar_B.Velocity[0] +
     dynsim_2link_planar_B.Velocity[1];
-  dynsim_2link_planar_B.d4 = dynsim_2link_planar_B.d3 *
-    dynsim_2link_planar_P.Constant_Value_oa[1];
-  dynsim_2link_planar_B.d3 = (dynsim_2link_planar_B.d3 +
-    dynsim_2link_planar_B.Velocity[2]) *
-    dynsim_2link_planar_P.Constant_Value_oa[2];
+  dynsim_2link_planar_B.d10 = dynsim_2link_planar_B.d9 +
+    dynsim_2link_planar_B.Velocity[2];
+  dynsim_2link_planar_B.d11 = dynsim_2link_planar_B.d10 +
+    dynsim_2link_planar_B.Velocity[3];
+  dynsim_2link_planar_B.d12 = dynsim_2link_planar_B.d11 +
+    dynsim_2link_planar_B.Velocity[4];
+  dynsim_2link_planar_B.d9 *= dynsim_2link_planar_P.Constant_Value_oa[1];
+  dynsim_2link_planar_B.d10 *= dynsim_2link_planar_P.Constant_Value_oa[2];
+  dynsim_2link_planar_B.d11 *= dynsim_2link_planar_P.Constant_Value_oa[3];
+  dynsim_2link_planar_B.d13 = dynsim_2link_planar_B.d12 *
+    dynsim_2link_planar_P.Constant_Value_oa[4];
+  dynsim_2link_planar_B.d12 = (dynsim_2link_planar_B.d12 +
+    dynsim_2link_planar_B.Velocity[5]) *
+    dynsim_2link_planar_P.Constant_Value_oa[5];
 
   // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
   //   Constant: '<Root>/Constant'
   //   MATLAB Function: '<Root>/MATLAB Function'
 
   dynsim_2link_planar_B.msg_g.Velocity[0] =
-    (-dynsim_2link_planar_P.Constant_Value_oa[0] *
-     dynsim_2link_planar_B.Velocity[0] * dynsim_2link_planar_B.d_o -
-     dynsim_2link_planar_B.d4 * dynsim_2link_planar_B.value_d) -
-    dynsim_2link_planar_B.d3 * dynsim_2link_planar_B.d2;
+    ((((-dynsim_2link_planar_P.Constant_Value_oa[0] *
+        dynsim_2link_planar_B.Velocity[0] * dynsim_2link_planar_B.d_o -
+        dynsim_2link_planar_B.d9 * dynsim_2link_planar_B.value_d) -
+       dynsim_2link_planar_B.d10 * dynsim_2link_planar_B.d5) -
+      dynsim_2link_planar_B.d11 * dynsim_2link_planar_B.d6) -
+     dynsim_2link_planar_B.d13 * dynsim_2link_planar_B.d1) -
+    dynsim_2link_planar_B.d12 * dynsim_2link_planar_B.d8;
   for (dynsim_2link_planar_B.j_j = 0; dynsim_2link_planar_B.j_j < 11;
        dynsim_2link_planar_B.j_j++) {
     dynsim_2link_planar_B.b.f1[dynsim_2link_planar_B.j_j] =
@@ -4525,13 +4554,20 @@ void dynsim_2link_planar_step(void)
 
   dynsim_2link_planar_B.msg_g.Name[1].Data_SL_Info.CurrentLength = 11U;
   dynsim_2link_planar_B.msg_g.Position[1] =
-    (dynsim_2link_planar_P.Constant_Value_oa[0] * dynsim_2link_planar_B.d_o +
-     dynsim_2link_planar_P.Constant_Value_oa[1] * dynsim_2link_planar_B.value_d)
-    + dynsim_2link_planar_P.Constant_Value_oa[2] * dynsim_2link_planar_B.d2;
-  dynsim_2link_planar_B.msg_g.Velocity[1] = (dynsim_2link_planar_B.d4 *
+    ((((dynsim_2link_planar_P.Constant_Value_oa[0] * dynsim_2link_planar_B.d_o +
+        dynsim_2link_planar_P.Constant_Value_oa[1] *
+        dynsim_2link_planar_B.value_d) +
+       dynsim_2link_planar_P.Constant_Value_oa[2] * dynsim_2link_planar_B.d5) +
+      dynsim_2link_planar_P.Constant_Value_oa[3] * dynsim_2link_planar_B.d6) +
+     dynsim_2link_planar_P.Constant_Value_oa[4] * dynsim_2link_planar_B.d1) +
+    dynsim_2link_planar_P.Constant_Value_oa[5] * dynsim_2link_planar_B.d8;
+  dynsim_2link_planar_B.msg_g.Velocity[1] = ((((dynsim_2link_planar_B.d9 *
     dynsim_2link_planar_B.value_l + dynsim_2link_planar_P.Constant_Value_oa[0] *
     dynsim_2link_planar_B.Velocity[0] * dynsim_2link_planar_B.value) +
-    dynsim_2link_planar_B.d3 * dynsim_2link_planar_B.d1;
+    dynsim_2link_planar_B.d10 * dynsim_2link_planar_B.d2) +
+    dynsim_2link_planar_B.d11 * dynsim_2link_planar_B.d3) +
+    dynsim_2link_planar_B.d13 * cos(dynsim_2link_planar_B.d7)) +
+    dynsim_2link_planar_B.d12 * dynsim_2link_planar_B.d4;
 
   // Outputs for Atomic SubSystem: '<Root>/Publish2'
   // MATLABSystem: '<S10>/SinkBlock'
@@ -4889,7 +4925,7 @@ void dynsim_2link_planar_initialize(void)
     dynsim_2link_planar_B.cv2[31] = '\x00';
     ParamGet_dynsim_2link_planar_112.initialize(dynsim_2link_planar_B.cv2);
     ParamGet_dynsim_2link_planar_112.initialize_error_codes(0, 1, 2, 3);
-    ParamGet_dynsim_2link_planar_112.set_initial_value(0.78539816339744828);
+    ParamGet_dynsim_2link_planar_112.set_initial_value(0.0);
     dynsim_2link_planar_DW.obj_p.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<S13>/Get Parameter'
@@ -4904,7 +4940,7 @@ void dynsim_2link_planar_initialize(void)
     dynsim_2link_planar_B.cv2[31] = '\x00';
     ParamGet_dynsim_2link_planar_113.initialize(dynsim_2link_planar_B.cv2);
     ParamGet_dynsim_2link_planar_113.initialize_error_codes(0, 1, 2, 3);
-    ParamGet_dynsim_2link_planar_113.set_initial_value(-1.5707963267948966);
+    ParamGet_dynsim_2link_planar_113.set_initial_value(0.0);
     dynsim_2link_planar_DW.obj_n.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<S13>/Get Parameter1'
@@ -4919,7 +4955,7 @@ void dynsim_2link_planar_initialize(void)
     dynsim_2link_planar_B.cv2[31] = '\x00';
     ParamGet_dynsim_2link_planar_129.initialize(dynsim_2link_planar_B.cv2);
     ParamGet_dynsim_2link_planar_129.initialize_error_codes(0, 1, 2, 3);
-    ParamGet_dynsim_2link_planar_129.set_initial_value(-1.5707963267948966);
+    ParamGet_dynsim_2link_planar_129.set_initial_value(0.0);
     dynsim_2link_planar_DW.obj_d.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<S13>/Get Parameter4'
@@ -4934,7 +4970,7 @@ void dynsim_2link_planar_initialize(void)
     dynsim_2link_planar_B.cv2[31] = '\x00';
     ParamGet_dynsim_2link_planar_131.initialize(dynsim_2link_planar_B.cv2);
     ParamGet_dynsim_2link_planar_131.initialize_error_codes(0, 1, 2, 3);
-    ParamGet_dynsim_2link_planar_131.set_initial_value(0.78539816339744828);
+    ParamGet_dynsim_2link_planar_131.set_initial_value(0.0);
     dynsim_2link_planar_DW.obj_d5.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<S13>/Get Parameter6'
@@ -4949,7 +4985,7 @@ void dynsim_2link_planar_initialize(void)
     dynsim_2link_planar_B.cv2[31] = '\x00';
     ParamGet_dynsim_2link_planar_132.initialize(dynsim_2link_planar_B.cv2);
     ParamGet_dynsim_2link_planar_132.initialize_error_codes(0, 1, 2, 3);
-    ParamGet_dynsim_2link_planar_132.set_initial_value(-1.5707963267948966);
+    ParamGet_dynsim_2link_planar_132.set_initial_value(0.0);
     dynsim_2link_planar_DW.obj_l.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<S13>/Get Parameter7'
@@ -4964,7 +5000,7 @@ void dynsim_2link_planar_initialize(void)
     dynsim_2link_planar_B.cv2[31] = '\x00';
     ParamGet_dynsim_2link_planar_133.initialize(dynsim_2link_planar_B.cv2);
     ParamGet_dynsim_2link_planar_133.initialize_error_codes(0, 1, 2, 3);
-    ParamGet_dynsim_2link_planar_133.set_initial_value(-1.5707963267948966);
+    ParamGet_dynsim_2link_planar_133.set_initial_value(0.0);
     dynsim_2link_planar_DW.obj_nb.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<S13>/Get Parameter8'
