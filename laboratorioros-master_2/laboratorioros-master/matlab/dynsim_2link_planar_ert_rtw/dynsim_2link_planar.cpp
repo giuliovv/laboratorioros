@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'dynsim_2link_planar'.
 //
-// Model version                  : 1.129
+// Model version                  : 1.130
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Sun May 17 15:19:54 2020
+// C/C++ source code generated on : Sun May 17 16:48:26 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -4674,28 +4674,27 @@ void dynsim_2link_planar_step(void)
   //   Integrator: '<S1>/Position'
   //   MATLAB Function: '<Root>/MATLAB Function'
 
-  dynsim_2link_planar_B.msg_g.Position[2] = ((((((8.8199044272416644E+65 *
-    dynsim_2link_planar_B.d2 * dynsim_2link_planar_B.d4 / 3.2910091146424121E+66
-    - 8.8199044272416644E+65 * dynsim_2link_planar_B.value_d *
-    dynsim_2link_planar_B.d6 / 3.2910091146424121E+66) - 21.0 *
-    dynsim_2link_planar_B.d2 / 100.0) - ((dynsim_2link_planar_B.d17 *
+  dynsim_2link_planar_B.msg_g.Position[2] = ((((((67.0 *
+    dynsim_2link_planar_B.d2 * dynsim_2link_planar_B.d4 / 250.0 - 67.0 *
+    dynsim_2link_planar_B.value_d * dynsim_2link_planar_B.d6 / 250.0) - 21.0 *
+    dynsim_2link_planar_B.d2 / 100.0) - (((((dynsim_2link_planar_B.d17 *
     dynsim_2link_planar_B.d6 / 8.1129638414606682E+31 - 4.967757600021511E+15 *
     dynsim_2link_planar_B.d2 * dynsim_2link_planar_B.d4 / 8.1129638414606682E+31)
-    + 6.123233995736766E-17) * (4.3219491120187149E+17 * cos
-    (dynsim_2link_planar_X.Position_CSTATE[3])) / 4.0564819207303341E+34) -
-    (((dynsim_2link_planar_B.value * (4.967757600021511E+15 * cos
+    + 6.123233995736766E-17) * (4.967757600021511E+15 * cos
     (dynsim_2link_planar_X.Position_CSTATE[3])) / 8.1129638414606682E+31 +
-       (dynsim_2link_planar_B.d2 * dynsim_2link_planar_B.d4 -
-        dynsim_2link_planar_B.value_d * dynsim_2link_planar_B.d6)) -
-      (dynsim_2link_planar_B.value_d * dynsim_2link_planar_B.d4 +
-       dynsim_2link_planar_B.d6 * dynsim_2link_planar_B.d2) *
-      (4.967757600021511E+15 * sin(dynsim_2link_planar_X.Position_CSTATE[3])) /
-      8.1129638414606682E+31) + 3.749399456654644E-33) *
-    dynsim_2link_planar_B.d12 / 500.0) + dynsim_2link_planar_B.value_l *
-    (4.3219491120187149E+17 * sin(dynsim_2link_planar_X.Position_CSTATE[3])) /
-    4.0564819207303341E+34) + (dynsim_2link_planar_B.value *
-    dynsim_2link_planar_B.d1 + dynsim_2link_planar_B.value_l *
-    dynsim_2link_planar_B.d_o) * dynsim_2link_planar_B.d13 / 500.0) + 0.337;
+    (dynsim_2link_planar_B.d2 * dynsim_2link_planar_B.d4 -
+     dynsim_2link_planar_B.value_d * dynsim_2link_planar_B.d6)) -
+    (dynsim_2link_planar_B.value_d * dynsim_2link_planar_B.d4 +
+     dynsim_2link_planar_B.d6 * dynsim_2link_planar_B.d2) *
+    (4.967757600021511E+15 * sin(dynsim_2link_planar_X.Position_CSTATE[3])) /
+    8.1129638414606682E+31) + 3.749399456654644E-33) * dynsim_2link_planar_B.d12
+    / 500.0) - dynsim_2link_planar_B.value * (3.376522743764621E+15 *
+    dynsim_2link_planar_B.d_o) / 3.1691265005705735E+32) +
+    dynsim_2link_planar_B.value_l * (3.376522743764621E+15 *
+    dynsim_2link_planar_B.d1) / 3.1691265005705735E+32) +
+    (dynsim_2link_planar_B.value * dynsim_2link_planar_B.d1 +
+     dynsim_2link_planar_B.value_l * dynsim_2link_planar_B.d_o) *
+    dynsim_2link_planar_B.d13 / 500.0) + 0.337;
 
   // MATLAB Function: '<Root>/MATLAB Function' incorporates:
   //   Integrator: '<S1>/Position'

@@ -11,9 +11,16 @@ L4 = 0;
 L5 = 0.174;
 L6 = 0;
 
+dhparams = [0.3370   -1.5708         0         0
+         0         0    0.2100         0
+         0   -1.5708         0         0
+    0.2680    1.5708         0         0
+         0   -1.5708         0         0
+    0.1740         0         0         0]
+
 body = rigidBody('link_1');
 joint = rigidBodyJoint('joint_1', 'revolute');
-setFixedTransform(joint,trvec2tform([0 0 0]));
+setFixedTransform(joint,trvec2tform([0 0 L1]));
 joint.JointAxis = [0 0 1];
 body.Joint = joint;
 body.Mass = 2;
@@ -23,7 +30,7 @@ addBody(robot_2link, body, 'base');
 
 body = rigidBody('link_2');
 joint = rigidBodyJoint('joint_2','revolute');
-setFixedTransform(joint, trvec2tform([L1,0,0]));
+setFixedTransform(joint, trvec2tform([0,0,0]));
 joint.JointAxis = [0 0 1];
 body.Joint = joint;
 body.Mass = 1;
@@ -33,7 +40,7 @@ addBody(robot_2link, body, 'link_1');
 
 body = rigidBody('link_3');
 joint = rigidBodyJoint('joint_3','revolute');
-setFixedTransform(joint, trvec2tform([L2,0,0]));
+setFixedTransform(joint, trvec2tform([0,0,L3]));
 %joint.JointAxis = [0 0 1];
 body.Joint = joint;
 body.Mass = 1;
@@ -43,7 +50,7 @@ addBody(robot_2link, body, 'link_2');
 
 body = rigidBody('link_4');
 joint = rigidBodyJoint('joint_4', 'revolute');
-setFixedTransform(joint, trvec2tform([L3,0,0]));
+setFixedTransform(joint, trvec2tform([0,0,L3]));
 %joint.JointAxis = [0 0 1];
 body.Joint = joint;
 body.Mass = 1;
@@ -53,7 +60,7 @@ addBody(robot_2link, body, 'link_3');
 
 body = rigidBody('link_5');
 joint = rigidBodyJoint('joint_5','revolute');
-setFixedTransform(joint, trvec2tform([L4,0,0]));
+setFixedTransform(joint, trvec2tform([0,0,-L4]));
 %joint.JointAxis = [0 0 1];
 body.Joint = joint;
 body.Mass = 1;
@@ -63,7 +70,7 @@ addBody(robot_2link, body, 'link_4');
 
 body = rigidBody('link_6');
 joint = rigidBodyJoint('joint_6','revolute');
-setFixedTransform(joint, trvec2tform([L5,0,0]));
+setFixedTransform(joint, trvec2tform([0,0,L5]));
 %joint.JointAxis = [0 0 1];
 body.Joint = joint;
 body.Mass = 1;

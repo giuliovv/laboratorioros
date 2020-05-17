@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'kinsim_2link_planar'.
 //
-// Model version                  : 1.127
+// Model version                  : 1.130
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Sun May 17 14:56:55 2020
+// C/C++ source code generated on : Sun May 17 16:49:03 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -572,15 +572,12 @@ void kinsim_2link_planar_step(void)
   //   Integrator: '<Root>/Integrator'
   //   MATLAB Function: '<Root>/MATLAB Function'
 
-  kinsim_2link_planar_B.msg_d.Position[2] = ((((((8.8199044272416644E+65 *
-    kinsim_2link_planar_B.d2 * kinsim_2link_planar_B.d4 / 3.2910091146424121E+66
-    - 8.8199044272416644E+65 * kinsim_2link_planar_B.value_cx *
-    kinsim_2link_planar_B.d6 / 3.2910091146424121E+66) - 21.0 *
-    kinsim_2link_planar_B.d2 / 100.0) - ((tmp_1 * kinsim_2link_planar_B.d6 /
+  kinsim_2link_planar_B.msg_d.Position[2] = ((((((67.0 *
+    kinsim_2link_planar_B.d2 * kinsim_2link_planar_B.d4 / 250.0 - 67.0 *
+    kinsim_2link_planar_B.value_cx * kinsim_2link_planar_B.d6 / 250.0) - 21.0 *
+    kinsim_2link_planar_B.d2 / 100.0) - (((((tmp_1 * kinsim_2link_planar_B.d6 /
     8.1129638414606682E+31 - 4.967757600021511E+15 * kinsim_2link_planar_B.d2 *
     kinsim_2link_planar_B.d4 / 8.1129638414606682E+31) + 6.123233995736766E-17) *
-    (4.3219491120187149E+17 * cos(kinsim_2link_planar_X.Integrator_CSTATE[3])) /
-    4.0564819207303341E+34) - (((kinsim_2link_planar_B.value_k *
     (4.967757600021511E+15 * cos(kinsim_2link_planar_X.Integrator_CSTATE[3])) /
     8.1129638414606682E+31 + (kinsim_2link_planar_B.d2 *
     kinsim_2link_planar_B.d4 - kinsim_2link_planar_B.value_cx *
@@ -588,9 +585,11 @@ void kinsim_2link_planar_step(void)
     kinsim_2link_planar_B.d4 + kinsim_2link_planar_B.d6 *
     kinsim_2link_planar_B.d2) * (4.967757600021511E+15 * sin
     (kinsim_2link_planar_X.Integrator_CSTATE[3])) / 8.1129638414606682E+31) +
-    3.749399456654644E-33) * kinsim_2link_planar_B.d12 / 500.0) +
-    kinsim_2link_planar_B.value_b * (4.3219491120187149E+17 * sin
-    (kinsim_2link_planar_X.Integrator_CSTATE[3])) / 4.0564819207303341E+34) +
+    3.749399456654644E-33) * kinsim_2link_planar_B.d12 / 500.0) -
+    kinsim_2link_planar_B.value_k * (3.376522743764621E+15 *
+    kinsim_2link_planar_B.d_p) / 3.1691265005705735E+32) +
+    kinsim_2link_planar_B.value_b * (3.376522743764621E+15 *
+    kinsim_2link_planar_B.d1) / 3.1691265005705735E+32) +
     (kinsim_2link_planar_B.value_k * kinsim_2link_planar_B.d1 +
      kinsim_2link_planar_B.value_b * kinsim_2link_planar_B.d_p) *
     kinsim_2link_planar_B.d13 / 500.0) + 0.337;
