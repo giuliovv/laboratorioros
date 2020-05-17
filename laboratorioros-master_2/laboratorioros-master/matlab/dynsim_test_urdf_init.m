@@ -43,7 +43,7 @@ addBody(robot_2link, body, 'link_2');
 
 body = rigidBody('link_4');
 joint = rigidBodyJoint('joint_4', 'revolute');
-setFixedTransform(joint, trvec2tform([L2,0,0]));
+setFixedTransform(joint, trvec2tform([L3,0,0]));
 %joint.JointAxis = [0 0 1];
 body.Joint = joint;
 body.Mass = 1;
@@ -53,7 +53,7 @@ addBody(robot_2link, body, 'link_3');
 
 body = rigidBody('link_5');
 joint = rigidBodyJoint('joint_5','revolute');
-setFixedTransform(joint, trvec2tform([L2,0,0]));
+setFixedTransform(joint, trvec2tform([L4,0,0]));
 %joint.JointAxis = [0 0 1];
 body.Joint = joint;
 body.Mass = 1;
@@ -63,7 +63,7 @@ addBody(robot_2link, body, 'link_4');
 
 body = rigidBody('link_6');
 joint = rigidBodyJoint('joint_6','revolute');
-setFixedTransform(joint, trvec2tform([L2,0,0]));
+setFixedTransform(joint, trvec2tform([L5,0,0]));
 %joint.JointAxis = [0 0 1];
 body.Joint = joint;
 body.Mass = 1;
