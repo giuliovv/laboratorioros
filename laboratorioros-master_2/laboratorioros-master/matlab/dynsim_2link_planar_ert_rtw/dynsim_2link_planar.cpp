@@ -9,7 +9,7 @@
 //
 // Model version                  : 1.129
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Thu May 14 21:05:46 2020
+// C/C++ source code generated on : Sun May 17 15:19:54 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -4462,112 +4462,262 @@ void dynsim_2link_planar_step(void)
   }
 
   dynsim_2link_planar_B.msg_g.Header.Stamp.Nsec = dynsim_2link_planar_B.j;
-  dynsim_2link_planar_B.msg_g.Name_SL_Info.CurrentLength = 2U;
-  dynsim_2link_planar_B.msg_g.Position_SL_Info.CurrentLength = 2U;
-  dynsim_2link_planar_B.msg_g.Velocity_SL_Info.CurrentLength = 2U;
+  dynsim_2link_planar_B.msg_g.Name_SL_Info.CurrentLength = 3U;
+  dynsim_2link_planar_B.msg_g.Position_SL_Info.CurrentLength = 3U;
+  dynsim_2link_planar_B.msg_g.Velocity_SL_Info.CurrentLength = 3U;
   dynsim_2link_planar_B.msg_g.Name[0].Data_SL_Info.CurrentLength = 11U;
 
   // MATLAB Function: '<Root>/MATLAB Function' incorporates:
   //   Integrator: '<S1>/Position'
 
   dynsim_2link_planar_B.value = cos(dynsim_2link_planar_X.Position_CSTATE[0]);
-  dynsim_2link_planar_B.value_d = dynsim_2link_planar_X.Position_CSTATE[0] +
-    dynsim_2link_planar_X.Position_CSTATE[1];
-  dynsim_2link_planar_B.value_l = cos(dynsim_2link_planar_B.value_d);
-  dynsim_2link_planar_B.d5 = dynsim_2link_planar_B.value_d +
-    dynsim_2link_planar_X.Position_CSTATE[2];
-  dynsim_2link_planar_B.d2 = cos(dynsim_2link_planar_B.d5);
-  dynsim_2link_planar_B.d6 = dynsim_2link_planar_B.d5 +
-    dynsim_2link_planar_X.Position_CSTATE[3];
-  dynsim_2link_planar_B.d3 = cos(dynsim_2link_planar_B.d6);
-  dynsim_2link_planar_B.d7 = dynsim_2link_planar_B.d6 +
-    dynsim_2link_planar_X.Position_CSTATE[4];
-  dynsim_2link_planar_B.d8 = dynsim_2link_planar_B.d7 +
-    dynsim_2link_planar_X.Position_CSTATE[5];
-  dynsim_2link_planar_B.d4 = cos(dynsim_2link_planar_B.d8);
+  dynsim_2link_planar_B.value_d = cos(dynsim_2link_planar_X.Position_CSTATE[1]);
+  dynsim_2link_planar_B.value_l = sin(dynsim_2link_planar_X.Position_CSTATE[0]);
+  dynsim_2link_planar_B.d2 = sin(dynsim_2link_planar_X.Position_CSTATE[1]);
+  dynsim_2link_planar_B.d4 = sin(dynsim_2link_planar_X.Position_CSTATE[2]);
+  dynsim_2link_planar_B.d_o = cos(dynsim_2link_planar_X.Position_CSTATE[3]);
+  dynsim_2link_planar_B.d6 = cos(dynsim_2link_planar_X.Position_CSTATE[2]);
+  dynsim_2link_planar_B.d1 = sin(dynsim_2link_planar_X.Position_CSTATE[3]);
+  dynsim_2link_planar_B.d3 = 4.967757600021511E+15 *
+    dynsim_2link_planar_B.value_l;
+  dynsim_2link_planar_B.d5 = dynsim_2link_planar_B.value *
+    dynsim_2link_planar_B.value_d - dynsim_2link_planar_B.d3 *
+    dynsim_2link_planar_B.d2 / 8.1129638414606682E+31;
+  dynsim_2link_planar_B.d17 = 4.967757600021511E+15 *
+    dynsim_2link_planar_B.value_d;
+  dynsim_2link_planar_B.d7 = dynsim_2link_planar_B.d17 *
+    dynsim_2link_planar_B.value_l / 8.1129638414606682E+31 +
+    dynsim_2link_planar_B.value * dynsim_2link_planar_B.d2;
+  dynsim_2link_planar_B.d10 = 4.967757600021511E+15 * dynsim_2link_planar_B.d4;
+  dynsim_2link_planar_B.d11 = 4.967757600021511E+15 * dynsim_2link_planar_B.d6;
+  dynsim_2link_planar_B.d15 = dynsim_2link_planar_B.d5 *
+    dynsim_2link_planar_B.d10 / 8.1129638414606682E+31;
+  dynsim_2link_planar_B.d16 = dynsim_2link_planar_B.d7 *
+    dynsim_2link_planar_B.d11 / 8.1129638414606682E+31;
+  dynsim_2link_planar_B.d8 = (dynsim_2link_planar_B.d15 -
+    dynsim_2link_planar_B.value_l) + dynsim_2link_planar_B.d16;
+  dynsim_2link_planar_B.d9 = (4.967757600021511E+15 * cos
+    (dynsim_2link_planar_X.Position_CSTATE[1]) * sin
+    (dynsim_2link_planar_X.Position_CSTATE[0]) / 8.1129638414606682E+31 + cos
+    (dynsim_2link_planar_X.Position_CSTATE[0]) * sin
+    (dynsim_2link_planar_X.Position_CSTATE[1])) * sin
+    (dynsim_2link_planar_X.Position_CSTATE[2]) - (cos
+    (dynsim_2link_planar_X.Position_CSTATE[0]) * cos
+    (dynsim_2link_planar_X.Position_CSTATE[1]) - 4.967757600021511E+15 * sin
+    (dynsim_2link_planar_X.Position_CSTATE[0]) * sin
+    (dynsim_2link_planar_X.Position_CSTATE[1]) / 8.1129638414606682E+31) * cos
+    (dynsim_2link_planar_X.Position_CSTATE[2]);
+  dynsim_2link_planar_B.d12 = 87.0 * cos(dynsim_2link_planar_X.Position_CSTATE[4]);
+  dynsim_2link_planar_B.d13 = 87.0 * sin(dynsim_2link_planar_X.Position_CSTATE[4]);
 
   // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
-  //   Constant: '<Root>/Constant'
-  //   Integrator: '<S1>/Position'
   //   MATLAB Function: '<Root>/MATLAB Function'
 
-  dynsim_2link_planar_B.msg_g.Position[0] = (cos(dynsim_2link_planar_B.d6 +
-    dynsim_2link_planar_X.Position_CSTATE[0]) *
-    dynsim_2link_planar_P.Constant_Value_oa[4] +
-    (((dynsim_2link_planar_P.Constant_Value_oa[0] * dynsim_2link_planar_B.value
-       + dynsim_2link_planar_P.Constant_Value_oa[1] *
-       dynsim_2link_planar_B.value_l) + dynsim_2link_planar_P.Constant_Value_oa
-      [2] * dynsim_2link_planar_B.d2) + dynsim_2link_planar_P.Constant_Value_oa
-     [3] * dynsim_2link_planar_B.d3)) + dynsim_2link_planar_P.Constant_Value_oa
-    [5] * dynsim_2link_planar_B.d4;
+  dynsim_2link_planar_B.msg_g.Position[0] = (((((((dynsim_2link_planar_B.d5 *
+    dynsim_2link_planar_B.d4 + dynsim_2link_planar_B.d3 / 8.1129638414606682E+31)
+    - dynsim_2link_planar_B.d8 * (4.967757600021511E+15 *
+    dynsim_2link_planar_B.d_o) / 8.1129638414606682E+31) +
+    (dynsim_2link_planar_B.d7 * dynsim_2link_planar_B.d4 -
+     dynsim_2link_planar_B.d5 * dynsim_2link_planar_B.d6) *
+    (4.967757600021511E+15 * dynsim_2link_planar_B.d1) / 8.1129638414606682E+31)
+    + dynsim_2link_planar_B.d7 * dynsim_2link_planar_B.d6) *
+    dynsim_2link_planar_B.d12 / 500.0 + ((((21.0 * dynsim_2link_planar_B.value *
+    dynsim_2link_planar_B.value_d / 100.0 - dynsim_2link_planar_B.d5 *
+    (8.8199044272416644E+65 * dynsim_2link_planar_B.d4) / 3.2910091146424121E+66)
+    - 4.3815147249893147E+81 * dynsim_2link_planar_B.value_l /
+    2.6699837949011376E+98) - 1.0432290960045173E+17 *
+    dynsim_2link_planar_B.value_l * dynsim_2link_planar_B.d2 /
+    8.1129638414606682E+33) - dynsim_2link_planar_B.d8 * (4.3219491120187149E+17
+    * dynsim_2link_planar_B.d_o) / 4.0564819207303341E+34)) +
+    (dynsim_2link_planar_B.d8 * dynsim_2link_planar_B.d1 +
+     dynsim_2link_planar_B.d9 * dynsim_2link_planar_B.d_o) *
+    dynsim_2link_planar_B.d13 / 500.0) + dynsim_2link_planar_B.d9 *
+    (4.3219491120187149E+17 * dynsim_2link_planar_B.d1) / 4.0564819207303341E+34)
+    - dynsim_2link_planar_B.d7 * (8.8199044272416644E+65 *
+    dynsim_2link_planar_B.d6) / 3.2910091146424121E+66;
 
   // MATLAB Function: '<Root>/MATLAB Function' incorporates:
-  //   Constant: '<Root>/Constant'
   //   Integrator: '<S1>/Position'
 
-  dynsim_2link_planar_B.d_o = sin(dynsim_2link_planar_X.Position_CSTATE[0]);
-  dynsim_2link_planar_B.value_d = sin(dynsim_2link_planar_B.value_d);
-  dynsim_2link_planar_B.d5 = sin(dynsim_2link_planar_B.d5);
-  dynsim_2link_planar_B.d6 = sin(dynsim_2link_planar_B.d6);
-  dynsim_2link_planar_B.d1 = sin(dynsim_2link_planar_B.d7);
-  dynsim_2link_planar_B.d8 = sin(dynsim_2link_planar_B.d8);
-  dynsim_2link_planar_B.d9 = dynsim_2link_planar_B.Velocity[0] +
-    dynsim_2link_planar_B.Velocity[1];
-  dynsim_2link_planar_B.d10 = dynsim_2link_planar_B.d9 +
-    dynsim_2link_planar_B.Velocity[2];
-  dynsim_2link_planar_B.d11 = dynsim_2link_planar_B.d10 +
-    dynsim_2link_planar_B.Velocity[3];
-  dynsim_2link_planar_B.d12 = dynsim_2link_planar_B.d11 +
-    dynsim_2link_planar_B.Velocity[4];
-  dynsim_2link_planar_B.d9 *= dynsim_2link_planar_P.Constant_Value_oa[1];
-  dynsim_2link_planar_B.d10 *= dynsim_2link_planar_P.Constant_Value_oa[2];
-  dynsim_2link_planar_B.d11 *= dynsim_2link_planar_P.Constant_Value_oa[3];
-  dynsim_2link_planar_B.d13 = dynsim_2link_planar_B.d12 *
-    dynsim_2link_planar_P.Constant_Value_oa[4];
-  dynsim_2link_planar_B.d12 = (dynsim_2link_planar_B.d12 +
-    dynsim_2link_planar_B.Velocity[5]) *
-    dynsim_2link_planar_P.Constant_Value_oa[5];
+  dynsim_2link_planar_B.d3 = 4.967757600021511E+15 * dynsim_2link_planar_B.value;
+  dynsim_2link_planar_B.d5 = dynsim_2link_planar_B.d3 *
+    dynsim_2link_planar_B.value_d / 8.1129638414606682E+31 -
+    dynsim_2link_planar_B.value_l * dynsim_2link_planar_B.d2;
+  dynsim_2link_planar_B.d7 = dynsim_2link_planar_B.d3 * dynsim_2link_planar_B.d2
+    / 8.1129638414606682E+31 + dynsim_2link_planar_B.value_d *
+    dynsim_2link_planar_B.value_l;
+  dynsim_2link_planar_B.d10 = dynsim_2link_planar_B.d7 *
+    dynsim_2link_planar_B.d10 / 8.1129638414606682E+31;
+  dynsim_2link_planar_B.d11 = dynsim_2link_planar_B.d5 *
+    dynsim_2link_planar_B.d11 / 8.1129638414606682E+31;
+  dynsim_2link_planar_B.d8 = dynsim_2link_planar_B.d10 -
+    dynsim_2link_planar_B.d11;
+  dynsim_2link_planar_B.d14 = (4.967757600021511E+15 * cos
+    (dynsim_2link_planar_X.Position_CSTATE[0]) * cos
+    (dynsim_2link_planar_X.Position_CSTATE[1]) / 8.1129638414606682E+31 - sin
+    (dynsim_2link_planar_X.Position_CSTATE[0]) * sin
+    (dynsim_2link_planar_X.Position_CSTATE[1])) * sin
+    (dynsim_2link_planar_X.Position_CSTATE[2]) + (4.967757600021511E+15 * cos
+    (dynsim_2link_planar_X.Position_CSTATE[0]) * sin
+    (dynsim_2link_planar_X.Position_CSTATE[1]) / 8.1129638414606682E+31 + cos
+    (dynsim_2link_planar_X.Position_CSTATE[1]) * sin
+    (dynsim_2link_planar_X.Position_CSTATE[0])) * cos
+    (dynsim_2link_planar_X.Position_CSTATE[2]);
 
   // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
-  //   Constant: '<Root>/Constant'
+  //   Integrator: '<S1>/Position'
   //   MATLAB Function: '<Root>/MATLAB Function'
 
-  dynsim_2link_planar_B.msg_g.Velocity[0] =
-    ((((-dynsim_2link_planar_P.Constant_Value_oa[0] *
-        dynsim_2link_planar_B.Velocity[0] * dynsim_2link_planar_B.d_o -
-        dynsim_2link_planar_B.d9 * dynsim_2link_planar_B.value_d) -
-       dynsim_2link_planar_B.d10 * dynsim_2link_planar_B.d5) -
-      dynsim_2link_planar_B.d11 * dynsim_2link_planar_B.d6) -
-     dynsim_2link_planar_B.d13 * dynsim_2link_planar_B.d1) -
-    dynsim_2link_planar_B.d12 * dynsim_2link_planar_B.d8;
+  dynsim_2link_planar_B.msg_g.Velocity[0] = (dynsim_2link_planar_B.d8 *
+    dynsim_2link_planar_B.d_o + (dynsim_2link_planar_B.d5 *
+    dynsim_2link_planar_B.d4 + dynsim_2link_planar_B.d7 *
+    dynsim_2link_planar_B.d6) * dynsim_2link_planar_B.d1) *
+    dynsim_2link_planar_B.d12 / 500.0 - (dynsim_2link_planar_B.d8 *
+    (4.967757600021511E+15 * sin(dynsim_2link_planar_X.Position_CSTATE[3])) /
+    8.1129638414606682E+31 - dynsim_2link_planar_B.d14 * (4.967757600021511E+15 *
+    cos(dynsim_2link_planar_X.Position_CSTATE[3])) / 8.1129638414606682E+31) *
+    dynsim_2link_planar_B.d13 / 500.0;
+  dynsim_2link_planar_B.msg_g.Name[1].Data_SL_Info.CurrentLength = 11U;
+
+  // MATLAB Function: '<Root>/MATLAB Function' incorporates:
+  //   Integrator: '<S1>/Position'
+
+  dynsim_2link_planar_B.d8 = ((4.967757600021511E+15 * cos
+    (dynsim_2link_planar_X.Position_CSTATE[0]) * sin
+    (dynsim_2link_planar_X.Position_CSTATE[1]) / 8.1129638414606682E+31 + cos
+    (dynsim_2link_planar_X.Position_CSTATE[1]) * sin
+    (dynsim_2link_planar_X.Position_CSTATE[0])) * (4.967757600021511E+15 * sin
+    (dynsim_2link_planar_X.Position_CSTATE[2])) / 8.1129638414606682E+31 + cos
+    (dynsim_2link_planar_X.Position_CSTATE[0])) - (4.967757600021511E+15 * cos
+    (dynsim_2link_planar_X.Position_CSTATE[0]) * cos
+    (dynsim_2link_planar_X.Position_CSTATE[1]) / 8.1129638414606682E+31 - sin
+    (dynsim_2link_planar_X.Position_CSTATE[0]) * sin
+    (dynsim_2link_planar_X.Position_CSTATE[1])) * (4.967757600021511E+15 * cos
+    (dynsim_2link_planar_X.Position_CSTATE[2])) / 8.1129638414606682E+31;
+
+  // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
+  //   Integrator: '<S1>/Position'
+  //   MATLAB Function: '<Root>/MATLAB Function'
+
+  dynsim_2link_planar_B.msg_g.Position[1] = (((((((4.3815147249893147E+81 *
+    dynsim_2link_planar_B.value / 2.6699837949011376E+98 -
+    dynsim_2link_planar_B.d7 * (8.8199044272416644E+65 * sin
+    (dynsim_2link_planar_X.Position_CSTATE[2])) / 3.2910091146424121E+66) -
+    (dynsim_2link_planar_B.d14 * dynsim_2link_planar_B.d_o -
+     ((dynsim_2link_planar_B.d10 + dynsim_2link_planar_B.value) -
+      dynsim_2link_planar_B.d11) * dynsim_2link_planar_B.d1) *
+    dynsim_2link_planar_B.d13 / 500.0) + 1.0432290960045173E+17 *
+    dynsim_2link_planar_B.value * dynsim_2link_planar_B.d2 /
+    8.1129638414606682E+33) + 21.0 * dynsim_2link_planar_B.value_d *
+    dynsim_2link_planar_B.value_l / 100.0) - dynsim_2link_planar_B.d14 *
+    (4.3219491120187149E+17 * sin(dynsim_2link_planar_X.Position_CSTATE[3])) /
+    4.0564819207303341E+34) - ((dynsim_2link_planar_B.d8 *
+    (4.967757600021511E+15 * cos(dynsim_2link_planar_X.Position_CSTATE[3])) /
+    8.1129638414606682E+31 + (dynsim_2link_planar_B.d14 * (4.967757600021511E+15
+    * sin(dynsim_2link_planar_X.Position_CSTATE[3])) / 8.1129638414606682E+31 +
+    (dynsim_2link_planar_B.d3 / 8.1129638414606682E+31 -
+     dynsim_2link_planar_B.d7 * dynsim_2link_planar_B.d4))) +
+    dynsim_2link_planar_B.d5 * dynsim_2link_planar_B.d6) *
+    dynsim_2link_planar_B.d12 / 500.0) - dynsim_2link_planar_B.d8 *
+    (4.3219491120187149E+17 * cos(dynsim_2link_planar_X.Position_CSTATE[3])) /
+    4.0564819207303341E+34) + dynsim_2link_planar_B.d5 * (8.8199044272416644E+65
+    * cos(dynsim_2link_planar_X.Position_CSTATE[2])) / 3.2910091146424121E+66;
+
+  // MATLAB Function: '<Root>/MATLAB Function'
+  dynsim_2link_planar_B.value = dynsim_2link_planar_B.d15 +
+    dynsim_2link_planar_B.d16;
+
+  // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
+  //   Integrator: '<S1>/Position'
+  //   MATLAB Function: '<Root>/MATLAB Function'
+
+  dynsim_2link_planar_B.msg_g.Velocity[1] = (dynsim_2link_planar_B.value *
+    (4.967757600021511E+15 * sin(dynsim_2link_planar_X.Position_CSTATE[3])) /
+    8.1129638414606682E+31 + dynsim_2link_planar_B.d9 * (4.967757600021511E+15 *
+    cos(dynsim_2link_planar_X.Position_CSTATE[3])) / 8.1129638414606682E+31) *
+    dynsim_2link_planar_B.d13 / 500.0 + (dynsim_2link_planar_B.d9 *
+    dynsim_2link_planar_B.d1 - dynsim_2link_planar_B.value *
+    dynsim_2link_planar_B.d_o) * dynsim_2link_planar_B.d12 / 500.0;
   for (dynsim_2link_planar_B.j_j = 0; dynsim_2link_planar_B.j_j < 11;
        dynsim_2link_planar_B.j_j++) {
     dynsim_2link_planar_B.b.f1[dynsim_2link_planar_B.j_j] =
       h[dynsim_2link_planar_B.j_j];
     dynsim_2link_planar_B.c.f1[dynsim_2link_planar_B.j_j] =
       i[dynsim_2link_planar_B.j_j];
+    dynsim_2link_planar_B.d.f1[dynsim_2link_planar_B.j_j] =
+      j[dynsim_2link_planar_B.j_j];
     dynsim_2link_planar_B.msg_g.Name[0].Data[dynsim_2link_planar_B.j_j] =
       static_cast<uint8_T>(dynsim_2link_planar_B.b.f1[dynsim_2link_planar_B.j_j]);
     dynsim_2link_planar_B.msg_g.Name[1].Data[dynsim_2link_planar_B.j_j] =
       static_cast<uint8_T>(dynsim_2link_planar_B.c.f1[dynsim_2link_planar_B.j_j]);
+    dynsim_2link_planar_B.msg_g.Name[2].Data[dynsim_2link_planar_B.j_j] =
+      static_cast<uint8_T>(dynsim_2link_planar_B.d.f1[dynsim_2link_planar_B.j_j]);
   }
 
-  dynsim_2link_planar_B.msg_g.Name[1].Data_SL_Info.CurrentLength = 11U;
-  dynsim_2link_planar_B.msg_g.Position[1] =
-    ((((dynsim_2link_planar_P.Constant_Value_oa[0] * dynsim_2link_planar_B.d_o +
-        dynsim_2link_planar_P.Constant_Value_oa[1] *
-        dynsim_2link_planar_B.value_d) +
-       dynsim_2link_planar_P.Constant_Value_oa[2] * dynsim_2link_planar_B.d5) +
-      dynsim_2link_planar_P.Constant_Value_oa[3] * dynsim_2link_planar_B.d6) +
-     dynsim_2link_planar_P.Constant_Value_oa[4] * dynsim_2link_planar_B.d1) +
-    dynsim_2link_planar_P.Constant_Value_oa[5] * dynsim_2link_planar_B.d8;
-  dynsim_2link_planar_B.msg_g.Velocity[1] = ((((dynsim_2link_planar_B.d9 *
-    dynsim_2link_planar_B.value_l + dynsim_2link_planar_P.Constant_Value_oa[0] *
-    dynsim_2link_planar_B.Velocity[0] * dynsim_2link_planar_B.value) +
-    dynsim_2link_planar_B.d10 * dynsim_2link_planar_B.d2) +
-    dynsim_2link_planar_B.d11 * dynsim_2link_planar_B.d3) +
-    dynsim_2link_planar_B.d13 * cos(dynsim_2link_planar_B.d7)) +
-    dynsim_2link_planar_B.d12 * dynsim_2link_planar_B.d4;
+  dynsim_2link_planar_B.msg_g.Name[2].Data_SL_Info.CurrentLength = 11U;
+
+  // MATLAB Function: '<Root>/MATLAB Function' incorporates:
+  //   Integrator: '<S1>/Position'
+
+  dynsim_2link_planar_B.value = (4.967757600021511E+15 * cos
+    (dynsim_2link_planar_X.Position_CSTATE[1]) * cos
+    (dynsim_2link_planar_X.Position_CSTATE[2]) / 8.1129638414606682E+31 -
+    4.967757600021511E+15 * sin(dynsim_2link_planar_X.Position_CSTATE[1]) * sin
+    (dynsim_2link_planar_X.Position_CSTATE[2]) / 8.1129638414606682E+31) +
+    6.123233995736766E-17;
+  dynsim_2link_planar_B.value_l = cos(dynsim_2link_planar_X.Position_CSTATE[1]) *
+    sin(dynsim_2link_planar_X.Position_CSTATE[2]) + cos
+    (dynsim_2link_planar_X.Position_CSTATE[2]) * sin
+    (dynsim_2link_planar_X.Position_CSTATE[1]);
+
+  // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
+  //   Integrator: '<S1>/Position'
+  //   MATLAB Function: '<Root>/MATLAB Function'
+
+  dynsim_2link_planar_B.msg_g.Position[2] = ((((((8.8199044272416644E+65 *
+    dynsim_2link_planar_B.d2 * dynsim_2link_planar_B.d4 / 3.2910091146424121E+66
+    - 8.8199044272416644E+65 * dynsim_2link_planar_B.value_d *
+    dynsim_2link_planar_B.d6 / 3.2910091146424121E+66) - 21.0 *
+    dynsim_2link_planar_B.d2 / 100.0) - ((dynsim_2link_planar_B.d17 *
+    dynsim_2link_planar_B.d6 / 8.1129638414606682E+31 - 4.967757600021511E+15 *
+    dynsim_2link_planar_B.d2 * dynsim_2link_planar_B.d4 / 8.1129638414606682E+31)
+    + 6.123233995736766E-17) * (4.3219491120187149E+17 * cos
+    (dynsim_2link_planar_X.Position_CSTATE[3])) / 4.0564819207303341E+34) -
+    (((dynsim_2link_planar_B.value * (4.967757600021511E+15 * cos
+    (dynsim_2link_planar_X.Position_CSTATE[3])) / 8.1129638414606682E+31 +
+       (dynsim_2link_planar_B.d2 * dynsim_2link_planar_B.d4 -
+        dynsim_2link_planar_B.value_d * dynsim_2link_planar_B.d6)) -
+      (dynsim_2link_planar_B.value_d * dynsim_2link_planar_B.d4 +
+       dynsim_2link_planar_B.d6 * dynsim_2link_planar_B.d2) *
+      (4.967757600021511E+15 * sin(dynsim_2link_planar_X.Position_CSTATE[3])) /
+      8.1129638414606682E+31) + 3.749399456654644E-33) *
+    dynsim_2link_planar_B.d12 / 500.0) + dynsim_2link_planar_B.value_l *
+    (4.3219491120187149E+17 * sin(dynsim_2link_planar_X.Position_CSTATE[3])) /
+    4.0564819207303341E+34) + (dynsim_2link_planar_B.value *
+    dynsim_2link_planar_B.d1 + dynsim_2link_planar_B.value_l *
+    dynsim_2link_planar_B.d_o) * dynsim_2link_planar_B.d13 / 500.0) + 0.337;
+
+  // MATLAB Function: '<Root>/MATLAB Function' incorporates:
+  //   Integrator: '<S1>/Position'
+
+  dynsim_2link_planar_B.value = 4.967757600021511E+15 * cos
+    (dynsim_2link_planar_X.Position_CSTATE[1]) * cos
+    (dynsim_2link_planar_X.Position_CSTATE[2]) / 8.1129638414606682E+31 -
+    4.967757600021511E+15 * sin(dynsim_2link_planar_X.Position_CSTATE[1]) * sin
+    (dynsim_2link_planar_X.Position_CSTATE[2]) / 8.1129638414606682E+31;
+
+  // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
+  //   Integrator: '<S1>/Position'
+  //   MATLAB Function: '<Root>/MATLAB Function'
+
+  dynsim_2link_planar_B.msg_g.Velocity[2] = (dynsim_2link_planar_B.value *
+    (4.967757600021511E+15 * sin(dynsim_2link_planar_X.Position_CSTATE[3])) /
+    8.1129638414606682E+31 + dynsim_2link_planar_B.value_l *
+    (4.967757600021511E+15 * cos(dynsim_2link_planar_X.Position_CSTATE[3])) /
+    8.1129638414606682E+31) * dynsim_2link_planar_B.d13 / 500.0 -
+    (dynsim_2link_planar_B.value * dynsim_2link_planar_B.d_o -
+     dynsim_2link_planar_B.value_l * dynsim_2link_planar_B.d1) *
+    dynsim_2link_planar_B.d12 / 500.0;
 
   // Outputs for Atomic SubSystem: '<Root>/Publish2'
   // MATLABSystem: '<S10>/SinkBlock'

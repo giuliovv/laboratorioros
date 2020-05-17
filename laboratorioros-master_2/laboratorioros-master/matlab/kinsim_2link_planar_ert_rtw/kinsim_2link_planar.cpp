@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'kinsim_2link_planar'.
 //
-// Model version                  : 1.126
+// Model version                  : 1.127
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Thu May 14 21:07:46 2020
+// C/C++ source code generated on : Sun May 17 14:56:55 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -364,102 +364,258 @@ void kinsim_2link_planar_step(void)
   }
 
   kinsim_2link_planar_B.msg_d.Header.Stamp.Nsec = kinsim_2link_planar_B.value_c;
-  kinsim_2link_planar_B.msg_d.Name_SL_Info.CurrentLength = 2U;
-  kinsim_2link_planar_B.msg_d.Position_SL_Info.CurrentLength = 2U;
-  kinsim_2link_planar_B.msg_d.Velocity_SL_Info.CurrentLength = 2U;
+  kinsim_2link_planar_B.msg_d.Name_SL_Info.CurrentLength = 3U;
+  kinsim_2link_planar_B.msg_d.Position_SL_Info.CurrentLength = 3U;
+  kinsim_2link_planar_B.msg_d.Velocity_SL_Info.CurrentLength = 3U;
   kinsim_2link_planar_B.msg_d.Name[0].Data_SL_Info.CurrentLength = 11U;
 
   // MATLAB Function: '<Root>/MATLAB Function' incorporates:
   //   Integrator: '<Root>/Integrator'
 
   kinsim_2link_planar_B.value_k = cos(kinsim_2link_planar_X.Integrator_CSTATE[0]);
-  kinsim_2link_planar_B.value_cx = kinsim_2link_planar_X.Integrator_CSTATE[0] +
-    kinsim_2link_planar_X.Integrator_CSTATE[1];
-  kinsim_2link_planar_B.value_b = cos(kinsim_2link_planar_B.value_cx);
-  kinsim_2link_planar_B.d5 = kinsim_2link_planar_B.value_cx +
-    kinsim_2link_planar_X.Integrator_CSTATE[2];
-  kinsim_2link_planar_B.d1 = cos(kinsim_2link_planar_B.d5);
-  kinsim_2link_planar_B.d6 = kinsim_2link_planar_B.d5 +
-    kinsim_2link_planar_X.Integrator_CSTATE[3];
-  kinsim_2link_planar_B.d2 = cos(kinsim_2link_planar_B.d6);
-  kinsim_2link_planar_B.d7 = kinsim_2link_planar_B.d6 +
-    kinsim_2link_planar_X.Integrator_CSTATE[4];
-  kinsim_2link_planar_B.d3 = cos(kinsim_2link_planar_B.d7);
-  kinsim_2link_planar_B.d8 = kinsim_2link_planar_B.d7 +
-    kinsim_2link_planar_X.Integrator_CSTATE[5];
-  kinsim_2link_planar_B.d4 = cos(kinsim_2link_planar_B.d8);
+  kinsim_2link_planar_B.value_cx = cos(kinsim_2link_planar_X.Integrator_CSTATE[1]);
+  kinsim_2link_planar_B.value_b = sin(kinsim_2link_planar_X.Integrator_CSTATE[0]);
+  kinsim_2link_planar_B.d2 = sin(kinsim_2link_planar_X.Integrator_CSTATE[1]);
+  kinsim_2link_planar_B.d4 = sin(kinsim_2link_planar_X.Integrator_CSTATE[2]);
+  kinsim_2link_planar_B.d_p = cos(kinsim_2link_planar_X.Integrator_CSTATE[3]);
+  kinsim_2link_planar_B.d6 = cos(kinsim_2link_planar_X.Integrator_CSTATE[2]);
+  kinsim_2link_planar_B.d1 = sin(kinsim_2link_planar_X.Integrator_CSTATE[3]);
+  kinsim_2link_planar_B.d3 = 4.967757600021511E+15 *
+    kinsim_2link_planar_B.value_b;
+  kinsim_2link_planar_B.d5 = kinsim_2link_planar_B.value_k *
+    kinsim_2link_planar_B.value_cx - kinsim_2link_planar_B.d3 *
+    kinsim_2link_planar_B.d2 / 8.1129638414606682E+31;
+  tmp_1 = 4.967757600021511E+15 * kinsim_2link_planar_B.value_cx;
+  kinsim_2link_planar_B.d7 = tmp_1 * kinsim_2link_planar_B.value_b /
+    8.1129638414606682E+31 + kinsim_2link_planar_B.value_k *
+    kinsim_2link_planar_B.d2;
+  kinsim_2link_planar_B.d10 = 4.967757600021511E+15 * kinsim_2link_planar_B.d4;
+  kinsim_2link_planar_B.d11 = 4.967757600021511E+15 * kinsim_2link_planar_B.d6;
+  tmp = kinsim_2link_planar_B.d5 * kinsim_2link_planar_B.d10 /
+    8.1129638414606682E+31;
+  tmp_0 = kinsim_2link_planar_B.d7 * kinsim_2link_planar_B.d11 /
+    8.1129638414606682E+31;
+  kinsim_2link_planar_B.d8 = (tmp - kinsim_2link_planar_B.value_b) + tmp_0;
+  kinsim_2link_planar_B.d9 = (4.967757600021511E+15 * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[1]) * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[0]) / 8.1129638414606682E+31 + cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[0]) * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[1])) * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[2]) - (cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[0]) * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[1]) - 4.967757600021511E+15 * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[0]) * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[1]) / 8.1129638414606682E+31) * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[2]);
+  kinsim_2link_planar_B.d12 = 87.0 * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[4]);
+  kinsim_2link_planar_B.d13 = 87.0 * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[4]);
 
   // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
-  //   Constant: '<Root>/Constant'
   //   MATLAB Function: '<Root>/MATLAB Function'
 
-  kinsim_2link_planar_B.msg_d.Position[0] =
-    ((((kinsim_2link_planar_P.Constant_Value_m[0] *
-        kinsim_2link_planar_B.value_k + kinsim_2link_planar_P.Constant_Value_m[1]
-        * kinsim_2link_planar_B.value_b) +
-       kinsim_2link_planar_P.Constant_Value_m[2] * kinsim_2link_planar_B.d1) +
-      kinsim_2link_planar_P.Constant_Value_m[3] * kinsim_2link_planar_B.d2) +
-     kinsim_2link_planar_P.Constant_Value_m[4] * kinsim_2link_planar_B.d3) +
-    kinsim_2link_planar_P.Constant_Value_m[5] * kinsim_2link_planar_B.d4;
+  kinsim_2link_planar_B.msg_d.Position[0] = (((((((kinsim_2link_planar_B.d5 *
+    kinsim_2link_planar_B.d4 + kinsim_2link_planar_B.d3 / 8.1129638414606682E+31)
+    - kinsim_2link_planar_B.d8 * (4.967757600021511E+15 *
+    kinsim_2link_planar_B.d_p) / 8.1129638414606682E+31) +
+    (kinsim_2link_planar_B.d7 * kinsim_2link_planar_B.d4 -
+     kinsim_2link_planar_B.d5 * kinsim_2link_planar_B.d6) *
+    (4.967757600021511E+15 * kinsim_2link_planar_B.d1) / 8.1129638414606682E+31)
+    + kinsim_2link_planar_B.d7 * kinsim_2link_planar_B.d6) *
+    kinsim_2link_planar_B.d12 / 500.0 + ((((21.0 * kinsim_2link_planar_B.value_k
+    * kinsim_2link_planar_B.value_cx / 100.0 - kinsim_2link_planar_B.d5 *
+    (8.8199044272416644E+65 * kinsim_2link_planar_B.d4) / 3.2910091146424121E+66)
+    - 4.3815147249893147E+81 * kinsim_2link_planar_B.value_b /
+    2.6699837949011376E+98) - 1.0432290960045173E+17 *
+    kinsim_2link_planar_B.value_b * kinsim_2link_planar_B.d2 /
+    8.1129638414606682E+33) - kinsim_2link_planar_B.d8 * (4.3219491120187149E+17
+    * kinsim_2link_planar_B.d_p) / 4.0564819207303341E+34)) +
+    (kinsim_2link_planar_B.d8 * kinsim_2link_planar_B.d1 +
+     kinsim_2link_planar_B.d9 * kinsim_2link_planar_B.d_p) *
+    kinsim_2link_planar_B.d13 / 500.0) + kinsim_2link_planar_B.d9 *
+    (4.3219491120187149E+17 * kinsim_2link_planar_B.d1) / 4.0564819207303341E+34)
+    - kinsim_2link_planar_B.d7 * (8.8199044272416644E+65 *
+    kinsim_2link_planar_B.d6) / 3.2910091146424121E+66;
 
   // MATLAB Function: '<Root>/MATLAB Function' incorporates:
-  //   Constant: '<Root>/Constant'
   //   Integrator: '<Root>/Integrator'
 
-  kinsim_2link_planar_B.d_p = sin(kinsim_2link_planar_X.Integrator_CSTATE[0]);
-  kinsim_2link_planar_B.value_cx = sin(kinsim_2link_planar_B.value_cx);
-  kinsim_2link_planar_B.d5 = sin(kinsim_2link_planar_B.d5);
-  kinsim_2link_planar_B.d6 = sin(kinsim_2link_planar_B.d6);
-  kinsim_2link_planar_B.d7 = sin(kinsim_2link_planar_B.d7);
-  kinsim_2link_planar_B.d8 = sin(kinsim_2link_planar_B.d8);
-  kinsim_2link_planar_B.d9 = kinsim_2link_planar_B.In1.Velocities[1] +
-    kinsim_2link_planar_B.In1.Velocities[2];
-  kinsim_2link_planar_B.d10 = kinsim_2link_planar_B.d9 +
-    kinsim_2link_planar_B.In1.Velocities[3];
-  tmp = kinsim_2link_planar_B.d10 + kinsim_2link_planar_B.In1.Velocities[4];
-  tmp_0 = tmp + kinsim_2link_planar_B.In1.Velocities[5];
-  kinsim_2link_planar_B.d9 *= kinsim_2link_planar_P.Constant_Value_m[1];
-  kinsim_2link_planar_B.d10 *= kinsim_2link_planar_P.Constant_Value_m[2];
-  tmp *= kinsim_2link_planar_P.Constant_Value_m[3];
-  tmp_1 = tmp_0 * kinsim_2link_planar_P.Constant_Value_m[4];
-  tmp_0 = (tmp_0 + kinsim_2link_planar_B.In1.Velocities[6]) *
-    kinsim_2link_planar_P.Constant_Value_m[5];
+  kinsim_2link_planar_B.d3 = 4.967757600021511E+15 *
+    kinsim_2link_planar_B.value_k;
+  kinsim_2link_planar_B.d5 = kinsim_2link_planar_B.d3 *
+    kinsim_2link_planar_B.value_cx / 8.1129638414606682E+31 -
+    kinsim_2link_planar_B.value_b * kinsim_2link_planar_B.d2;
+  kinsim_2link_planar_B.d7 = kinsim_2link_planar_B.d3 * kinsim_2link_planar_B.d2
+    / 8.1129638414606682E+31 + kinsim_2link_planar_B.value_cx *
+    kinsim_2link_planar_B.value_b;
+  kinsim_2link_planar_B.d10 = kinsim_2link_planar_B.d7 *
+    kinsim_2link_planar_B.d10 / 8.1129638414606682E+31;
+  kinsim_2link_planar_B.d11 = kinsim_2link_planar_B.d5 *
+    kinsim_2link_planar_B.d11 / 8.1129638414606682E+31;
+  kinsim_2link_planar_B.d8 = kinsim_2link_planar_B.d10 -
+    kinsim_2link_planar_B.d11;
+  kinsim_2link_planar_B.d14 = (4.967757600021511E+15 * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[0]) * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[1]) / 8.1129638414606682E+31 - sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[0]) * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[1])) * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[2]) + (4.967757600021511E+15 * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[0]) * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[1]) / 8.1129638414606682E+31 + cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[1]) * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[0])) * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[2]);
 
   // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
-  //   Constant: '<Root>/Constant'
+  //   Integrator: '<Root>/Integrator'
   //   MATLAB Function: '<Root>/MATLAB Function'
 
-  kinsim_2link_planar_B.msg_d.Velocity[0] =
-    ((((-kinsim_2link_planar_P.Constant_Value_m[0] *
-        kinsim_2link_planar_B.In1.Velocities[1] * kinsim_2link_planar_B.d_p -
-        kinsim_2link_planar_B.d9 * kinsim_2link_planar_B.value_cx) -
-       kinsim_2link_planar_B.d10 * kinsim_2link_planar_B.d5) - tmp *
-      kinsim_2link_planar_B.d6) - tmp_1 * kinsim_2link_planar_B.d7) - tmp_0 *
-    kinsim_2link_planar_B.d8;
+  kinsim_2link_planar_B.msg_d.Velocity[0] = (kinsim_2link_planar_B.d8 *
+    kinsim_2link_planar_B.d_p + (kinsim_2link_planar_B.d5 *
+    kinsim_2link_planar_B.d4 + kinsim_2link_planar_B.d7 *
+    kinsim_2link_planar_B.d6) * kinsim_2link_planar_B.d1) *
+    kinsim_2link_planar_B.d12 / 500.0 - (kinsim_2link_planar_B.d8 *
+    (4.967757600021511E+15 * sin(kinsim_2link_planar_X.Integrator_CSTATE[3])) /
+    8.1129638414606682E+31 - kinsim_2link_planar_B.d14 * (4.967757600021511E+15 *
+    cos(kinsim_2link_planar_X.Integrator_CSTATE[3])) / 8.1129638414606682E+31) *
+    kinsim_2link_planar_B.d13 / 500.0;
+  kinsim_2link_planar_B.msg_d.Name[1].Data_SL_Info.CurrentLength = 11U;
+
+  // MATLAB Function: '<Root>/MATLAB Function' incorporates:
+  //   Integrator: '<Root>/Integrator'
+
+  kinsim_2link_planar_B.d8 = ((4.967757600021511E+15 * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[0]) * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[1]) / 8.1129638414606682E+31 + cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[1]) * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[0])) * (4.967757600021511E+15 * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[2])) / 8.1129638414606682E+31 + cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[0])) - (4.967757600021511E+15 * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[0]) * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[1]) / 8.1129638414606682E+31 - sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[0]) * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[1])) * (4.967757600021511E+15 * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[2])) / 8.1129638414606682E+31;
+
+  // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
+  //   Integrator: '<Root>/Integrator'
+  //   MATLAB Function: '<Root>/MATLAB Function'
+
+  kinsim_2link_planar_B.msg_d.Position[1] = (((((((4.3815147249893147E+81 *
+    kinsim_2link_planar_B.value_k / 2.6699837949011376E+98 -
+    kinsim_2link_planar_B.d7 * (8.8199044272416644E+65 * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[2])) / 3.2910091146424121E+66) -
+    (kinsim_2link_planar_B.d14 * kinsim_2link_planar_B.d_p -
+     ((kinsim_2link_planar_B.d10 + kinsim_2link_planar_B.value_k) -
+      kinsim_2link_planar_B.d11) * kinsim_2link_planar_B.d1) *
+    kinsim_2link_planar_B.d13 / 500.0) + 1.0432290960045173E+17 *
+    kinsim_2link_planar_B.value_k * kinsim_2link_planar_B.d2 /
+    8.1129638414606682E+33) + 21.0 * kinsim_2link_planar_B.value_cx *
+    kinsim_2link_planar_B.value_b / 100.0) - kinsim_2link_planar_B.d14 *
+    (4.3219491120187149E+17 * sin(kinsim_2link_planar_X.Integrator_CSTATE[3])) /
+    4.0564819207303341E+34) - ((kinsim_2link_planar_B.d8 *
+    (4.967757600021511E+15 * cos(kinsim_2link_planar_X.Integrator_CSTATE[3])) /
+    8.1129638414606682E+31 + (kinsim_2link_planar_B.d14 * (4.967757600021511E+15
+    * sin(kinsim_2link_planar_X.Integrator_CSTATE[3])) / 8.1129638414606682E+31
+    + (kinsim_2link_planar_B.d3 / 8.1129638414606682E+31 -
+       kinsim_2link_planar_B.d7 * kinsim_2link_planar_B.d4))) +
+    kinsim_2link_planar_B.d5 * kinsim_2link_planar_B.d6) *
+    kinsim_2link_planar_B.d12 / 500.0) - kinsim_2link_planar_B.d8 *
+    (4.3219491120187149E+17 * cos(kinsim_2link_planar_X.Integrator_CSTATE[3])) /
+    4.0564819207303341E+34) + kinsim_2link_planar_B.d5 * (8.8199044272416644E+65
+    * cos(kinsim_2link_planar_X.Integrator_CSTATE[2])) / 3.2910091146424121E+66;
+
+  // MATLAB Function: '<Root>/MATLAB Function'
+  kinsim_2link_planar_B.value_k = tmp + tmp_0;
+
+  // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
+  //   Integrator: '<Root>/Integrator'
+  //   MATLAB Function: '<Root>/MATLAB Function'
+
+  kinsim_2link_planar_B.msg_d.Velocity[1] = (kinsim_2link_planar_B.value_k *
+    (4.967757600021511E+15 * sin(kinsim_2link_planar_X.Integrator_CSTATE[3])) /
+    8.1129638414606682E+31 + kinsim_2link_planar_B.d9 * (4.967757600021511E+15 *
+    cos(kinsim_2link_planar_X.Integrator_CSTATE[3])) / 8.1129638414606682E+31) *
+    kinsim_2link_planar_B.d13 / 500.0 + (kinsim_2link_planar_B.d9 *
+    kinsim_2link_planar_B.d1 - kinsim_2link_planar_B.value_k *
+    kinsim_2link_planar_B.d_p) * kinsim_2link_planar_B.d12 / 500.0;
   for (i = 0; i < 11; i++) {
     kinsim_2link_planar_B.b.f1[i] = h[i];
     kinsim_2link_planar_B.c.f1[i] = i_0[i];
+    kinsim_2link_planar_B.d.f1[i] = j[i];
     kinsim_2link_planar_B.msg_d.Name[0].Data[i] = static_cast<uint8_T>
       (kinsim_2link_planar_B.b.f1[i]);
     kinsim_2link_planar_B.msg_d.Name[1].Data[i] = static_cast<uint8_T>
       (kinsim_2link_planar_B.c.f1[i]);
+    kinsim_2link_planar_B.msg_d.Name[2].Data[i] = static_cast<uint8_T>
+      (kinsim_2link_planar_B.d.f1[i]);
   }
 
-  kinsim_2link_planar_B.msg_d.Name[1].Data_SL_Info.CurrentLength = 11U;
-  kinsim_2link_planar_B.msg_d.Position[1] =
-    ((((kinsim_2link_planar_P.Constant_Value_m[0] * kinsim_2link_planar_B.d_p +
-        kinsim_2link_planar_P.Constant_Value_m[1] *
-        kinsim_2link_planar_B.value_cx) +
-       kinsim_2link_planar_P.Constant_Value_m[2] * kinsim_2link_planar_B.d5) +
-      kinsim_2link_planar_P.Constant_Value_m[3] * kinsim_2link_planar_B.d6) +
-     kinsim_2link_planar_P.Constant_Value_m[4] * kinsim_2link_planar_B.d7) +
-    kinsim_2link_planar_P.Constant_Value_m[5] * kinsim_2link_planar_B.d8;
-  kinsim_2link_planar_B.msg_d.Velocity[1] = ((((kinsim_2link_planar_B.d9 *
-    kinsim_2link_planar_B.value_b + kinsim_2link_planar_P.Constant_Value_m[0] *
-    kinsim_2link_planar_B.In1.Velocities[1] * kinsim_2link_planar_B.value_k) +
-    kinsim_2link_planar_B.d10 * kinsim_2link_planar_B.d1) + tmp *
-    kinsim_2link_planar_B.d2) + tmp_1 * kinsim_2link_planar_B.d3) + tmp_0 *
-    kinsim_2link_planar_B.d4;
+  kinsim_2link_planar_B.msg_d.Name[2].Data_SL_Info.CurrentLength = 11U;
+
+  // MATLAB Function: '<Root>/MATLAB Function' incorporates:
+  //   Integrator: '<Root>/Integrator'
+
+  kinsim_2link_planar_B.value_k = (4.967757600021511E+15 * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[1]) * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[2]) / 8.1129638414606682E+31 -
+    4.967757600021511E+15 * sin(kinsim_2link_planar_X.Integrator_CSTATE[1]) *
+    sin(kinsim_2link_planar_X.Integrator_CSTATE[2]) / 8.1129638414606682E+31) +
+    6.123233995736766E-17;
+  kinsim_2link_planar_B.value_b = cos(kinsim_2link_planar_X.Integrator_CSTATE[1])
+    * sin(kinsim_2link_planar_X.Integrator_CSTATE[2]) + cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[2]) * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[1]);
+
+  // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
+  //   Integrator: '<Root>/Integrator'
+  //   MATLAB Function: '<Root>/MATLAB Function'
+
+  kinsim_2link_planar_B.msg_d.Position[2] = ((((((8.8199044272416644E+65 *
+    kinsim_2link_planar_B.d2 * kinsim_2link_planar_B.d4 / 3.2910091146424121E+66
+    - 8.8199044272416644E+65 * kinsim_2link_planar_B.value_cx *
+    kinsim_2link_planar_B.d6 / 3.2910091146424121E+66) - 21.0 *
+    kinsim_2link_planar_B.d2 / 100.0) - ((tmp_1 * kinsim_2link_planar_B.d6 /
+    8.1129638414606682E+31 - 4.967757600021511E+15 * kinsim_2link_planar_B.d2 *
+    kinsim_2link_planar_B.d4 / 8.1129638414606682E+31) + 6.123233995736766E-17) *
+    (4.3219491120187149E+17 * cos(kinsim_2link_planar_X.Integrator_CSTATE[3])) /
+    4.0564819207303341E+34) - (((kinsim_2link_planar_B.value_k *
+    (4.967757600021511E+15 * cos(kinsim_2link_planar_X.Integrator_CSTATE[3])) /
+    8.1129638414606682E+31 + (kinsim_2link_planar_B.d2 *
+    kinsim_2link_planar_B.d4 - kinsim_2link_planar_B.value_cx *
+    kinsim_2link_planar_B.d6)) - (kinsim_2link_planar_B.value_cx *
+    kinsim_2link_planar_B.d4 + kinsim_2link_planar_B.d6 *
+    kinsim_2link_planar_B.d2) * (4.967757600021511E+15 * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[3])) / 8.1129638414606682E+31) +
+    3.749399456654644E-33) * kinsim_2link_planar_B.d12 / 500.0) +
+    kinsim_2link_planar_B.value_b * (4.3219491120187149E+17 * sin
+    (kinsim_2link_planar_X.Integrator_CSTATE[3])) / 4.0564819207303341E+34) +
+    (kinsim_2link_planar_B.value_k * kinsim_2link_planar_B.d1 +
+     kinsim_2link_planar_B.value_b * kinsim_2link_planar_B.d_p) *
+    kinsim_2link_planar_B.d13 / 500.0) + 0.337;
+
+  // MATLAB Function: '<Root>/MATLAB Function' incorporates:
+  //   Integrator: '<Root>/Integrator'
+
+  kinsim_2link_planar_B.value_k = 4.967757600021511E+15 * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[1]) * cos
+    (kinsim_2link_planar_X.Integrator_CSTATE[2]) / 8.1129638414606682E+31 -
+    4.967757600021511E+15 * sin(kinsim_2link_planar_X.Integrator_CSTATE[1]) *
+    sin(kinsim_2link_planar_X.Integrator_CSTATE[2]) / 8.1129638414606682E+31;
+
+  // MATLAB Function: '<Root>/Assign to CartesianState msg' incorporates:
+  //   Integrator: '<Root>/Integrator'
+  //   MATLAB Function: '<Root>/MATLAB Function'
+
+  kinsim_2link_planar_B.msg_d.Velocity[2] = (kinsim_2link_planar_B.value_k *
+    (4.967757600021511E+15 * sin(kinsim_2link_planar_X.Integrator_CSTATE[3])) /
+    8.1129638414606682E+31 + kinsim_2link_planar_B.value_b *
+    (4.967757600021511E+15 * cos(kinsim_2link_planar_X.Integrator_CSTATE[3])) /
+    8.1129638414606682E+31) * kinsim_2link_planar_B.d13 / 500.0 -
+    (kinsim_2link_planar_B.value_k * kinsim_2link_planar_B.d_p -
+     kinsim_2link_planar_B.value_b * kinsim_2link_planar_B.d1) *
+    kinsim_2link_planar_B.d12 / 500.0;
 
   // Outputs for Atomic SubSystem: '<Root>/Publish2'
   // MATLABSystem: '<S9>/SinkBlock'

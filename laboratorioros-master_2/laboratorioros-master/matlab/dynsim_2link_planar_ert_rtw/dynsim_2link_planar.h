@@ -9,7 +9,7 @@
 //
 // Model version                  : 1.129
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Thu May 14 21:05:46 2020
+// C/C++ source code generated on : Sun May 17 15:19:54 2020
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -228,6 +228,10 @@ typedef struct {
   real_T d11;
   real_T d12;
   real_T d13;
+  real_T d14;
+  real_T d15;
+  real_T d16;
+  real_T d17;
   real_T nb;
   real_T a_idx_1;
   real_T a_idx_0;
