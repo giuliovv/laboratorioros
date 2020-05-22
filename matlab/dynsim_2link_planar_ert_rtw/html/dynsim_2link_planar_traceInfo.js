@@ -143,6 +143,10 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["dynsim_2link_planar:112"] = {rtwname: "<S13>/Get Parameter"};
 	this.rtwnameHashMap["<S13>/Get Parameter1"] = {sid: "dynsim_2link_planar:113"};
 	this.sidHashMap["dynsim_2link_planar:113"] = {rtwname: "<S13>/Get Parameter1"};
+	this.rtwnameHashMap["<S13>/Get Parameter10"] = {sid: "dynsim_2link_planar:135"};
+	this.sidHashMap["dynsim_2link_planar:135"] = {rtwname: "<S13>/Get Parameter10"};
+	this.rtwnameHashMap["<S13>/Get Parameter11"] = {sid: "dynsim_2link_planar:136"};
+	this.sidHashMap["dynsim_2link_planar:136"] = {rtwname: "<S13>/Get Parameter11"};
 	this.rtwnameHashMap["<S13>/Get Parameter2"] = {sid: "dynsim_2link_planar:117"};
 	this.sidHashMap["dynsim_2link_planar:117"] = {rtwname: "<S13>/Get Parameter2"};
 	this.rtwnameHashMap["<S13>/Get Parameter3"] = {sid: "dynsim_2link_planar:118"};
@@ -151,6 +155,14 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["dynsim_2link_planar:129"] = {rtwname: "<S13>/Get Parameter4"};
 	this.rtwnameHashMap["<S13>/Get Parameter5"] = {sid: "dynsim_2link_planar:130"};
 	this.sidHashMap["dynsim_2link_planar:130"] = {rtwname: "<S13>/Get Parameter5"};
+	this.rtwnameHashMap["<S13>/Get Parameter6"] = {sid: "dynsim_2link_planar:131"};
+	this.sidHashMap["dynsim_2link_planar:131"] = {rtwname: "<S13>/Get Parameter6"};
+	this.rtwnameHashMap["<S13>/Get Parameter7"] = {sid: "dynsim_2link_planar:132"};
+	this.sidHashMap["dynsim_2link_planar:132"] = {rtwname: "<S13>/Get Parameter7"};
+	this.rtwnameHashMap["<S13>/Get Parameter8"] = {sid: "dynsim_2link_planar:133"};
+	this.sidHashMap["dynsim_2link_planar:133"] = {rtwname: "<S13>/Get Parameter8"};
+	this.rtwnameHashMap["<S13>/Get Parameter9"] = {sid: "dynsim_2link_planar:134"};
+	this.sidHashMap["dynsim_2link_planar:134"] = {rtwname: "<S13>/Get Parameter9"};
 	this.rtwnameHashMap["<S13>/Mux"] = {sid: "dynsim_2link_planar:114"};
 	this.sidHashMap["dynsim_2link_planar:114"] = {rtwname: "<S13>/Mux"};
 	this.rtwnameHashMap["<S13>/Mux1"] = {sid: "dynsim_2link_planar:119"};

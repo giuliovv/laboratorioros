@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'kinsim_2link_planar'. 
 ## 
 ## Makefile     : kinsim_2link_planar.mk
-## Generated on : Mon May 11 22:50:21 2020
+## Generated on : Thu May 14 21:07:50 2020
 ## MATLAB Coder version: 5.0 (R2020a)
 ## 
 ## Build Info:
@@ -23,11 +23,11 @@
 
 PRODUCT_NAME              = kinsim_2link_planar
 MAKEFILE                  = kinsim_2link_planar.mk
-MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2020a
-MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2020a/bin
-MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
+MATLAB_ROOT               = /usr/local/MATLAB/R2020a
+MATLAB_BIN                = /usr/local/MATLAB/R2020a/bin
+MATLAB_ARCH_BIN           = $(MATLAB_BIN)/glnxa64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = C:/Users/sofia/Desktop/sofia/uni/ANNO3~1/fondamenti di robotica/ROS/Quarto Laboratorio/ROS/robot_models/simulator_3link_planar/matlab
+START_DIR                 = /home/giulio/prog/laboratorioros/laboratorioros-master_2/laboratorioros-master/matlab
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
@@ -51,7 +51,6 @@ CPP_STANDARD_OPTS         =
 # MACROS
 #-----------
 
-SHELL        = %SystemRoot%/system32/cmd.exe
 CCOUTPUTFLAG = --output_file=
 LDOUTPUTFLAG = --output_file=
 
@@ -112,9 +111,9 @@ OUTPUT_FLAG         = -o
 ARDEBUG             =
 STATICLIB_OUTPUT_FLAG =
 MEX_DEBUG           = -g
-RM                  = @del /F
+RM                  = @rm -f
 ECHO                = @echo
-MV                  = @move
+MV                  = @mv
 RUN                 =
 
 #----------------------------------------
@@ -466,8 +465,8 @@ info :
 
 clean : 
 	$(ECHO) "### Deleting all derived files..."
-	$(RM) $(subst /,\,$(PRODUCT))
-	$(RM) $(subst /,\,$(ALL_OBJS))
+	$(RM) $(PRODUCT)
+	$(RM) $(ALL_OBJS)
 	$(RM) *Object
 	$(ECHO) "### Deleted all derived files."
 
