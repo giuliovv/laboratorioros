@@ -5,17 +5,17 @@ Edo robot kinematic and dynamic simulation (https://edo.cloud/)
 
 ### Display model:
 
-```script
+```shell
  $ roslaunch edo display.launch.launch 
  ```
 
 ### Kinematic simulation:
-```script
+```shell
  $ roslaunch edo kinematic_simulation.launch 
  ```
  
  ### Dynamic simulation:
-```script
+```shell
  $ roslaunch edo dynamic_simulation.launch 
  ```
 
